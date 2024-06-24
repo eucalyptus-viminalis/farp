@@ -1,7 +1,7 @@
 "use client";
 
-import { CastPreviewContext } from "@/app/preview/CastPreview";
 import { useContext } from "react";
+import { CastPreviewContext } from "@/contexts/CastPreviewContext";
 
 export default function RecastIcon() {
     // Context
@@ -15,7 +15,6 @@ export default function RecastIcon() {
                         group flex w-9 flex-row items-center text-sm text-faint 
                         cursor-pointer
                     "
-                    // onClick={updateRecasted}
                 >
                     <div className="group flex flex-row items-center justify-center rounded-full p-2 transition-colors hover:bg-gray-200 group-hover:bg-gray-200 dark:hover:bg-overlay-medium dark:group-hover:bg-overlay-medium text-action-green text-faint">
                         {cast.recasted ? (

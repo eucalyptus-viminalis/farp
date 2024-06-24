@@ -1,16 +1,22 @@
 'use client'
 
 import { useContext } from "react";
-import { CastPreviewContext } from "@/app/preview/CastPreview";
 import ReplyCount from "./ReplyCount.preview.context";
 import LikeCount from "./LikeCount.preview.context";
-import ChannelName from "../ChannelName";
+import { CastPreviewContext } from "@/contexts/CastPreviewContext";
+import ChannelName from "../channel/ChannelName.preview.context";
+import { PreviewMode } from "@/types/types";
 
-export default function StatsRow() {
+type StatsRowProps = {
+    previewMode?: PreviewMode
+}
+
+export default function StatsRow(props: StatsRowProps) {
+    const {previewMode} = props
     const context = useContext(CastPreviewContext)
     const cast = context.cast
     return (
-        <div className="pb-1">
+        <div className={`${previewMode && previewMode === 'expanded-web' ? 'px-4 pb-4 pt-2' : 'pb-1'}`}>
             <div className="flex flex-row items-center space-x-1">
                 <ReplyCount/>
                 <LikeCount/>

@@ -1,6 +1,6 @@
-import ActionIcon from "./icons/ActionIcon";
-import BookmarkIcon from "./icons/BookmarkIcon";
-import ShareIcon from "./icons/ShareIcon";
+import ActionIcon from "../../icons/ActionIcon";
+import BookmarkIcon from "../../icons/BookmarkIcon";
+import ShareIcon from "../../icons/ShareIcon";
 
 export default function RightIcons() {
     return (

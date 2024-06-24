@@ -2,7 +2,7 @@
 
 import { useContext, useRef, useState } from "react";
 import {UploadIcon} from '@radix-ui/react-icons'
-import { EditContext } from "@/app/edit/context";
+import { EditContext } from "@/contexts/EditContext";
 
 type PFPProps = {
     size: number;

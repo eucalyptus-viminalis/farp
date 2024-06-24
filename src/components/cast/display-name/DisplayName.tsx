@@ -1,15 +1,15 @@
 "use client";
 
-import { EditContext } from "@/app/edit/context";
+import { CastEditContext } from "@/contexts/CastEditContext";
 import { useContext, useRef, useState, useEffect, ChangeEvent } from "react";
 
 // Assuming root cast
 export default function DisplayName() {
     // Context
-    // TODO: create CastContext
-    const context = useContext(EditContext)
-    const displayName = context.state.rootCast.displayNameOverride
-    const activeBadge = context.state.rootCast.activeBadgeOverride
+    const context = useContext(CastEditContext)
+    const cast = context.cast
+    const displayName = context.cast.displayNameOverride
+    const activeBadge = context.cast.activeBadgeOverride
     // States
     const [inputFocused, setInputFocused] = useState<boolean>(false);
     const inputRef = useRef<HTMLInputElement>(null);
@@ -31,12 +31,12 @@ export default function DisplayName() {
     const handleBlur = () => {
         setInputFocused(false);
         if (!displayName) {
-            context.dispatch({type: "SET_ROOT_CAST", payload: {...context.state.rootCast, displayNameOverride: context.state.rootCast.user?.display_name ?? 'Dan Romero'}})
+            context.updateCast({...cast, displayNameOverride: cast.user?.display_name ?? 'Dan Romero'})
         }
     };
     const handleOnChange = (e: ChangeEvent<HTMLInputElement>) => {
         e.preventDefault()
-        context.dispatch({type: "SET_ROOT_CAST", payload: {...context.state.rootCast, displayNameOverride: e.target.value}})
+        context.updateCast({...cast, displayNameOverride: e.target.value})
     }
 
     useEffect(() => {

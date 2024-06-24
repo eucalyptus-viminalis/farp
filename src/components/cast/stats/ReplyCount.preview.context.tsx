@@ -1,12 +1,14 @@
 "use client";
 
-import { CastPreviewContext } from "@/app/preview/CastPreview";
 import { useContext } from "react";
+import { CastPreviewContext } from "@/contexts/CastPreviewContext";
 
 export default function ReplyCount() {
     // Context
     const context = useContext(CastPreviewContext);
     const cast = context.cast;
+
+    if (cast.replyCount <= 0) return null
 
     // DOM
     return (

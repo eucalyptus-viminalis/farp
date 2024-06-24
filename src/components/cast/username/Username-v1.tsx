@@ -11,10 +11,10 @@ import {
     useRef,
     useDeferredValue,
 } from "react";
-import { EditContext } from "../../../app/edit/context";
 import Image from "next/image";
 import UserSearchInput from "../../users/UserSearchInput";
 import { useUsers } from "./hooks";
+import { CastEditContext } from "@/contexts/CastEditContext";
 
 type UsernameProps = {
     asEmbed?: boolean;
@@ -27,9 +27,9 @@ export default function Username(props: UsernameProps) {
     const { asEmbed } = props;
 
     // Context
-    const context = useContext(EditContext);
-    const cast = context.state.rootCast;
-    const username = context.state.rootCast.usernameOverride;
+    const context = useContext(CastEditContext);
+    const cast = context.cast
+    const username = cast.usernameOverride
 
     // States
     const [q, setQ] = useState<string>(username ?? "");
@@ -47,23 +47,20 @@ export default function Username(props: UsernameProps) {
     // State mutations
     const updateUser = () => {
         const newUser = users[selectedIndex];
-        context.dispatch({
-            type: "SET_ROOT_CAST",
-            payload: {
-                ...cast,
-                user: newUser,
-                pfpOverride: newUser.pfp_url ?? "/dwr.png",
-                usernameOverride: newUser.username,
-                displayNameOverride: newUser.display_name ?? "Unknown",
-                activeBadgeOverride: newUser.power_badge,
-            },
-        });
+        context.updateCast({
+            ...cast,
+            user: newUser,
+            pfpOverride: newUser.pfp_url ?? "/dwr.png",
+            usernameOverride: newUser.username,
+            displayNameOverride: newUser.display_name ?? "Unknown",
+            activeBadgeOverride: newUser.power_badge,
+        })
     };
     const overrideUsername = (username: string) => {
-        context.dispatch({
-            type: "SET_ROOT_CAST",
-            payload: { ...cast, usernameOverride: username },
-        });
+        context.updateCast({
+            ...cast,
+            usernameOverride: username
+        })
     };
 
     // Handlers
@@ -140,8 +137,8 @@ export default function Username(props: UsernameProps) {
     };
     const onInputChange = (e: ChangeEvent<HTMLInputElement>) => {
         e.preventDefault();
-        overrideUsername(e.currentTarget.value);
-        setQ(e.currentTarget.value);
+        overrideUsername(e.currentTarget.value.trim());
+        setQ(e.currentTarget.value.trim());
         setSelectedIndex(-1);
     };
     const onBlur = (e: FocusEvent<HTMLInputElement>) => {

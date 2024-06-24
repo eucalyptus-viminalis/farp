@@ -1,35 +1,35 @@
 "use client";
 
-import { EditContext } from "@/app/edit/context";
+import { CastEditContext } from "@/contexts/CastEditContext";
 import { PlusIcon, TrashIcon } from "@radix-ui/react-icons";
 import Image from "next/image";
 import { useContext, useRef, useState } from "react";
 
-// Assumming root cast
-// TODO: Create state for each cast and handler mutations with useEffect?
 export default function UploadImagesBar() {
-    // Props
     // Context
-    const context = useContext(EditContext)
-    const cast = context.state.rootCast
-    // States
+    const context = useContext(CastEditContext)
+    const cast = context.cast
+
     // Refs
     const fileInputRef = useRef<HTMLInputElement>(null);
+
     // Handlers
     const handleImageClick = () => {
         if (fileInputRef.current) {
             fileInputRef.current.click();
         }
     };
-
     const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         const file = event.target.files?.[0];
         if (file) {
             const reader = new FileReader();
             reader.onload = (e) => {
                 const imageUrl = e.target?.result as string;
-                // setImageUrls((prev) => [...prev, imageUrl]);
-                context.dispatch({type:"SET_ROOT_CAST", payload: {...cast, imageEmbeds: [...cast.imageEmbeds, imageUrl]}})
+                // context.dispatch({type:"SET_ROOT_CAST", payload: {...cast, imageEmbeds: [...cast.imageEmbeds, imageUrl]}})
+                context.updateCast({
+                    ...cast,
+                    imageEmbeds: [...cast.imageEmbeds, imageUrl]
+                })
                 // Update the context or perform any additional actions as needed
                 // context.dispatch({ type: 'SET_USER_PFP', payload: newPfpUrl });
                 // Clear the input value to allow re-uploading the same file
@@ -41,8 +41,11 @@ export default function UploadImagesBar() {
         }
     };
     const handleRemoveImage = (index: number) => {
-        // setImageUrls((prev) => prev.filter((_, i) => i !== index));
-        context.dispatch({type:"SET_ROOT_CAST", payload: {...cast, imageEmbeds: cast.imageEmbeds.filter((_,i)=>i !== index)}})
+        // context.dispatch({type:"SET_ROOT_CAST", payload: {...cast, imageEmbeds: cast.imageEmbeds.filter((_,i)=>i !== index)}})
+        context.updateCast({
+            ...cast,
+            imageEmbeds: cast.imageEmbeds.filter((_,i)=>i !== index)
+        })
     };
 
     return (

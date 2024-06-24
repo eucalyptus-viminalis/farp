@@ -1,6 +1,7 @@
 # farp
 
-- we do a little ~~misinforming~~ virality manifesting
-- UFC; user fabricated content
+- we do a lil ~~misinforming~~ virality manifesting
+- UFC; user-fabricated content
+- "chat, is this real?"
 
 TODO: image here

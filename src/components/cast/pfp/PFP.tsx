@@ -1,7 +1,7 @@
 "use client";
 
 import { useContext, useEffect, useState } from "react";
-import { EditContext } from "./edit/context";
+import { EditContext } from "@/contexts/EditContext";
 
 type PFPProps = {
     href: string;

@@ -1,7 +1,7 @@
 "use client";
 
-import { CastPreviewContext } from "@/app/preview/CastPreview";
 import { ChangeEvent, useContext, useEffect, useRef, useState } from "react";
+import { CastPreviewContext } from "@/contexts/CastPreviewContext";
 
 export default function LikeCount() {
     // Context

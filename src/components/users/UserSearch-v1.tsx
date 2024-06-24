@@ -13,8 +13,8 @@ import {
 } from "react";
 
 import Image from "next/image";
-import { EditContext } from "../../app/edit/context";
-import { useUsers } from "./hooks";
+import { EditContext } from "@/contexts/EditContext";
+import { useUsers } from "../cast/username/hooks";
 
 // Assuming rootCast
 export default function UserSearch() {

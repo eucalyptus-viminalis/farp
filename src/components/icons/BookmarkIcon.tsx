@@ -1,15 +1,15 @@
 "use client";
 
 import { useContext } from "react";
-import { EditContext } from "../edit/context";
+import { CastEditContext } from "@/contexts/CastEditContext";
 
 export default function BookmarkIcon() {
     // Context
-    const context = useContext(EditContext)
-    const cast = context.state.rootCast
+    const context = useContext(CastEditContext)
+    const cast = context.cast
     // Handler
     const updateBookmarked = () => {
-        context.dispatch({type:'SET_ROOT_CAST', payload: {...cast, bookmarked: !cast.bookmarked}})
+        context.updateCast({...cast, bookmarked: !cast.bookmarked})
     }
     return (
         <div className="group flex w-9 flex-row items-center text-sm text-faint cursor-pointer"
