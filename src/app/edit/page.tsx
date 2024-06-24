@@ -97,7 +97,7 @@ export default function EditPage() {
                                 </div>
                             )}
                             {mode === "preview" && (
-                                <PreviewNode rootCast={rootCast} />
+                                <PreviewNode />
                             )}
                         </div>
                     </div>
