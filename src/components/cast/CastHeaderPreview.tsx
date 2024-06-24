@@ -1,4 +1,4 @@
-import Kebab from "@/app/Kebab";
+import Kebab from "./icons/Kebab";
 import AgoPreview from "./ago/AgoPreview";
 import DisplayNamePreview from "./display-name/DisplayNamePreview";
 import Username from "./username/Username";

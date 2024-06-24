@@ -2,7 +2,7 @@
 
 import { ChangeEvent, useContext, useEffect, useRef, useState } from "react";
 import {EnterIcon, Cross1Icon,} from '@radix-ui/react-icons'
-import { EditContext } from "../../app/edit/context";
+import { EditContext } from "@/contexts/EditContext";
 import FullScreenTextArea from "../full-screen/FullScreenTextArea-v0-refurbished";
 import UploadImagesBar from "../cast/UploadImagesBar";
 

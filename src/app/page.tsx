@@ -1,5 +1,3 @@
-import Image from "next/image";
-import Cast from "./Cast";
 import Link from "next/link";
 
 export default function Home() {

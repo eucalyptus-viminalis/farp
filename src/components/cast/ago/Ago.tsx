@@ -1,16 +1,19 @@
 "use client";
 
-import { EditContext } from "@/app/edit/context";
+import { CastEditContext } from "@/contexts/CastEditContext";
 import { ChangeEvent, useContext, useEffect, useRef, useState } from "react";
 
 export default function Ago() {
     // Props
     // Context
-    const context = useContext(EditContext)
-    const cast = context.state.rootCast
+    const context = useContext(CastEditContext)
+    const cast = context.cast
     // Context mutations
     const updateAgo =(ago: string)=> {
-        context.dispatch({type:'SET_ROOT_CAST', payload:{...cast, ago}})
+        context.updateCast({
+            ...cast,
+            ago
+        })
     }
     // Component states
     const [inputFocused, setInputFocused] = useState<boolean>(false);

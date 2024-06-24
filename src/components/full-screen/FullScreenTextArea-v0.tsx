@@ -1,6 +1,6 @@
 "use client";
 
-import { EditContext } from "@/app/edit/context";
+import { EditContext } from "@/contexts/EditContext";
 import { ChangeEvent, useContext } from "react";
 
 type FullScreenTextAreaProps = {

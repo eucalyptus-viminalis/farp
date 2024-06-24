@@ -1,0 +1,136 @@
+import React from 'react';
+
+function ComposeReply() {
+  return (
+    <div className="flex w-full flex-row">
+      <a
+        className="relative inline-block h-min shrink-0"
+        title="3070 🕘↑↗ ✈︎ 🎩-'"
+        href="/3070.eth"
+      >
+        <div className="relative mr-2 h-min">
+          <img
+            loading="lazy"
+            src="https://wrpcd.net/cdn-cgi/image/anim=false,fit=contain,f=auto,w=144/https%3A%2F%2Fi.imgur.com%2FD16J8Zv.gif"
+            className="aspect-square shrink-0 rounded-full border object-cover bg-app border-default"
+            alt="3070 🕘↑↗ ✈︎ 🎩-' avatar"
+            style={{ width: '48px', height: '48px', minWidth: '48px', minHeight: '48px' }}
+          />
+        </div>
+      </a>
+      <div className="flex w-10 flex-1 flex-col">
+        <div className="flex w-full grow-0 flex-col">
+          <div className="h-auto w-full max-w-[540px] cursor-auto resize-none overflow-y-auto outline-none min-h-[96px]">
+            <div className="DraftEditor-root">
+              <div className="public-DraftEditorPlaceholder-root">
+                <div
+                  className="public-DraftEditorPlaceholder-inner"
+                  id="placeholder-ak8gs"
+                  style={{ whiteSpace: 'pre-wrap' }}
+                >
+                  Start typing a new cast here...
+                </div>
+              </div>
+              <div className="DraftEditor-editorContainer">
+                <div
+                  aria-autocomplete="list"
+                  aria-describedby="placeholder-ak8gs"
+                  aria-expanded="false"
+                  className="notranslate public-DraftEditor-content"
+                  contentEditable="true"
+                  role="combobox"
+                  spellCheck="true"
+                  style={{ outline: 'currentcolor', WebkitUserSelect: 'text', whiteSpace: 'pre-wrap', overflowWrap: 'break-word' }}
+                >
+                  <div data-contents="true">
+                    <div className="" data-block="true" data-editor="ak8gs" data-offset-key="fk782-0-0">
+                      <div data-offset-key="fk782-0-0" className="public-DraftStyleDefault-block public-DraftStyleDefault-ltr">
+                        <span data-offset-key="fk782-0-0">
+                          <br data-text="true" />
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="my-2">
+            <div className="my-1 flex w-full flex-row items-start justify-start space-x-2"></div>
+          </div>
+        </div>
+        <div className="flex flex-row justify-between border-t pt-2 border-default">
+          <div className="flex flex-row space-x-2">
+            <div
+              className="flex cursor-pointer flex-row items-center rounded-md p-1 px-4 py-2 bg-action-muted"
+              type="button"
+              aria-haspopup="dialog"
+              aria-expanded="false"
+              aria-controls="radix-:r1c:"
+              data-state="closed"
+            >
+              <svg
+                aria-hidden="true"
+                focusable="false"
+                role="img"
+                className="text-muted"
+                viewBox="0 0 16 16"
+                width="16"
+                height="16"
+                fill="currentColor"
+                style={{ display: 'inline-block', verticalAlign: 'text-bottom', overflow: 'visible' }}
+              >
+                <path d="M8 0a8 8 0 1 1 0 16A8 8 0 0 1 8 0ZM1.5 8a6.5 6.5 0 1 0 13 0 6.5 6.5 0 0 0-13 0Zm3.82 1.636a.75.75 0 0 1 1.038.175l.007.009c.103.118.22.222.35.31.264.178.683.37 1.285.37.602 0 1.02-.192 1.285-.371.13-.088.247-.192.35-.31l.007-.008a.75.75 0 0 1 1.222.87l-.022-.015c.02.013.021.015.021.015v.001l-.001.002-.002.003-.005.007-.014.019a2.066 2.066 0 0 1-.184.213c-.16.166-.338.316-.53.445-.63.418-1.37.638-2.127.629-.946 0-1.652-.308-2.126-.63a3.331 3.331 0 0 1-.715-.657l-.014-.02-.005-.006-.002-.003v-.002h-.001l.613-.432-.614.43a.75.75 0 0 1 .183-1.044ZM12 7a1 1 0 1 1-2 0 1 1 0 0 1 2 0ZM5 8a1 1 0 1 1 0-2 1 1 0 0 1 0 2Zm5.25 2.25.592.416a97.71 97.71 0 0 0-.592-.416Z"></path>
+              </svg>
+            </div>
+            <button
+              className="rounded-lg font-semibold disabled:opacity-50 border bg-action-muted border-default px-4 py-2 text-sm border-0 text-muted"
+              title="Media"
+            >
+              <svg
+                aria-hidden="true"
+                focusable="false"
+                role="img"
+                className="octicon octicon-image"
+                viewBox="0 0 16 16"
+                width="16"
+                height="16"
+                fill="currentColor"
+                style={{ display: 'inline-block', verticalAlign: 'text-bottom', overflow: 'visible' }}
+              >
+                <path d="M16 13.25A1.75 1.75 0 0 1 14.25 15H1.75A1.75 1.75 0 0 1 0 13.25V2.75C0 1.784.784 1 1.75 1h12.5c.966 0 1.75.784 1.75 1.75ZM1.75 2.5a.25.25 0 0 0-.25.25v10.5c0 .138.112.25.25.25h.94l.03-.03 6.077-6.078a1.75 1.75 0 0 1 2.412-.06L14.5 10.31V2.75a.25.25 0 0 0-.25-.25Zm12.5 11a.25.25 0 0 0 .25-.25v-.917l-4.298-3.889a.25.25 0 0 0-.344.009L4.81 13.5ZM7 6a2 2 0 1 1-3.999.001A2 2 0 0 1 7 6ZM5.5 6a.5.5 0 1 0-1 0 .5.5 0 0 0 1 0Z"></path>
+              </svg>
+              <form>
+                <input type="file" accept=".png,.jpg,.jpeg,.gif,.mp4,.m4v,.mkv,.mov,.avi,.flv,.webm" hidden />
+              </form>
+            </button>
+          </div>
+          <div className="flex flex-row items-center space-x-2">
+            <svg width="24" height="24" viewBox="0 0 32 32" className="fill-none" strokeWidth="4">
+              <circle cx="16" cy="16" r="12" stroke="#f8f8f8" strokeWidth="4"></circle>
+              <circle
+                cx="16"
+                cy="16"
+                r="12"
+                stroke="#8565cb"
+                strokeDasharray="75.39822368615503 75.39822368615503"
+                strokeDashoffset="75.39822368615503"
+                strokeLinecap="round"
+                transform="rotate(-90 16 16)"
+              ></circle>
+            </svg>
+            <button
+              className="rounded-lg font-semibold disabled:opacity-50 bg-action text-light px-4 py-2 text-sm"
+              title="Reply"
+              disabled
+            >
+              Reply
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default ComposeReply;

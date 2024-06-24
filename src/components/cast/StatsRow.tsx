@@ -1,12 +1,8 @@
 'use client'
 
-import ChannelName from "@/components/cast/ChannelName";
 import LikeCount from "@/components/cast/stats/LikeCount";
 import ReplyCount from "@/components/cast/stats/ReplyCount";
-
-// import ChannelName from "../components/ChannelName";
-// import LikeCount from "../components/LikeCount";
-// import ReplyCount from "../components/ReplyCount";
+import ChannelName from "./channel/ChannelName";
 
 type StatsRowProps = {
     channelName?: string;

@@ -1,15 +1,15 @@
 "use client";
 
 import { useContext } from "react";
-import { EditContext } from "../edit/context";
+import { CastEditContext } from "@/contexts/CastEditContext";
 
 export default function RecastIcon() {
     // Context
-    const context = useContext(EditContext)
-    const cast = context.state.rootCast
+    const context = useContext(CastEditContext)
+    const cast = context.cast
     // Handler
     const updateRecasted = () => {
-        context.dispatch({type:'SET_ROOT_CAST', payload: {...cast, recasted: !cast.recasted}})
+        context.updateCast({...cast, recasted: !cast.recasted})
     }
     return (
         <div className="relative">

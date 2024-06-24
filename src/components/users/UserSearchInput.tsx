@@ -3,7 +3,7 @@
 import { SearchedUser } from "@neynar/nodejs-sdk/build/neynar-api/v2";
 import { ChangeEvent, FocusEvent, MouseEvent, useState, KeyboardEvent, useContext, useEffect, useRef } from "react";
 import Image from "next/image";
-import { EditContext } from "../../app/edit/context";
+import { EditContext } from "@/contexts/EditContext";
 import getData from "../../app/edit/serverAction";
 
 type UserSearchInputProps = {

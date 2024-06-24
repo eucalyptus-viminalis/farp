@@ -1,9 +1,10 @@
-import EmbedSingle from "../EmbedSingle";
-import { CastPreview } from "../preview/CastPreview";
-import { CastState } from "../edit/context";
+import { CastPreview } from "../../components/cast/CastPreview";
+import { CastState } from "@/types/types";
 
 export default function ImageEmbedSinglePage() {
     const imageEmbedSingleExampleCast: CastState = {
+        likeCount: 0,
+        replyCount: 0,
         activeBadgeOverride: true,
         ago: "1m",
         bookmarked: false,

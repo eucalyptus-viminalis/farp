@@ -13,7 +13,7 @@ import {
 } from "react";
 import getData from "../../app/edit/serverAction";
 import Image from "next/image";
-import { EditContext } from "../../app/edit/context";
+import { EditContext } from "@/contexts/EditContext";
 
 // Assuming rootCast
 export default function UserSearch() {

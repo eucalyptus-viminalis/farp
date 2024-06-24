@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Navbar = () => {
+const TimelineWebNavBarHome = () => {
     return (
         <nav className="sticky top-0 z-10 flex-col border-b-0 bg-app border-default h-14 sm:h-28">
             <div className="hidden sm:flex sm:px-4 h-14 flex-row items-center justify-between">
@@ -50,4 +50,4 @@ const Navbar = () => {
     );
 };
 
-export default Navbar;
+export default TimelineWebNavBarHome;

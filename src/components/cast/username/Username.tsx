@@ -10,7 +10,7 @@ import {
     useRef,
     useDeferredValue,
 } from "react";
-import { EditContext } from "../../../app/edit/context";
+import { EditContext } from "@/contexts/EditContext";
 import Image from "next/image";
 import UserSearchInput from "../../users/UserSearchInput";
 import { SearchedUser } from "@neynar/nodejs-sdk/build/neynar-api/v2";

@@ -1,9 +1,9 @@
 import React from "react";
-import PFP from "./PFP";
+import PFP from "./pfp/PFP";
 
-import ChannelLinkInCastText from "./ChannelLinkInCastText";
-import CastHeader from "../components/CastHeader";
-import BottomBar from "../components/cast/BottomBar";
+import ChannelLinkInCastText from "./cast-text/ChannelLinkInCastText";
+import BottomBar from "./BottomBar";
+import CastHeader from "@/components/cast/CastHeader";
 
 function QuoteCast() {
     return (

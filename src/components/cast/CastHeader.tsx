@@ -1,23 +1,22 @@
-// import Ago from "./ago/Ago";
-// import Kebab from "../app/Kebab";
-// import Username from "./username/Username";
-// import DisplayName from "./display-name/DisplayName";
-// import UsernameWorkingBefore from "./username/UsernameWorkingBefore";
-
-import Kebab from "@/app/Kebab";
+'use client'
 import Ago from "./ago/Ago";
 import DisplayName from "./display-name/DisplayName";
-// import Username from "./username/Username";
 import UsernameWorkingBefore from "./username/UsernameWorkingBefore";
 import Username from "./username/Username-v1";
+import Kebab from "./icons/Kebab";
+import { useContext } from "react";
+import { CastEditContext } from "@/contexts/CastEditContext";
+import DeleteReplyButton from "./DeleteReplyButton";
 
 type CastHeaderProps = {
     asEmbed?: boolean;
-    ago: string;
 };
 
 export default function CastHeader(props: CastHeaderProps) {
-    const { asEmbed, ago } = props;
+    const cx = useContext(CastEditContext)
+    const cast = cx.cast
+    const { asEmbed } = props;
+    const ago = '1d'
 
     // TODO
     if (asEmbed) {
@@ -47,13 +46,17 @@ export default function CastHeader(props: CastHeaderProps) {
             <div className="flex flex-row justify-between gap-2">
                 <div className="flex min-w-0 flex-1 shrink flex-row items-baseline gap-1">
                     <DisplayName/>
-                    {/* <Username /> */}
                     <Username />
                     {/* <UsernameWorkingBefore /> */}
                     <div className="text-muted">·</div>
                     <Ago />
                 </div>
+                {cx.castType === 'reply' ? (
+                    <DeleteReplyButton/>
+                ) : (
+
                 <Kebab />
+                )}
             </div>
         );
     }

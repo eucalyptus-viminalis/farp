@@ -1,15 +1,16 @@
 "use client";
 
-import { EditContext } from "@/app/edit/context";
+import { CastEditContext } from "@/contexts/CastEditContext";
 import { ChangeEvent, useContext, useEffect, useRef, useState } from "react";
 
 export default function LikeCount() {
     // Context
-    const context = useContext(EditContext)
-    const cast = context.state.rootCast
+    const context = useContext(CastEditContext)
+    const cast = context.cast
     // Context mutations
     const updateLikeCount = (count: number) => {
-        context.dispatch({type:'SET_ROOT_CAST',payload:{...cast, likeCount: count}})
+        // context.dispatch({type:'SET_ROOT_CAST',payload:{...cast, likeCount: count}})
+        context.updateCast({...cast, likeCount: count})
     }
     // Component States
     const [inputFocused, setInputFocused] = useState<boolean>(false);

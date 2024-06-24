@@ -1,6 +1,6 @@
-import LikeIcon from "./icons/LikeIcon";
-import RecastIcon from "./icons/RecastIcon";
-import ReplyIcon from "./icons/ReplyIcon";
+import LikeIcon from "../../icons/LikeIcon";
+import RecastIcon from "../../icons/RecastIcon";
+import ReplyIcon from "../../icons/ReplyIcon.context";
 
 export default function LeftIcons() {
     return (

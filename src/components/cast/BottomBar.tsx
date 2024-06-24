@@ -1,6 +1,6 @@
-import LeftIcons from "@/app/LeftIcons";
-import StatsRow from "../../app/StatsRow";
-import RightIcons from "@/app/RightIcons";
+import StatsRow from "./StatsRow";
+import RightIcons from "@/components/cast/icons/RightIcons";
+import LeftIcons from "./icons/LeftIcons";
 
 export default function BottomBar() {
     return (
