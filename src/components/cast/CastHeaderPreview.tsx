@@ -1,7 +1,6 @@
 import Kebab from "./icons/Kebab";
 import AgoPreview from "./ago/AgoPreview";
 import DisplayNamePreview from "./display-name/DisplayNamePreview";
-import Username from "./username/Username";
 import UsernamePreview from "./username/UsernamePreview";
 
 type CastHeaderProps = {
@@ -28,7 +27,8 @@ export default function CastHeaderPreview(props: CastHeaderProps) {
                         Pauline Unik 🌶️
                     </a>
                 </span>
-                <Username asEmbed />
+                {/* <Username asEmbed /> */}
+                <UsernamePreview asEmbed username={username} />
                 <div className="text-muted">
                     <span className="text-sm">·</span>
                 </div>

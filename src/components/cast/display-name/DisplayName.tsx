@@ -69,6 +69,7 @@ export default function DisplayName() {
                             type="text"
                             className={`
                                 bg-inherit
+                                text-lg sm:text-base
                                 font-mono
                                 ${!inputFocused && "hidden"}
                             `}

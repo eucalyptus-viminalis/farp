@@ -2,7 +2,6 @@ import React from "react";
 
 import ChannelLinkInCastText from "./cast-text/ChannelLinkInCastText";
 import BottomBar from "./BottomBar";
-import CastHeader from "@/components/cast/CastHeader";
 
 function QuoteCast() {
     return (
@@ -29,8 +28,8 @@ function QuoteCast() {
                             /> */}
                             {/* Main Content */}
                             <div className="relative w-full min-w-0">
-                                <CastHeader 
-                                />
+                                {/* <CastHeader 
+                                /> */}
                                 {/* Cast Content */}
                                 <div className="flex flex-col whitespace-pre-wrap break-words pb-2 text-base leading-5 tracking-normal">
                                     <div className="line-clamp-feed">
@@ -51,9 +50,9 @@ function QuoteCast() {
                                                         href="/pauline-unik"
                                                         size={20}
                                                     /> */}
-                                                    <CastHeader 
+                                                    {/* <CastHeader 
                                                         asEmbed
-                                                    />
+                                                    /> */}
                                                 </div>
                                                 <div className="line-clamp-feed mt-2 px-3 text-base leading-5 tracking-normal break-gracefully text-default">
                                                     <div className="line-clamp-feed">

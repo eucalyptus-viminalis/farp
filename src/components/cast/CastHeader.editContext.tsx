@@ -1,8 +1,7 @@
 'use client'
 import Ago from "./ago/Ago";
 import DisplayName from "./display-name/DisplayName";
-import UsernameWorkingBefore from "./username/UsernameWorkingBefore";
-import Username from "./username/Username-v1";
+import Username from "./username/Username.editContext";
 import Kebab from "./icons/Kebab";
 import { useContext } from "react";
 import { CastEditContext } from "@/contexts/CastEditContext";
@@ -32,7 +31,7 @@ export default function CastHeader(props: CastHeaderProps) {
                     </a>
                 </span>
                 {/* <Username asEmbed /> */}
-                <UsernameWorkingBefore asEmbed />
+                <Username asEmbed />
                 <div className="text-muted">
                     <span className="text-sm">·</span>
                 </div>
@@ -47,7 +46,6 @@ export default function CastHeader(props: CastHeaderProps) {
                 <div className="flex min-w-0 flex-1 shrink flex-row items-baseline gap-1">
                     <DisplayName/>
                     <Username />
-                    {/* <UsernameWorkingBefore /> */}
                     <div className="text-muted">·</div>
                     <Ago />
                 </div>

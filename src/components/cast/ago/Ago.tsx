@@ -68,6 +68,7 @@ export default function Ago() {
                 type="text"
                 className={`
                     bg-inherit
+                    text-lg sm:text-base
                     ${!inputFocused && "hidden"}
                     font-mono
                 `}

@@ -2,7 +2,7 @@
 import React, { useContext, useRef, useState } from "react";
 import BottomBar from "./BottomBar";
 import CastContentEdit from "../cast-content-edit/CastContentEdit-no-fullscreen";
-import CastHeader from "./CastHeader";
+import CastHeader from "./CastHeader.editContext";
 import PFPUploadable from "./pfp/PFPUploadable";
 import { CastEditContext } from "@/contexts/CastEditContext";
 

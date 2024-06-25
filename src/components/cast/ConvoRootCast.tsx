@@ -6,6 +6,7 @@ import { CastPreviewContext } from "@/contexts/CastPreviewContext";
 import React, { useContext } from "react";
 import ReplyCard from "../ReplyCard";
 import EmbedsContainerPreview from "@/components/cast/embeds/EmbedsContainerPreview";
+import CastText from "./cast-text/CastText";
 
 const ConvoRootCast = () => {
     const con = useContext(CastPreviewContext);
@@ -116,7 +117,7 @@ const ConvoRootCast = () => {
                         </div>
                     </div>
                     <div className="flex flex-col whitespace-pre-wrap break-words text-lg leading-6 tracking-normal">
-                        {cast.castText}
+                        <CastText castText={cast.castText}/>
                         {cast.imageEmbeds.length > 0 && (
                             <EmbedsContainerPreview imgUrls={cast.imageEmbeds}/>
                         )}

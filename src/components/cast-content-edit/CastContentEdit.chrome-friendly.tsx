@@ -151,6 +151,7 @@ export default function CastContentEdit() {
                         min-h-32
                         relative
                         group
+                        text-lg sm:text-base
                         z-0
                     `}
                     // onClick={handleDivClick}
@@ -195,13 +196,19 @@ export default function CastContentEdit() {
                             return (
                                 <div key={i}>
                                     {line.split(' ').map((word, i) => {
-                                        if (word.startsWith('@') && word.trim().length > 1 && !word.startsWith('@@')) {
+                                        if (/^@\w+/.test(word)) {
                                             return (
                                                 <span key={i} className={'m'}>
                                                     {i!== 0 ? ' ' + word : word}
                                                     {caretOnMention && userListQ && (
                                                         <UserList deferredQ={userListQ}/>
                                                     )}
+                                                </span>
+                                            )
+                                        } else if (/^\/\w+/.test(word)){
+                                            return (
+                                                <span key={i} className={'m'}>
+                                                    {i!== 0 ? ' ' + word : word}
                                                 </span>
                                             )
                                         } else {
@@ -211,11 +218,6 @@ export default function CastContentEdit() {
                                             </span>
                                             )
                                         }
-                                        // return (
-                                        //     <span key={i} className={`${word.startsWith('@') && word.trim().length > 1 && !word.startsWith('@@') && 'm'}`}>
-                                        //         {i!== 0 ? ' ' + word : word}
-                                        //     </span>
-                                        // )
                                     })}
 
                                 {i !== lines.length -1 && (

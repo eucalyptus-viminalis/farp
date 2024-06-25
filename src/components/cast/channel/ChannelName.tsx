@@ -69,6 +69,7 @@ export default function ChannelName() {
                         bg-inherit
                         ${!inputFocused && "hidden"}
                         font-mono
+                        text-lg sm:text-base
                     `}
                 style={{
                     minWidth: "8ch",
