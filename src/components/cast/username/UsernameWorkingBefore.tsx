@@ -4,7 +4,7 @@ import { EditContext } from "@/contexts/EditContext";
 import Image from "next/image";
 import UserSearchInput from "../../users/UserSearchInput";
 import { SearchedUser } from "@neynar/nodejs-sdk/build/neynar-api/v2";
-import searchUser from "@/app/serverAction";
+import {searchUser} from "@/app/serverAction";
 
 type UsernameProps = {
     asEmbed?: boolean;
