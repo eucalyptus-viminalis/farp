@@ -142,7 +142,6 @@ export default function CastContentEdit() {
         }
     };
     const handlePaste = (event: ClipboardEvent) => {
-        event.preventDefault()
         console.log('handlePaste')
         const clipboardItems = event.clipboardData?.items;
         if (!clipboardItems) return;
@@ -150,6 +149,7 @@ export default function CastContentEdit() {
         for (let i = 0; i < clipboardItems.length; i++) {
           const item = clipboardItems[i];
           if (item.type.indexOf('image') !== -1) {
+            event.preventDefault()
             console.log('image found')
             const blob = item.getAsFile();
             if (blob) {
