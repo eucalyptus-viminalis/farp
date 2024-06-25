@@ -19,7 +19,7 @@ export default function StatsRow(props: StatsRowProps) {
             <div className="flex flex-row items-center space-x-1">
                 <ReplyCount/>
                 <LikeCount/>
-                {channelName && con.castType === 'root-cast' && (
+                {channelName && channelName.length > 0 && con.castType === 'root-cast' && (
                     // <div>
                     //     <span className="mx-1 text-sm text-[#576472] dark:text-[#9FA3AF]">
                     //         ·
