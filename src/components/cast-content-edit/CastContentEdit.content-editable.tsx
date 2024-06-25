@@ -29,6 +29,7 @@ export default function CastContentEdit() {
     const [caretOnMention, setCaretOnMention] = useState(false)
     const [userListQ, setUserListQ] = useState('')
     const [mentionWordIndex, setMentionWordIndex] = useState(-1)
+
     useEffect(()=>{
         if (contentEditableRef.current) {
             contentEditableRef.current.innerText = cast.castText
