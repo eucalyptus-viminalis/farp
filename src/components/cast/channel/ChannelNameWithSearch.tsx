@@ -204,6 +204,7 @@ export default function ChannelNameWithSearch(props: UsernameProps) {
         };
     }, [handleBlur]);
 
+
     return (
         <div>
             <span className="mx-1 text-sm text-[#576472] dark:text-[#9FA3AF]">
