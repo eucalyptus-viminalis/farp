@@ -3,6 +3,8 @@
 import "./custom.css";
 import {
     ChangeEvent,
+    ClipboardEventHandler,
+    ClipboardEvent,
     FormEvent,
     KeyboardEvent,
     useContext,
@@ -71,7 +73,6 @@ export default function CastContentEdit() {
     const checkAtSymbol = (text: string, position: number) => {
         // Extract text up to the cursor position
         const textBeforeCursor = text.slice(0, position);
-        console.log(JSON.stringify(textBeforeCursor))
         // Check for the last word before the cursor
         const lastWordMatch = textBeforeCursor.match(/(\S+)$/);
 
@@ -79,7 +80,6 @@ export default function CastContentEdit() {
             const lastWord = lastWordMatch[0];
             // Split the textBeforeCursor by space
             const wordsArray = textBeforeCursor.split(/\s+/);
-            console.log(wordsArray)
             // Find the index of the last word in the wordsArray
             const lastWordIndex = wordsArray.length - 1;
             // Alert if the last word starts with an '@' and is not part of invalid cases
@@ -127,9 +127,9 @@ export default function CastContentEdit() {
         }
     };
     const handleOnInput =(e: FormEvent<HTMLDivElement>) => {
+        console.log('onInput')
         e.preventDefault()
         const txt = e.currentTarget.innerText
-        console.log(JSON.stringify(txt))
         updateCastText(txt);
     }
     const getCaretPosition = () => {
@@ -141,6 +141,33 @@ export default function CastContentEdit() {
             // checkAtSymbol(txt, caretIndex)
         }
     };
+    const handlePaste = (event: ClipboardEvent) => {
+        event.preventDefault()
+        console.log('handlePaste')
+        const clipboardItems = event.clipboardData?.items;
+        if (!clipboardItems) return;
+  
+        for (let i = 0; i < clipboardItems.length; i++) {
+          const item = clipboardItems[i];
+          if (item.type.indexOf('image') !== -1) {
+            console.log('image found')
+            const blob = item.getAsFile();
+            if (blob) {
+              const reader = new FileReader();
+              reader.onload = (event) => {
+                // console.log(event.target?.result); // This is the base64 encoded image data
+                if (event.target && event.target.result) {
+                    context.updateCast({
+                        ...cast,
+                        imageEmbeds: [...cast.imageEmbeds, event.target.result.toString()].slice(-2)
+                    })
+                }
+              };
+              reader.readAsDataURL(blob);
+            }
+          }
+        }
+    }
     return (
         <div className="flex flex-col whitespace-pre-wrap break-words pb-2 text-base leading-5 tracking-normal">
             {/* <div className="line-clamp-feed"> */}
@@ -166,6 +193,7 @@ export default function CastContentEdit() {
                         // onChange={onChangeHandler}
                         // value={cast.castText}
                         onInput={handleOnInput}
+                        onPaste={handlePaste}
                         className={`
                             bg-transparent
                             text-transparent
