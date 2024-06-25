@@ -31,7 +31,6 @@ function QuoteCast() {
                             {/* Main Content */}
                             <div className="relative w-full min-w-0">
                                 <CastHeader 
-                                    ago="42m" 
                                 />
                                 {/* Cast Content */}
                                 <div className="flex flex-col whitespace-pre-wrap break-words pb-2 text-base leading-5 tracking-normal">
@@ -54,7 +53,6 @@ function QuoteCast() {
                                                         size={20}
                                                     />
                                                     <CastHeader 
-                                                        ago="3h" 
                                                         asEmbed
                                                     />
                                                 </div>
