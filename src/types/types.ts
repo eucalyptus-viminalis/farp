@@ -28,8 +28,8 @@ export type CastState = {
 
 export type CastType = "root-cast" | "reply" | "quoted-cast" | "nested-reply";
 
-export const CAST_STATE_DEFAULT: CastState = {
-    ago: "1h",
+export const ROOT_CAST_DEFAULT: CastState = {
+    ago: "3d",
     bookmarked: false,
     activeBadgeOverride: true,
     castText: "",
@@ -43,5 +43,41 @@ export const CAST_STATE_DEFAULT: CastState = {
     replyCount: 69,
     likeCount: 420,
     channelName: "degen",
+    replies: [],
+};
+
+export const REPLY_DEFAULT: CastState = {
+    ago: "2h",
+    bookmarked: false,
+    activeBadgeOverride: true,
+    castText: "",
+    displayNameOverride: "Vitalik Buterin",
+    imageEmbeds: [],
+    liked: false,
+    pfpOverride: "https://i.imgur.com/IzJxuId.jpg",
+    recasted: false,
+    usernameOverride: "vitalik.eth",
+    user: undefined,
+    replyCount: 42,
+    likeCount: 69,
+    channelName: undefined,
+    replies: [],
+};
+
+export const NESTED_REPLY_DEFAULT: CastState = {
+    ago: "1m",
+    bookmarked: false,
+    activeBadgeOverride: true,
+    castText: "",
+    displayNameOverride: "Vitalik Buterin",
+    imageEmbeds: [],
+    liked: false,
+    pfpOverride: "https://i.imgur.com/IzJxuId.jpg",
+    recasted: false,
+    usernameOverride: "vitalik.eth",
+    user: undefined,
+    replyCount: 42,
+    likeCount: 69,
+    channelName: undefined,
     replies: [],
 };

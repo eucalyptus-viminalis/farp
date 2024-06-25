@@ -1,6 +1,6 @@
 'use client'
 import { getUser } from "@/app/preview/serverAction";
-import { CAST_STATE_DEFAULT } from "@/types/types";
+import { ROOT_CAST_DEFAULT } from "@/types/types";
 import { CastState } from "@/types/types";
 import { PreviewMode } from "@/types/types";
 import { SearchedUser } from "@neynar/nodejs-sdk/build/neynar-api/v2";
@@ -118,7 +118,7 @@ const initialState: EditState = {
         username: 'dwr',
     },
     quoteCast: undefined,
-    rootCast: CAST_STATE_DEFAULT,
+    rootCast: ROOT_CAST_DEFAULT,
 };
 
 export const EditProvider = ({ children }: { children: ReactNode }) => {

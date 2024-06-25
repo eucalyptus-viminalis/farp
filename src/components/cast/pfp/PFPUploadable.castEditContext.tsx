@@ -62,7 +62,7 @@ export default function PFPUploadable(props: PFPProps) {
     return (
         <span
             title="Override pfp"
-            className="relative hover:cursor-pointer h-min w-auto"
+            className="relative sm:hover:cursor-pointer h-min w-auto"
             data-state="closed"
             onMouseOver={handleMouseOver}
             onMouseLeave={handleMouseLeave}

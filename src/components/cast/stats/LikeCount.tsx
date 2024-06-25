@@ -34,7 +34,7 @@ export default function LikeCount() {
     const handleBlur = () => {
         setInputFocused(false);
         if (!cast.likeCount) {
-            updateLikeCount(420)
+            updateLikeCount(0)
         }
     };
     const handleOnChange = (e: ChangeEvent<HTMLInputElement>) => {

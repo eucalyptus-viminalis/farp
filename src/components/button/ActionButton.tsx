@@ -13,7 +13,7 @@ export default function ActionButton(props: ActionButtonProps) {
                 w-[10ch]
                 p-2
                 font-semibold
-                ${withBg ? 'bg-action text-light' : 'text-action-purple'}
+                ${withBg ? 'bg-red-600 text-light' : 'text-red-600'}
             `}
             onClick={()=>handleOnClick('preview')}
         >{children}</button>

@@ -7,6 +7,7 @@ export default function LikeCount() {
     // Context
     const context = useContext(CastPreviewContext);
     const cast = context.cast;
+    if (cast.likeCount <= 0) return null
     return (
         <div className="flex flex-row items-center">
             <div>

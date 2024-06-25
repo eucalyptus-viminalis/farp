@@ -10,9 +10,9 @@ export default function ChannelName() {
 
     return (
         <div>
-            <span className="mx-1 text-sm text-[#576472] dark:text-[#9FA3AF]">
+            {/* <span className="mx-1 text-sm text-[#576472] dark:text-[#9FA3AF]">
                 ·
-            </span>
+            </span> */}
             <span
                 className="cursor-pointer overflow-hidden text-ellipsis text-sm text-[#576472] hover:underline dark:text-[#9FA3AF]"
                 title={"Override channel name"}

@@ -1,4 +1,4 @@
-import { CAST_STATE_DEFAULT } from "@/types/types";
+import { ROOT_CAST_DEFAULT,REPLY_DEFAULT } from "@/types/types";
 import { CastType } from "@/types/types";
 import { CastState } from "@/types/types";
 import { EditAction } from "./EditContext";
@@ -17,7 +17,7 @@ export type CastEditContext = {
 export const CAST_EDIT_CONTEXT_DEFAULT: CastEditContext = {
     addDummyReply: () => { },
     deleteReply: () => {},
-    cast: CAST_STATE_DEFAULT,
+    cast: ROOT_CAST_DEFAULT,
     updateCast: (newState: CastState) => { },
     castType: 'root-cast',
 };
@@ -57,11 +57,7 @@ export const CastEditProvider = (props: CastEditProviderProps) => {
         dispatch({
             type: "ADD_REPLY",
             payload: {
-                ...CAST_STATE_DEFAULT,
-                pfpOverride: "/ActiveBadge.png",
-                replyCount: 100,
-                likeCount: 20,
-                castText: "this is a dummy reply",
+                ...REPLY_DEFAULT,
             },
         });
     };

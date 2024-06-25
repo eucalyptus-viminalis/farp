@@ -15,11 +15,11 @@ export default function ExpandedWebPreview() {
     const rootCast = cx.state.rootCast;
     return (
         <>
-            <div className="flex flex-row gap-1 justify-start items-center">
+            <div className="flex ml-2 text-inherit flex-row gap-1 justify-start items-center">
                 {`Replying as: `}<UsernameSearch/>
             </div>
             <ConvoWebNavBar />
-            <div className="fade-in">
+            <div className="fade-in min-h-screen">
                 {/* Root cast */}
                 <CastPreviewProvider
                     cast={rootCast}

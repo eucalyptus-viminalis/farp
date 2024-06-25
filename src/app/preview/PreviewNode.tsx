@@ -20,20 +20,21 @@ function PreviewNode() {
                 className="
                     flex
                     justify-center
-                    p-2
+                    gap-1
+                    p-1
                 "
             >
                 <ActionButton
                     handleOnClick={() => handleOnClick("timeline-web")}
                     withBg={previewMode === "timeline-web"}
                 >
-                    {`Timeline (Web)`}
+                    {`Timeline`}
                 </ActionButton>
                 <ActionButton
                     handleOnClick={() => handleOnClick("expanded-web")}
                     withBg={previewMode === "expanded-web"}
                 >
-                    {`Expanded (Web)`}
+                    {`Expanded`}
                 </ActionButton>
             </div>
             {previewMode === 'timeline-web' && (
