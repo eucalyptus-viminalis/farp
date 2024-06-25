@@ -1,4 +1,5 @@
 "use client";
+
 import { ReactNode } from "react";
 import PFPPreview from "./pfp/PFPPreview";
 import { CastType } from "@/types/types";
@@ -11,6 +12,7 @@ import { CastPreviewContext } from "@/contexts/CastPreviewContext";
 import DisplayNameConvo from "./display-name/DisplayNameConvo.preview";
 import UsernamePreview from "./username/UsernamePreview";
 import AgoPreview from "./ago/AgoPreview";
+import CastText from "./cast-text/CastText";
 
 type CastProps = {
     children?: ReactNode;
@@ -111,7 +113,8 @@ export function CastPreview(props: CastProps) {
                                     <div className="flex flex-col whitespace-pre-wrap break-words pb-2 text-base leading-5 tracking-normal">
                                         <div className="line-clamp-feed">
                                             {/* Style channel/mentions within castText */}
-                                            {cast.castText}
+                                            {/* {cast.castText} */}
+                                            <CastText castText={cast.castText}/>
                                         </div>
                                         {cast.imageEmbeds && (
                                             <EmbedsContainerPreview

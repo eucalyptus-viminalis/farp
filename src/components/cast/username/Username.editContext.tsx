@@ -217,6 +217,7 @@ export default function Username(props: UsernameProps) {
                     name="user-search-input"
                     className="
                     bg-inherit text-inherit font-mono
+                    text-lg sm:text-base
                 "
                     style={{
                         minWidth: "8ch",

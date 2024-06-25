@@ -1,7 +1,7 @@
 "use client";
 import BottomBar from "./BottomBar";
 // import CastContentEdit from "../cast-content-edit/CastContentEdit-no-fullscreen";
-import CastHeader from "./CastHeader";
+import CastHeader from "./CastHeader.editContext";
 import PFPUploadable from "./pfp/PFPUploadable.castEditContext";
 import { useContext, useEffect } from "react";
 import { CastEditContext } from "@/contexts/CastEditContext";

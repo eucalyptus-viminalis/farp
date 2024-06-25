@@ -70,6 +70,7 @@ export default function LikeCount() {
                         className={`
                             bg-inherit
                             font-mono
+                            text-lg sm:text-base
                             ${!inputFocused && "hidden"}
                         `}
                         style={{
