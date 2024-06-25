@@ -5,7 +5,7 @@ import CastHeader from "./CastHeader";
 import PFPUploadable from "./pfp/PFPUploadable.castEditContext";
 import { useContext, useEffect } from "react";
 import { CastEditContext } from "@/contexts/CastEditContext";
-import CastContentEdit from "../cast-content-edit/CastContentEdit.content-editable";
+import CastContentEdit from "../cast-content-edit/CastContentEdit.chrome-friendly";
 
 type Reply = {
     index: number;

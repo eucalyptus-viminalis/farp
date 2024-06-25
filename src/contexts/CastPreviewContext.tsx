@@ -1,4 +1,4 @@
-import { CAST_STATE_DEFAULT, PreviewMode } from "@/types/types";
+import { ROOT_CAST_DEFAULT, PreviewMode } from "@/types/types";
 import { CastType } from "@/types/types";
 import { CastState } from "@/types/types";
 import React, { ReactNode } from "react";
@@ -12,7 +12,7 @@ export type CastPreviewContext = {
 };
 
 export const CAST_PREVIEW_CONTEXT_DEFAULT: CastPreviewContext = {
-    cast: CAST_STATE_DEFAULT,
+    cast: ROOT_CAST_DEFAULT,
     castType: "root-cast",
     previewMode: 'timeline-web'
 };

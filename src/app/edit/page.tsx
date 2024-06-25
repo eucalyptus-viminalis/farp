@@ -53,7 +53,8 @@ export default function EditPage() {
                                 className="
                                         flex
                                         justify-center
-                                        p-2
+                                        gap-1
+                                        p-1
                                     "
                             >
                                 <ActionButton
@@ -72,7 +73,7 @@ export default function EditPage() {
                                 </ActionButton>
                             </div>
                             {mode === "edit" && (
-                                <div>
+                                <div className="">
                                     <CastEditProvider
                                         cast={rootCast}
                                         castType="root-cast"

@@ -24,11 +24,21 @@ export default function Icon() {
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
+          position: 'relative',
           color: 'black',
           borderRadius: '100%',
         }}
       >
-        F
+        <span
+          style={{
+            position:'absolute'
+          }} 
+        >{'⚔️'}</span>
+        {/* <span 
+          style={{
+            fontSize: '3rem',
+          }} 
+        >F</span> */}
       </div>
     ),
     // ImageResponse options

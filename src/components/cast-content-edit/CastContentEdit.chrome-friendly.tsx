@@ -143,7 +143,8 @@ export default function CastContentEdit() {
     };
     return (
         <div className="flex flex-col whitespace-pre-wrap break-words pb-2 text-base leading-5 tracking-normal">
-            <div className="line-clamp-feed">
+            {/* <div className="line-clamp-feed"> */}
+            <div className="">
                 <div
                     className={`
                         ${!textareaFocused && "hover:cursor-pointer"}
@@ -167,27 +168,27 @@ export default function CastContentEdit() {
                         className={`
                             bg-transparent
                             text-transparent
+                            whitespace-pre-wrap
                             caret-blue-500
+                            inline-block
                             w-full
                             z-0
                             min-h-32
                             outline-none
-                            overflow-clip
                             ${!textareaFocused && "hover:cursor-pointer"}
                         `}
                         spellCheck={false}
                     ></div>
                     <div
                         className={`
-                            absolute 
-                            -translate-y-full 
                             ${!textareaFocused && "sm:group-hover:bg-zinc-200 sm:group-hover:opacity-70 sm:dark:group-hover:bg-zinc-800"}
+                            absolute
+                            top-0
                             text-inherit
                             w-full
                             min-h-32
                             -z-10 
                             outline-none
-                            overflow-clip
                         `}
                     >
                         {lines.map((line, i) => {

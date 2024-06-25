@@ -31,7 +31,7 @@ export default function ReplyCount() {
     const handleBlur = () => {
         setInputFocused(false);
         if (!cast.replyCount) {
-            updateReplyCount(69)
+            updateReplyCount(0)
         }
     };
     const handleOnChange = (e: ChangeEvent<HTMLInputElement>) => {

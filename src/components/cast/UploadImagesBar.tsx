@@ -61,10 +61,10 @@ export default function UploadImagesBar() {
                         bg-red-500 
                         absolute top-0 left-0 
                         opacity-0 
-                        group-hover:opacity-70
+                        sm:group-hover:opacity-70
                         transition-opacity duration-200
                         flex flex-col justify-center items-center
-                        hover:cursor-pointer
+                        sm:hover:cursor-pointer
                         z-10
                     ">
                         <TrashIcon width={64} height={64} color="white"/>
@@ -83,7 +83,7 @@ export default function UploadImagesBar() {
                     title="Add image"
                     className="
                         border border-faint 
-                        hover:cursor-pointer hover:bg-zinc-200 hover:opacity-70 dark:hover:bg-zinc-800 
+                        sm:hover:cursor-pointer sm:hover:bg-zinc-200 sm:hover:opacity-70 sm:dark:hover:bg-zinc-800 
                         w-40 
                         flex flex-col justify-center items-center 
                         p-2 

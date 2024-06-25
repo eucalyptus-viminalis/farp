@@ -25,10 +25,10 @@ export default function LikeIcon() {
                     rounded-full 
                     p-2 
                     transition-colors 
-                    hover:bg-gray-200 
-                    group-hover:bg-gray-200 
-                    dark:hover:bg-overlay-medium 
-                    dark:group-hover:bg-overlay-medium 
+                    sm:hover:bg-gray-200 
+                    sm:group-hover:bg-gray-200 
+                    sm:dark:hover:bg-overlay-medium 
+                    sm:dark:group-hover:bg-overlay-medium 
                     text-action-red 
                     text-faint
                 `}
