@@ -1,7 +1,30 @@
 'use client'
-import {searchUser} from "@/app/serverAction";
-import { SearchedUser } from "@neynar/nodejs-sdk/build/neynar-api/v2";
+import {searchChannel, searchUser} from "@/app/serverAction";
+import { Channel, SearchedUser } from "@neynar/nodejs-sdk/build/neynar-api/v2";
 import { useEffect, useState } from "react";
+
+export const useChannels = (q: string) => {
+
+    const [channels, setChannels] = useState<Channel[]>([]);
+
+    useEffect(() => {
+        if (q.length > 0) {
+            const fetchData = async () => {
+                try {
+                    const result = await searchChannel(q);
+                    setChannels(result);
+                } catch (error) {
+                    console.error("Error fetching data:", error);
+                }
+            };
+
+            fetchData();
+        } else {
+            setChannels([]);
+        }
+    }, [q]);
+    return channels
+}
 
 export const useUsers = (q: string) => {
 
