@@ -1,5 +1,4 @@
 import React from "react";
-import PFP from "./pfp/PFP";
 
 import ChannelLinkInCastText from "./cast-text/ChannelLinkInCastText";
 import BottomBar from "./BottomBar";
@@ -22,12 +21,12 @@ function QuoteCast() {
                     {/*  */}
                     <div className="relative flex flex-col">
                         <div className="relative flex">
-                            <PFP
+                            {/* <PFP
                             mr
                                 href="/undefined"
                                 src="https://imagedelivery.net/BXluQx4ige9GuW0Ia56BHw/5eaf1d18-4f84-453b-62bd-d94c937ad600/original"
                                 size={48}
-                            />
+                            /> */}
                             {/* Main Content */}
                             <div className="relative w-full min-w-0">
                                 <CastHeader 
@@ -47,11 +46,11 @@ function QuoteCast() {
                                                     className="absolute inset-0"
                                                 ></a>
                                                 <div className="flex flex-row items-center space-x-1 px-3">
-                                                    <PFP 
+                                                    {/* <PFP 
                                                         src="https://wrpcd.net/cdn-cgi/image/fit=contain,f=auto,w=60/https%3A%2F%2Fi.imgur.com%2FUrc2CHT.gif" 
                                                         href="/pauline-unik"
                                                         size={20}
-                                                    />
+                                                    /> */}
                                                     <CastHeader 
                                                         asEmbed
                                                     />
