@@ -11,7 +11,7 @@ import {
     useRef,
     useState,
 } from "react";
-import searchUser from "../../app/serverAction";
+import {searchUser} from "../../app/serverAction";
 import Image from "next/image";
 import { EditContext } from "@/contexts/EditContext";
 
