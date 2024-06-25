@@ -44,6 +44,7 @@ export default function EmbedsContainerPreview(props: EmbedsContainerProps) {
                     {imgUrls.map((imgUrl, i) => {
                         return (
                             <img
+                                key={i}
                                 alt={"Cast image embed " + i}
                                 loading="lazy"
                                 src={imgUrl}

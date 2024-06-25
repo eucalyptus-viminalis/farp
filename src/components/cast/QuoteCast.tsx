@@ -64,7 +64,6 @@ function QuoteCast() {
                                                         chatting with
                                                         @tako-unik, @beachcrypto
                                                         and @undefined for the
-                                                        LF x ocs series. WHERE'S
                                                         YOUR RESTING BEACH
                                                         FACE?? 🌶️ 🏝️ 🌶️ 🏝️ 🌶️ 🏝️
                                                         🌶️ 🏝️
