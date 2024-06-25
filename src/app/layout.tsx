@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import "./wc.css"
 import '../css/custom.css'
+import { EditProvider } from "@/contexts/EditContext";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -19,7 +20,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className + ' overflow-x-clip'}>
-        {children}
+        <EditProvider>
+          {children}
+        </EditProvider>
         <footer
           className="bg-app border-t py-4 border-faint flex flex-col justify-center items-center" 
         >

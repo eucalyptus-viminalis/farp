@@ -1,8 +1,8 @@
 "use client";
 import { ConvoWebNavBar } from "@/components/nav/ConvoWebNavBar";
-import ConvoRootCast from "../convo/ConvoRootCast";
-import ReplyCast from "../convo/ReplyCast";
-import NestedReplyCast from "../convo/NestedReplyCast";
+import ConvoRootCast from "./cast/ConvoRootCast";
+import ReplyCast from "./cast/ReplyCast";
+import NestedReplyCast from "./cast/NestedReplyCast";
 import { useContext } from "react";
 import { EditContext } from "@/contexts/EditContext";
 import { CastPreviewProvider } from "@/contexts/CastPreviewContext";

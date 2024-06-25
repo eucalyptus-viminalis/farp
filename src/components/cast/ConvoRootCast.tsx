@@ -4,7 +4,7 @@ import DisplayNameConvo from "@/components/cast/display-name/DisplayNameConvo.pr
 import StatsRow from "@/components/cast/stats/StatsRow.preview";
 import { CastPreviewContext } from "@/contexts/CastPreviewContext";
 import React, { useContext } from "react";
-import ReplyCard from "./ReplyCard";
+import ReplyCard from "../ReplyCard";
 import EmbedsContainerPreview from "@/components/cast/embeds/EmbedsContainerPreview";
 
 const ConvoRootCast = () => {
