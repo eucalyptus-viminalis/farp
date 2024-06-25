@@ -12,8 +12,8 @@ import {
     useDeferredValue,
 } from "react";
 import Image from "next/image";
-import { useUsers } from "./hooks";
 import { CastEditContext } from "@/contexts/CastEditContext";
+import { useChannels } from "../username/hooks";
 
 type UsernameProps = {
     asEmbed?: boolean;
@@ -21,18 +21,18 @@ type UsernameProps = {
 const DEFAULT_USERNAME = "dwr";
 
 // Assumming root cast
-export default function Username(props: UsernameProps) {
+export default function ChannelNameWithSearch(props: UsernameProps) {
     // Props
     const { asEmbed } = props;
 
     // Context
     const context = useContext(CastEditContext);
     const cast = context.cast
-    const username = cast.usernameOverride
+    const channelName = cast.channelName
 
     // States
-    const [q, setQ] = useState<string>(username ?? "");
-    const [showUsers, setShowUsers] = useState<boolean>(true);
+    const [q, setQ] = useState<string>(channelName ?? "");
+    const [showChannels, setShowChannels] = useState<boolean>(true);
     const [selectedIndex, setSelectedIndex] = useState<number>(-1);
     const [showInput, setShowInput] = useState<boolean>(false);
     const inputRef = useRef<HTMLInputElement>(null);
@@ -41,32 +41,33 @@ export default function Username(props: UsernameProps) {
     const [mousingAround, setMousingAround] = useState(false);
 
     // Custom Hooks
-    const users = useUsers(deferredQ)
+    const channels = useChannels(deferredQ)
 
     // State mutations
-    const updateUser = () => {
-        const newUser = users[selectedIndex];
+    const updateChannel = () => {
+        const newChannel = channels[selectedIndex];
         context.updateCast({
             ...cast,
-            user: newUser,
-            pfpOverride: newUser.pfp_url ?? "/dwr.png",
-            usernameOverride: newUser.username,
-            displayNameOverride: newUser.display_name ?? "Unknown",
-            activeBadgeOverride: newUser.power_badge,
+            // user: newChannel,
+            // pfpOverride: newChannel.pfp_url ?? "/dwr.png",
+            // usernameOverride: newChannel.username,
+            // displayNameOverride: newChannel.display_name ?? "Unknown",
+            // activeBadgeOverride: newChannel.power_badge,
+            channelName: newChannel.id
         })
     };
-    const overrideUsername = (username: string) => {
+    const overrideChannelName = (channel: string) => {
         context.updateCast({
             ...cast,
-            usernameOverride: username
+            channelName: channel
         })
     };
 
     // Handlers
-    const onUserRowClick = (e: any) => {
-        console.log("user row clicked!");
+    const onChannelRowClick = (e: any) => {
+        console.log("channel row clicked!");
         e.preventDefault();
-        updateUser();
+        updateChannel();
         setShowInput(false);
         if (containerRef.current) {
             containerRef.current.hidden = true;
@@ -90,7 +91,7 @@ export default function Username(props: UsernameProps) {
         if (e.key === "ArrowDown") {
             e.preventDefault();
             setSelectedIndex((prevIndex) =>
-                Math.min(prevIndex + 1, users.length - 1)
+                Math.min(prevIndex + 1, channels.length - 1)
             );
         } else if (e.key === "ArrowUp") {
             e.preventDefault();
@@ -98,11 +99,11 @@ export default function Username(props: UsernameProps) {
         } else if (
             e.key === "Enter" &&
             selectedIndex >= 0 &&
-            selectedIndex < users.length
+            selectedIndex < channels.length
         ) {
             e.preventDefault();
             console.log("enter");
-            updateUser();
+            updateChannel();
             setShowInput(false);
         } else if (e.key === "Escape") {
             e.preventDefault();
@@ -115,7 +116,7 @@ export default function Username(props: UsernameProps) {
     };
     const onSpanClick = () => {
         setShowInput(true);
-        setShowUsers(true);
+        setShowChannels(true);
     };
     // Select the input when it appears
     useEffect(() => {
@@ -130,13 +131,13 @@ export default function Username(props: UsernameProps) {
 
     const handleBlur = () => {
         setShowInput(false);
-        if (!username) {
-            overrideUsername(DEFAULT_USERNAME);
+        if (!channelName) {
+            overrideChannelName('');
         }
     };
     const onInputChange = (e: ChangeEvent<HTMLInputElement>) => {
         e.preventDefault();
-        overrideUsername(e.currentTarget.value.trim());
+        overrideChannelName(e.currentTarget.value.trim());
         setQ(e.currentTarget.value.trim());
         setSelectedIndex(-1);
     };
@@ -146,18 +147,18 @@ export default function Username(props: UsernameProps) {
         console.log("blurred");
         if (!mousingAround) {
             setShowInput(false);
-            if (!cast.usernameOverride) {
-                overrideUsername(DEFAULT_USERNAME);
-                setQ(DEFAULT_USERNAME);
+            if (!cast.channelName) {
+                overrideChannelName('');
+                setQ('');
             }
-            setShowUsers(false);
+            setShowChannels(false);
         }
     };
 
     // Effects
     useEffect(()=> {
         setSelectedIndex(-1)
-    },[users])
+    },[channels])
     // Fetch users and update state when query value changes
     // Close user list when user clicks outside container
     useEffect(() => {
@@ -166,7 +167,7 @@ export default function Username(props: UsernameProps) {
                 containerRef.current &&
                 !containerRef.current.contains(event.target as Node)
             ) {
-                setShowUsers(false);
+                setShowChannels(false);
                 setShowInput(false);
             }
         };
@@ -204,7 +205,10 @@ export default function Username(props: UsernameProps) {
     }, [handleBlur]);
 
     return (
-        <>
+        <div>
+            <span className="mx-1 text-sm text-[#576472] dark:text-[#9FA3AF]">
+                ·
+            </span>
             <label
                 htmlFor="user-search-input"
                 ref={containerRef}
@@ -220,10 +224,10 @@ export default function Username(props: UsernameProps) {
                 "
                     style={{
                         minWidth: "8ch",
-                        width: cast.usernameOverride.length + 1 + "ch",
+                        width: cast.channelName ? cast.channelName.length + 1 + "ch" : undefined,
                     }}
                     onChange={onInputChange}
-                    value={cast.usernameOverride}
+                    value={cast.channelName}
                     // onBlur={onBlur}
                     // onBlurCapture={()=>console.log('onblur captured')}
                     type="text"
@@ -234,38 +238,38 @@ export default function Username(props: UsernameProps) {
                     onMouseLeave={handleMouseLeave}
                     className="w-96 absolute z-10 rounded-lg border border-faint bg-app overflow-auto max-h-72"
                 >
-                    {showUsers &&
-                        users.map((user, index) => (
+                    {showChannels &&
+                        channels.map((channel, index) => (
                             <li
-                                key={user.fid}
+                                key={index}
                                 className={`bg-app p-2 border-b-2 border-faint ${
                                     selectedIndex === index ? "underline" : ""
                                 }`}
                                 onMouseEnter={(e) => onMouseEnter(e, index)}
-                                onClick={onUserRowClick}
+                                onClick={onChannelRowClick}
                                 onClickCapture={() =>
                                     console.log("click captured")
                                 }
                             >
                                 <div className="flex flex-row">
-                                    {user.pfp_url && (
+                                    {channel.image_url && (
                                         <div className="relative rounded-full overflow-hidden h-[64px] w-[64px]">
                                             <Image
                                                 alt="pfp"
                                                 className="object-cover"
                                                 sizes="64px"
                                                 fill
-                                                src={user.pfp_url}
+                                                src={channel.image_url}
                                                 unoptimized
                                             />
                                         </div>
                                     )}
                                     <div className="flex flex-col">
                                         <span className="font-semibold">
-                                            {user.display_name}
+                                            {channel.id}
                                         </span>
                                         <span className="text-muted">
-                                            {"@" + user.username}
+                                            {channel.follower_count + " followers"}
                                         </span>
                                     </div>
                                 </div>
@@ -274,6 +278,14 @@ export default function Username(props: UsernameProps) {
                 </ul>
             </label>
             <span
+                className="cursor-pointer overflow-hidden text-ellipsis text-sm text-[#576472] hover:underline dark:text-[#9FA3AF]"
+                title={"Override channel name"}
+                onClick={onSpanClick}
+                hidden={showInput}
+            >
+                {`/${cast.channelName}`}
+            </span>
+            {/* <span
                 hidden={showInput}
                 className="relative h-min w-auto"
                 data-state="closed"
@@ -285,9 +297,9 @@ export default function Username(props: UsernameProps) {
                     }`}
                     onClick={onSpanClick}
                 >
-                    {"@" + username}
+                    {"@" + channelName}
                 </div>
-            </span>
-        </>
+            </span> */}
+        </div>
     );
 }

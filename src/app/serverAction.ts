@@ -5,6 +5,14 @@ import { TrendingFeedTimeWindow } from "@neynar/nodejs-sdk/build/neynar-api/comm
 
 const SEARCH_LIMIT = 10
 
+export async function searchChannel(q: string) {
+    const res = await neynar_client.searchChannels(
+        q
+    )
+    // res.result.users
+    return res.channels
+    
+}
 export async function searchUser(q: string) {
     const res = await neynar_client.searchUser(
         q,

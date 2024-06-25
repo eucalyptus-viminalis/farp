@@ -74,7 +74,7 @@ export function CastPreview(props: CastProps) {
                         <div className="relative flex flex-col">
                             <div className="relative flex">
                                 {/* PFP */}
-                                <PFPPreview />
+                                <PFPPreview following />
                                 {/* Main Content */}
                                 {previewMode === "expanded-web" &&
                                     castType === "root-cast" && (
