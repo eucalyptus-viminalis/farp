@@ -1,5 +1,5 @@
 'use client'
-import getData from "@/app/edit/serverAction";
+import {searchUser} from "@/app/serverAction";
 import { SearchedUser } from "@neynar/nodejs-sdk/build/neynar-api/v2";
 import { useEffect, useState } from "react";
 
@@ -13,7 +13,7 @@ export const useUsers = (q: string) => {
             // to prevent searching with an empty string
             const fetchData = async () => {
                 try {
-                    const result = await getData(q);
+                    const result = await searchUser(q);
                     setUsers(result);
                 } catch (error) {
                     console.error("Error fetching data:", error);

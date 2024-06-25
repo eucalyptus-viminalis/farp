@@ -1,11 +1,11 @@
 import ArrowLeftIcon from "@/components/icons/ArrowLeftIcon";
-import ConvoRootCast from "./ConvoRootCast";
+import ConvoRootCast from "../../components/cast/ConvoRootCast";
 import { ActionRow } from "@/components/cast/BottomBar";
 import StatsRow from "@/components/cast/stats/StatsRow.preview";
-import ReplyCard from "./ReplyCard";
-import ReplyCast from "./ReplyCast";
+import ReplyCard from "../../components/ReplyCard";
+import ReplyCast from "../../components/cast/ReplyCast";
 import { CastState } from "@/types/types";
-import NestedReplyCast from "./NestedReplyCast";
+import NestedReplyCast from "../../components/cast/NestedReplyCast";
 
 const exampleReply: CastState = {
     activeBadgeOverride: true,

@@ -11,7 +11,7 @@ import {
     useRef,
     useState,
 } from "react";
-import getData from "../../app/edit/serverAction";
+import searchUser from "../../app/serverAction";
 import Image from "next/image";
 import { EditContext } from "@/contexts/EditContext";
 
@@ -88,7 +88,7 @@ export default function UserSearch() {
             // to prevent searching with an empty string
             const fetchData = async () => {
                 try {
-                    const result = await getData(q);
+                    const result = await searchUser(q);
                     setUsers(result);
                     setSelectedIndex(-1);
                 } catch (error) {

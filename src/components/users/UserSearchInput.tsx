@@ -4,7 +4,7 @@ import { SearchedUser } from "@neynar/nodejs-sdk/build/neynar-api/v2";
 import { ChangeEvent, FocusEvent, MouseEvent, useState, KeyboardEvent, useContext, useEffect, useRef } from "react";
 import Image from "next/image";
 import { EditContext } from "@/contexts/EditContext";
-import getData from "../../app/edit/serverAction";
+import searchUser from "../../app/serverAction";
 
 type UserSearchInputProps = {
     toggleView: Function
@@ -98,7 +98,7 @@ export default function UserSearchInput(props: UserSearchInputProps) {
             // to prevent searching with an empty string
             const fetchData = async () => {
                 try {
-                    const result = await getData(q);
+                    const result = await searchUser(q);
                     setUsers(result);
                     setSelectedIndex(-1);
                 } catch (error) {

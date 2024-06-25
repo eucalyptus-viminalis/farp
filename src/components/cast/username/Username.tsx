@@ -14,7 +14,7 @@ import { EditContext } from "@/contexts/EditContext";
 import Image from "next/image";
 import UserSearchInput from "../../users/UserSearchInput";
 import { SearchedUser } from "@neynar/nodejs-sdk/build/neynar-api/v2";
-import getData from "@/app/edit/serverAction";
+import {searchUser} from "@/app/serverAction";
 
 type UsernameProps = {
     asEmbed?: boolean;
@@ -159,7 +159,7 @@ export default function Username(props: UsernameProps) {
             // to prevent searching with an empty string
             const fetchData = async () => {
                 try {
-                    const result = await getData(deferredQ);
+                    const result = await searchUser(deferredQ);
                     setUsers(result);
                     setSelectedIndex(-1);
                 } catch (error) {

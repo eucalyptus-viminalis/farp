@@ -1,10 +1,10 @@
 "use client";
 
-import TimelineWebNavBarHome from "../../components/nav/Nav";
-import { CastPreview } from "../../components/cast/CastPreview";
+import TimelineWebNavBarHome from "./nav/Nav";
+import { CastPreview } from "./cast/CastPreview";
 import { CastState } from "@/types/types";
 import { useContext, useEffect, useState } from "react";
-import { getData } from "./serverAction";
+import { getTrendingCasts } from "../app/serverAction";
 import {
     CastWithInteractions,
     EmbedUrl,
@@ -24,7 +24,7 @@ const useRealCasts = () => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const result = await getData();
+                const result = await getTrendingCasts();
                 setRealCasts(result);
             } catch (error) {
                 console.error("Error fetching data:", error);
