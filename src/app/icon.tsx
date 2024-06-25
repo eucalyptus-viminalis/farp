@@ -33,7 +33,7 @@ export default function Icon() {
           style={{
             position:'absolute'
           }} 
-        >{'⚔️'}</span>
+        >{'🧢'}</span>
         {/* <span 
           style={{
             fontSize: '3rem',
