@@ -1,10 +1,8 @@
 'use client'
-import { getUser } from "@/app/preview/serverAction";
 import { ROOT_CAST_DEFAULT } from "@/types/types";
 import { CastState } from "@/types/types";
 import { PreviewMode } from "@/types/types";
-import { SearchedUser } from "@neynar/nodejs-sdk/build/neynar-api/v2";
-import { Dispatch, ReactNode, createContext, useEffect, useReducer } from "react";
+import { Dispatch, ReactNode, createContext, useReducer } from "react";
 
 type ReplyUser = {
         username: string
