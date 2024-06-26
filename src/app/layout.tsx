@@ -19,14 +19,14 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className + ' overflow-x-clip'}>
+      <body className={inter.className + ' overflow-x-clip bg-app'}>
         <EditProvider>
           {children}
         </EditProvider>
         <footer
           className="bg-app border-t py-4 border-faint flex flex-col justify-center items-center" 
         >
-          <span className="p-2">🩸 farp 🧢</span>
+          <span className="p-2 text-[var(--yellow-11)]">farp</span>
         </footer>
         </body>
     </html>

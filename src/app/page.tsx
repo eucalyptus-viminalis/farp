@@ -28,23 +28,38 @@ export default function EditPage() {
                 >
                     {/* Bleed */}
                     <div 
+                        // className="
+                        //     absolute top-0 -translate-x-full h-full left-0 w-full 
+                        //     z-10 
+                        //     bg-gradient-to-l 
+                        //     from-app-tw-light dark:from-app-tw-dark 
+                        //     from-20%
+                        //     to-red-500 dark:to-red-600
+                        // "
                         className="
                             absolute top-0 -translate-x-full h-full left-0 w-full 
                             z-10 
                             bg-gradient-to-l 
                             from-app-tw-light dark:from-app-tw-dark 
                             from-20%
-                            to-red-500 dark:to-red-600
+                            to-[var(--yellow-6)] dark:to-[var(--yellow-6)]
                         "
                     >
                     </div>
                     <div 
+                        // className="
+                        //     absolute top-0 translate-x-full h-full right-0 w-full 
+                        //     z-10 
+                        //     bg-gradient-to-r from-app-tw-light dark:from-app-tw-dark 
+                        //     from-20%
+                        //     to-blue-500 dark:to-blue-600
+                        // "
                         className="
                             absolute top-0 translate-x-full h-full right-0 w-full 
                             z-10 
                             bg-gradient-to-r from-app-tw-light dark:from-app-tw-dark 
                             from-20%
-                            to-blue-500 dark:to-blue-600
+                            to-[var(--yellow-6)] dark:to-[var(--yellow-6)]
                         "
                     >
                     </div>

@@ -9,11 +9,17 @@ export default function ActionButton(props: ActionButtonProps) {
     const {withBg, handleOnClick, children} = props
     return (
         <button
+            // className={`
+            //     w-[10ch]
+            //     p-2
+            //     font-semibold
+            //     ${withBg ? 'bg-red-600 text-light' : 'text-red-600'}
+            // `}
             className={`
                 w-[10ch]
                 p-2
                 font-semibold
-                ${withBg ? 'bg-red-600 text-light' : 'text-red-600'}
+                ${withBg ? 'bg-[var(--yellow-9)] text-[var(--yellow-1)]' : 'text-[var(--yellow-9)]'}
             `}
             onClick={()=>handleOnClick('preview')}
         >{children}</button>
