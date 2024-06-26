@@ -87,11 +87,21 @@ export default function DisplayName() {
                         <span
                             title="Override display name"
                             onClick={handleClick}
+                            // className="
+                            //     !block 
+                            //     min-w-0 
+                            //     overflow-hidden 
+                            //     text-ellipsis text-default text-base
+                            //     whitespace-nowrap 
+                            //     break-words 
+                            //     hover:underline 
+                            //     font-semibold
+                            // "
                             className="
                                 !block 
                                 min-w-0 
                                 overflow-hidden 
-                                text-ellipsis text-default text-base
+                                text-ellipsis text-[var(--yellow-9)] text-base
                                 whitespace-nowrap 
                                 break-words 
                                 hover:underline 

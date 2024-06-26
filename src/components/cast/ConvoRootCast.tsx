@@ -1,5 +1,4 @@
 "use client";
-import { ActionRow } from "@/components/cast/BottomBar";
 import DisplayNameConvo from "@/components/cast/display-name/DisplayNameConvo.preview";
 import StatsRow from "@/components/cast/stats/StatsRow.preview";
 import { CastPreviewContext } from "@/contexts/CastPreviewContext";
@@ -7,6 +6,8 @@ import React, { useContext } from "react";
 import ReplyCard from "../ReplyCard";
 import EmbedsContainerPreview from "@/components/cast/embeds/EmbedsContainerPreview";
 import CastText from "./cast-text/CastText";
+import BottomBarPreview from "./BottomBarPreview";
+import ActionRow from "./actions/ActionRow.preview";
 
 const ConvoRootCast = () => {
     const con = useContext(CastPreviewContext);
@@ -139,7 +140,8 @@ const ConvoRootCast = () => {
                     </div>
                 </div>
                 <div className="px-4">
-                    <ActionRow />
+                    {/* <ActionRow /> */}
+                    <ActionRow/>
                 </div>
                 <StatsRow previewMode="expanded-web" />
                 <ReplyCard />

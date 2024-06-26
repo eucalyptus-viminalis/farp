@@ -85,8 +85,14 @@ export default function LikeCount() {
                     />
                 ) : (
                     <span
+                        // className="
+                        //     mr-1 text-sm font-semibold 
+                        //     text-[#576472] dark:text-[#9FA3AF]
+                        //     hover:underline
+                        // "
                         className="
-                            mr-1 text-sm font-semibold text-[#576472] dark:text-[#9FA3AF]
+                            mr-1 text-sm font-semibold 
+                            text-[var(--yellow-9)] dark:text-[var(--yellow-9)]
                             hover:underline
                         "
                         title={'Override like count'}

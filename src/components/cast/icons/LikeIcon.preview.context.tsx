@@ -7,16 +7,11 @@ export default function LikeIcon() {
     // Context
     const context = useContext(CastPreviewContext)
     const cast = context.cast
-    // // Handler
-    // const updatedLiked = () => {
-    //     context.dispatch({type:'SET_ROOT_CAST', payload: {...cast, liked: !cast.liked}})
-    // }
     return (
         <div
             className="
-                group flex w-9 flex-row items-center text-sm text-faint cursor-pointer
+                group flex w-9 flex-row items-center text-sm text-faint
             "
-            // onClick={updatedLiked}
         >
             <div
                 className={`
@@ -25,10 +20,6 @@ export default function LikeIcon() {
                     rounded-full 
                     p-2 
                     transition-colors 
-                    hover:bg-gray-200 
-                    group-hover:bg-gray-200 
-                    dark:hover:bg-overlay-medium 
-                    dark:group-hover:bg-overlay-medium 
                     text-action-red 
                     text-faint
                 `}
