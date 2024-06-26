@@ -1,6 +1,6 @@
 'use client'
 
-import {CrossCircledIcon} from '@radix-ui/react-icons'
+import {CrossCircledIcon, Cross2Icon, Cross1Icon} from '@radix-ui/react-icons'
 import { CastEditContext } from "@/contexts/CastEditContext"
 import { useContext } from "react"
 
@@ -17,7 +17,9 @@ export default function DeleteReplyButton() {
         <button
             onClick={handleOnClick} 
         >
-            <CrossCircledIcon width={16} height={16}/>
+            {/* <CrossCircledIcon color='var(--yellow-9)' width={22} height={22}/> */}
+            <Cross2Icon color='var(--yellow-9)' width={22} height={22}/>
+            {/* <Cross1Icon color='var(--yellow-9)' width={22} height={22}/> */}
         </button>
     )
 }

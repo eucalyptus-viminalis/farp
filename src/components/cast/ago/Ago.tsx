@@ -86,8 +86,12 @@ export default function Ago() {
     } else {
         return (
         <div
+            // className="
+            //     text-muted hover:underline
+            // "
             className="
-                text-muted hover:underline
+                text-[var(--yellow-9)]
+                hover:underline
             "
             title="Override ago text"
             onClick={handleClick}

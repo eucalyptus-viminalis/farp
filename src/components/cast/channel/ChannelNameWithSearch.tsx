@@ -279,7 +279,14 @@ export default function ChannelNameWithSearch(props: UsernameProps) {
                 </ul>
             </label>
             <span
-                className="cursor-pointer overflow-hidden text-ellipsis text-sm text-[#576472] hover:underline dark:text-[#9FA3AF]"
+                // className="cursor-pointer overflow-hidden text-ellipsis text-sm 
+                // text-[#576472] dark:text-[#9FA3AF]
+                // hover:underline
+                // "
+                className="cursor-pointer overflow-hidden text-ellipsis text-sm 
+                            text-[var(--yellow-9)] dark:text-[var(--yellow-9)]
+                hover:underline
+                "
                 title={"Override channel name"}
                 onClick={onSpanClick}
                 hidden={showInput}

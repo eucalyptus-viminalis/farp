@@ -277,7 +277,15 @@ export default function UsernameSearch(props: UsernameProps) {
             >
                 <div
                     title="Override username"
-                    className={`relative text-muted hover:underline ${
+                    // className={`relative 
+                    //     text-muted 
+                    //     hover:underline ${
+                    //     asEmbed ? "text-sm" : ""
+                    // }`}
+                    className={`relative 
+                        text-[var(--yellow-9)]
+                        hover:underline 
+                        ${
                         asEmbed ? "text-sm" : ""
                     }`}
                     onClick={onSpanClick}

@@ -29,7 +29,7 @@ export type CastState = {
 export type CastType = "root-cast" | "reply" | "quoted-cast" | "nested-reply";
 
 export const ROOT_CAST_DEFAULT: CastState = {
-    ago: "3d",
+    ago: "3h",
     bookmarked: false,
     activeBadgeOverride: true,
     castText: "",
@@ -47,7 +47,7 @@ export const ROOT_CAST_DEFAULT: CastState = {
 };
 
 export const REPLY_DEFAULT: CastState = {
-    ago: "2h",
+    ago: "2m",
     bookmarked: false,
     activeBadgeOverride: true,
     castText: "",
