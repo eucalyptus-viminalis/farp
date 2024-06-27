@@ -65,7 +65,34 @@ export default function TimelineWebPreview() {
             user: realCast.author as SearchedUser,
         };
     });
+    const [randomCasts, setRandomCasts] = useState<CastState[]>([])
 
+    useEffect(()=> {
+        setRandomCasts(shuffleArray([...realCastShapes]))
+    },[realCasts])
+
+    function shuffleArray<T>(array: T[]): T[] {
+        let currentIndex = array.length, randomIndex;
+    
+        // While there remain elements to shuffle.
+        while (currentIndex !== 0) {
+    
+            // Pick a remaining element.
+            randomIndex = Math.floor(Math.random() * currentIndex);
+            currentIndex--;
+    
+            // And swap it with the current element.
+            [array[currentIndex], array[randomIndex]] = [
+                array[randomIndex], array[currentIndex]];
+        }
+    
+        return array;
+    }
+    const randomizeOrder = () => {
+        console.log('randomize')
+        console.log(randomCasts.at(0))
+        setRandomCasts(shuffleArray([...randomCasts]))
+    }
     return (
         <>
             {/* 
@@ -75,6 +102,7 @@ className="h-full w-full shrink-0 justify-center sm:mr-4 sm:w-[540px] lg:w-[620p
     <div className="w-full h-full">
         <div className="h-full min-h-screen border-default sm:border-x"> */}
             {/* Mode buttons */}
+            <button onClick={() => randomizeOrder()} className="pl-2 mb-2 text-[var(--yellow-9)]">Shuffle Casts</button>
             <TimelineWebNavBarHome />
             {/* Root cast */}
             <CastPreview
@@ -82,7 +110,10 @@ className="h-full w-full shrink-0 justify-center sm:mr-4 sm:w-[540px] lg:w-[620p
                 previewMode={"timeline-web"}
                 castType="root-cast"
             />
-            {realCastShapes.map((cast, i) => (
+            {(!randomCasts || randomCasts.length === 0) && (
+                <span className="pl-2">Loading trending casts...</span>
+            )}
+            {randomCasts.map((cast, i) => (
                 <CastPreview
                     key={"cast-" + i}
                     castType="root-cast"
