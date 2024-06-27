@@ -10,7 +10,6 @@ const inter = Inter({ subsets: ["latin"] });
 export const metadata: Metadata = {
   title: "farp",
   description: "chat, is this real?",
-  metadataBase: process.env.NEXT_PUBLIC_VERCEL_PROJECT_PRODUCTION_URL ? new URL('https://' + process.env.NEXT_PUBLIC_VERCEL_PROJECT_PRODUCTION_URL) :  new URL('http://localhost:3000'),
   openGraph: {
     title: 'farp',
     description: 'chat, is this real?',
