@@ -257,14 +257,6 @@ export default function CastContentEdit() {
                                                         : word}
                                                 </span>
                                             );
-                                        } else if (/^\$\w+/.test(word)) {
-                                            return (
-                                                <span key={i} className={"m"}>
-                                                    {i !== 0
-                                                        ? " " + word
-                                                        : word}
-                                                </span>
-                                            );
                                         } else {
                                             return (
                                                 <span key={i} className={``}>
