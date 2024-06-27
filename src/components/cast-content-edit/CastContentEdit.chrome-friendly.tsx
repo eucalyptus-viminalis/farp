@@ -22,20 +22,20 @@ export default function CastContentEdit() {
     // Context
     const context = useContext(CastEditContext);
     const cast = context.cast;
-    const lines = cast.castText.split('\n')
+    const lines = cast.castText.split("\n");
     // States
     const textareaRef = useRef<HTMLTextAreaElement>(null);
     const contentEditableRef = useRef<HTMLDivElement>(null);
     const [textareaFocused, setTextareaFocused] = useState<boolean>(false);
     const [showFullscreen, setShowFullScreen] = useState(false);
-    const [caretOnMention, setCaretOnMention] = useState(false)
-    const [userListQ, setUserListQ] = useState('')
-    const [mentionWordIndex, setMentionWordIndex] = useState(-1)
-    useEffect(()=>{
+    const [caretOnMention, setCaretOnMention] = useState(false);
+    const [userListQ, setUserListQ] = useState("");
+    const [mentionWordIndex, setMentionWordIndex] = useState(-1);
+    useEffect(() => {
         if (contentEditableRef.current) {
-            contentEditableRef.current.innerText = cast.castText
+            contentEditableRef.current.innerText = cast.castText;
         }
-    },[])
+    }, []);
     // Handlers
     // // const handleDivClick = () => {
     // //     setShowFullScreen(true);
@@ -49,17 +49,20 @@ export default function CastContentEdit() {
     // };
     const placeCaretAtEnd = (el: HTMLDivElement) => {
         el.focus();
-        if (typeof window.getSelection !== 'undefined' && typeof document.createRange !== 'undefined') {
-          const range = document.createRange();
-          range.selectNodeContents(el);
-          range.collapse(false);
-          const sel = window.getSelection();
-          if (sel) {
-            sel.removeAllRanges();
-            sel.addRange(range);
-          }
+        if (
+            typeof window.getSelection !== "undefined" &&
+            typeof document.createRange !== "undefined"
+        ) {
+            const range = document.createRange();
+            range.selectNodeContents(el);
+            range.collapse(false);
+            const sel = window.getSelection();
+            if (sel) {
+                sel.removeAllRanges();
+                sel.addRange(range);
+            }
         }
-      };
+    };
     // useEffect(() => {
     //     // if (textareaRef.current) {
     //     //     const length = textareaRef.current.value.length;
@@ -88,12 +91,12 @@ export default function CastContentEdit() {
                 lastWord.length > 1 &&
                 !lastWord.startsWith("@@")
             ) {
-                setCaretOnMention(true)
-                setMentionWordIndex(lastWordIndex)
-                alert(lastWordIndex)
-                return lastWord
+                setCaretOnMention(true);
+                setMentionWordIndex(lastWordIndex);
+                alert(lastWordIndex);
+                return lastWord;
             } else {
-                setCaretOnMention(false)
+                setCaretOnMention(false);
             }
         }
     };
@@ -126,48 +129,51 @@ export default function CastContentEdit() {
             textareaRef.current.style.height = `${textareaRef.current.scrollHeight}px`; // Set to scroll height
         }
     };
-    const handleOnInput =(e: FormEvent<HTMLDivElement>) => {
-        console.log('onInput')
-        e.preventDefault()
-        const txt = e.currentTarget.innerText
+    const handleOnInput = (e: FormEvent<HTMLDivElement>) => {
+        console.log("onInput");
+        e.preventDefault();
+        const txt = e.currentTarget.innerText;
         updateCastText(txt);
-    }
+    };
     const getCaretPosition = () => {
         const selection = window.getSelection();
         if (selection && selection.rangeCount > 0) {
             const range = selection.getRangeAt(0);
             const caretIndex = range.startOffset;
-            return caretIndex
+            return caretIndex;
             // checkAtSymbol(txt, caretIndex)
         }
     };
     const handlePaste = (event: ClipboardEvent) => {
-        console.log('handlePaste')
+        console.log("handlePaste");
         const clipboardItems = event.clipboardData?.items;
         if (!clipboardItems) return;
-  
+
         for (let i = 0; i < clipboardItems.length; i++) {
-          const item = clipboardItems[i];
-          if (item.type.indexOf('image') !== -1) {
-            event.preventDefault()
-            console.log('image found')
-            const blob = item.getAsFile();
-            if (blob) {
-              const reader = new FileReader();
-              reader.onload = (event) => {
-                // console.log(event.target?.result); // This is the base64 encoded image data
-                if (event.target && event.target.result) {
-                    context.updateCast({
-                        ...cast,
-                        imageEmbeds: [...cast.imageEmbeds, event.target.result.toString()].slice(-2)
-                    })
+            const item = clipboardItems[i];
+            if (item.type.indexOf("image") !== -1) {
+                event.preventDefault();
+                console.log("image found");
+                const blob = item.getAsFile();
+                if (blob) {
+                    const reader = new FileReader();
+                    reader.onload = (event) => {
+                        // console.log(event.target?.result); // This is the base64 encoded image data
+                        if (event.target && event.target.result) {
+                            context.updateCast({
+                                ...cast,
+                                imageEmbeds: [
+                                    ...cast.imageEmbeds,
+                                    event.target.result.toString(),
+                                ].slice(-2),
+                            });
+                        }
+                    };
+                    reader.readAsDataURL(blob);
                 }
-              };
-              reader.readAsDataURL(blob);
             }
-          }
         }
-    }
+    };
     return (
         <div className="flex flex-col whitespace-pre-wrap break-words pb-2 text-base leading-5 tracking-normal">
             {/* <div className="line-clamp-feed"> */}
@@ -210,7 +216,10 @@ export default function CastContentEdit() {
                     ></div>
                     <div
                         className={`
-                            ${!textareaFocused && "sm:group-hover:bg-zinc-200 sm:group-hover:opacity-70 sm:dark:group-hover:bg-zinc-800"}
+                            ${
+                                !textareaFocused &&
+                                "sm:group-hover:bg-zinc-200 sm:group-hover:opacity-70 sm:dark:group-hover:bg-zinc-800"
+                            }
                             absolute
                             top-0
                             text-inherit
@@ -223,36 +232,53 @@ export default function CastContentEdit() {
                         {lines.map((line, i) => {
                             return (
                                 <div key={i}>
-                                    {line.split(' ').map((word, i) => {
+                                    {line.split(" ").map((word, i) => {
                                         if (/^@\w+/.test(word)) {
                                             return (
-                                                <span key={i} className={'m'}>
-                                                    {i!== 0 ? ' ' + word : word}
-                                                    {caretOnMention && userListQ && (
-                                                        <UserList deferredQ={userListQ}/>
-                                                    )}
+                                                <span key={i} className={"m"}>
+                                                    {i !== 0
+                                                        ? " " + word
+                                                        : word}
+                                                    {caretOnMention &&
+                                                        userListQ && (
+                                                            <UserList
+                                                                deferredQ={
+                                                                    userListQ
+                                                                }
+                                                            />
+                                                        )}
                                                 </span>
-                                            )
-                                        } else if (/^\/\w+/.test(word)){
+                                            );
+                                        } else if (/^\/\w+/.test(word)) {
                                             return (
-                                                <span key={i} className={'m'}>
-                                                    {i!== 0 ? ' ' + word : word}
+                                                <span key={i} className={"m"}>
+                                                    {i !== 0
+                                                        ? " " + word
+                                                        : word}
                                                 </span>
-                                            )
+                                            );
+                                        } else if (/^\$\w+/.test(word)) {
+                                            return (
+                                                <span key={i} className={"m"}>
+                                                    {i !== 0
+                                                        ? " " + word
+                                                        : word}
+                                                </span>
+                                            );
                                         } else {
                                             return (
-                                            <span key={i} className={``}>
-                                                {i!== 0 ? ' ' + word : word}
-                                            </span>
-                                            )
+                                                <span key={i} className={``}>
+                                                    {i !== 0
+                                                        ? " " + word
+                                                        : word}
+                                                </span>
+                                            );
                                         }
                                     })}
 
-                                {i !== lines.length -1 && (
-                                    <br></br>
-                                )}
+                                    {i !== lines.length - 1 && <br></br>}
                                 </div>
-                            )
+                            );
                         })}
                     </div>
                     {/* {cast.castText ? (
