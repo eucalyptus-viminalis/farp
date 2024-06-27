@@ -4,6 +4,7 @@ import "./globals.css";
 import "./wc.css"
 import '../css/custom.css'
 import { EditProvider } from "@/contexts/EditContext";
+import { GlobalContextProvider } from "@/contexts/GlobalContext";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -26,9 +27,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className + ' overflow-x-clip bg-app'}>
-        <EditProvider>
-          {children}
-        </EditProvider>
+        <GlobalContextProvider>
+          <EditProvider>
+            {children}
+          </EditProvider>
+        </GlobalContextProvider>
         <footer
           className="bg-app border-t py-4 border-faint flex flex-col justify-center items-center" 
         >

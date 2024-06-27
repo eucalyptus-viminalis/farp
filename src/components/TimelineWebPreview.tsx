@@ -3,10 +3,9 @@
 import TimelineWebNavBarHome from "./nav/Nav";
 import { CastPreview } from "./cast/CastPreview";
 import { CastState } from "@/types/types";
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useMemo, useState } from "react";
 import { getTrendingCasts } from "../app/serverAction";
 import {
-    CastWithInteractions,
     EmbedUrl,
     EmbeddedCast,
     SearchedUser,
@@ -14,62 +13,12 @@ import {
 import TimeAgo from "javascript-time-ago";
 import en from "javascript-time-ago/locale/en";
 import { EditContext } from "@/contexts/EditContext";
+import { GlobalContext } from "@/contexts/GlobalContext";
 TimeAgo.addDefaultLocale(en);
 const timeAgo = new TimeAgo("en-US");
 
-const useRealCasts = () => {
-    const [realCasts, setRealCasts] = useState<CastWithInteractions[]>([]);
-
-    // Fetch real casts and update state
-    useEffect(() => {
-        const fetchData = async () => {
-            try {
-                const result = await getTrendingCasts();
-                setRealCasts(result);
-            } catch (error) {
-                console.error("Error fetching data:", error);
-            }
-        };
-        fetchData();
-    }, []);
-    return { realCasts };
-};
-
-function isEmbedUrl(embed: EmbeddedCast): embed is EmbedUrl {
-    return (embed as EmbedUrl).url !== undefined;
-}
-
-export default function TimelineWebPreview() {
-    // Context
-    const con = useContext(EditContext);
-    const rootCast = con.state.rootCast;
-
-    // Hooks
-    const { realCasts } = useRealCasts();
-
-    const realCastShapes: CastState[] = realCasts.map((realCast) => {
-        return {
-            activeBadgeOverride: realCast.author.power_badge,
-            ago: timeAgo.format(new Date(realCast.timestamp), "twitter-now"),
-            bookmarked: false,
-            castText: realCast.text,
-            displayNameOverride: realCast.author.display_name ?? "",
-            imageEmbeds: realCast.embeds.filter(isEmbedUrl).map((e) => e.url),
-            likeCount: realCast.reactions.likes_count,
-            liked: false,
-            pfpOverride: realCast.author.pfp_url ?? "./dwr.png",
-            recasted: false,
-            replyCount: realCast.replies.count,
-            usernameOverride: realCast.author.username,
-            channelName: realCast.channel?.name,
-            user: realCast.author as SearchedUser,
-        };
-    });
-    const [randomCasts, setRandomCasts] = useState<CastState[]>([])
-
-    useEffect(()=> {
-        setRandomCasts(shuffleArray([...realCastShapes]))
-    },[realCasts])
+export const useRealCasts = () => {
+    const [trendingCasts, setTrendingCasts] = useState<CastState[]>([]);
 
     function shuffleArray<T>(array: T[]): T[] {
         let currentIndex = array.length, randomIndex;
@@ -88,11 +37,53 @@ export default function TimelineWebPreview() {
     
         return array;
     }
-    const randomizeOrder = () => {
-        console.log('randomize')
-        console.log(randomCasts.at(0))
-        setRandomCasts(shuffleArray([...randomCasts]))
+    const shuffleCasts = () => {
+        setTrendingCasts(shuffleArray([...trendingCasts]))
     }
+
+    // Fetch real casts and update state
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const result = await getTrendingCasts();
+                const realCastShapes: CastState[] = result.map((realCast) => {
+                    return {
+                        activeBadgeOverride: realCast.author.power_badge,
+                        ago: timeAgo.format(new Date(realCast.timestamp), "twitter-now"),
+                        bookmarked: false,
+                        castText: realCast.text,
+                        displayNameOverride: realCast.author.display_name ?? "",
+                        imageEmbeds: realCast.embeds.filter(isEmbedUrl).map((e) => e.url),
+                        likeCount: realCast.reactions.likes_count,
+                        liked: false,
+                        pfpOverride: realCast.author.pfp_url ?? "./dwr.png",
+                        recasted: false,
+                        replyCount: realCast.replies.count,
+                        usernameOverride: realCast.author.username,
+                        channelName: realCast.channel?.name,
+                        user: realCast.author as SearchedUser,
+                    };
+                });
+                setTrendingCasts(realCastShapes);
+            } catch (error) {
+                console.error("Error fetching data:", error);
+            }
+        };
+        fetchData();
+    }, []);
+
+    return { realCasts: trendingCasts, shuffleCasts };
+};
+
+function isEmbedUrl(embed: EmbeddedCast): embed is EmbedUrl {
+    return (embed as EmbedUrl).url !== undefined;
+}
+
+export default function TimelineWebPreview() {
+    // Context
+    const con = useContext(EditContext);
+    const rootCast = con.state.rootCast;
+    const globalCx = useContext(GlobalContext)
     return (
         <>
             {/* 
@@ -102,7 +93,7 @@ className="h-full w-full shrink-0 justify-center sm:mr-4 sm:w-[540px] lg:w-[620p
     <div className="w-full h-full">
         <div className="h-full min-h-screen border-default sm:border-x"> */}
             {/* Mode buttons */}
-            <button onClick={() => randomizeOrder()} className="pl-2 mb-2 text-[var(--yellow-9)]">Shuffle Casts</button>
+            <button onClick={globalCx.shuffleCasts} className="pl-2 mb-2 text-[var(--yellow-9)]">Shuffle Casts</button>
             <TimelineWebNavBarHome />
             {/* Root cast */}
             <CastPreview
@@ -110,10 +101,10 @@ className="h-full w-full shrink-0 justify-center sm:mr-4 sm:w-[540px] lg:w-[620p
                 previewMode={"timeline-web"}
                 castType="root-cast"
             />
-            {(!randomCasts || randomCasts.length === 0) && (
+            {(!globalCx.trendingCasts || globalCx.trendingCasts.length === 0) && (
                 <span className="pl-2">Loading trending casts...</span>
             )}
-            {randomCasts.map((cast, i) => (
+            {globalCx.trendingCasts.map((cast, i) => (
                 <CastPreview
                     key={"cast-" + i}
                     castType="root-cast"
