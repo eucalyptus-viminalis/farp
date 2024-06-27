@@ -33,6 +33,12 @@ export default function CastText(props: CastTextProps) {
                                                     {i!== 0 ? ' ' + word : word}
                                                 </span>
                                             )
+                                        } else if (/^\$\w+/.test(word)){
+                                            return (
+                                            <span key={i} className={`m`}>
+                                                {i!== 0 ? ' ' + word : word}
+                                            </span>
+                                            )
                                         } else {
                                             return (
                                             <span key={i} className={``}>
