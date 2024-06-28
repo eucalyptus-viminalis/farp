@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import {Analytics} from '@vercel/analytics/react'
 import { Inter } from "next/font/google";
 import "./globals.css";
 import "./wc.css"
@@ -37,6 +38,7 @@ export default function RootLayout({
         >
           <span className="p-2 text-[var(--yellow-11)]">farp</span>
         </footer>
+        <Analytics/>
         </body>
     </html>
   );
