@@ -13,14 +13,11 @@ export default function UserList(props: UserListProps) {
     const {deferredQ,setSelectedIndex,selectedIndex} = props
     const users = useUsers(deferredQ)
     const onMouseEnter = (_: MouseEvent<HTMLLIElement>, i: number) => {
-        console.log(i);
         // setSelectedIndex(i);
     };
     const handleMouseLeave = () => {
-        console.log("left");
     };
     const onUserRowClick = (e: any) => {
-        console.log("user row clicked!");
         e.preventDefault();
         // updateUser();
         // setShowInput(false);

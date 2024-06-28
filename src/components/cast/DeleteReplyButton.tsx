@@ -1,6 +1,6 @@
 'use client'
 
-import {CrossCircledIcon, Cross2Icon, Cross1Icon} from '@radix-ui/react-icons'
+import { Cross2Icon } from '@radix-ui/react-icons'
 import { CastEditContext } from "@/contexts/CastEditContext"
 import { useContext } from "react"
 

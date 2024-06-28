@@ -68,7 +68,6 @@ export default function CastContentEdit() {
     const checkAtSymbol = (text: string, position: number) => {
         // Extract text up to the cursor position
         const textBeforeCursor = text.slice(0, position);
-        console.log(JSON.stringify(textBeforeCursor))
         // Check for the last word before the cursor
         const lastWordMatch = textBeforeCursor.match(/(\S+)$/);
 
@@ -76,7 +75,6 @@ export default function CastContentEdit() {
             const lastWord = lastWordMatch[0];
             // Split the textBeforeCursor by space
             const wordsArray = textBeforeCursor.split(/\s+/);
-            console.log(wordsArray)
             // Find the index of the last word in the wordsArray
             const lastWordIndex = wordsArray.length - 1;
             // Alert if the last word starts with an '@' and is not part of invalid cases
@@ -146,7 +144,6 @@ export default function CastContentEdit() {
     };
     const onKeyUp = () => {
         // Take care of showing userlist
-        console.log('onKeyUp')
         const caretIndex = getCaretPosition()
         if (caretIndex !== undefined) {
             // Check caret is on an @ word
@@ -159,7 +156,6 @@ export default function CastContentEdit() {
     };
     const onKeyDown = () => {
         // Take care of naving userlist
-        console.log('onKeyDown')
         // handleCaretPosition();
     };
     const updateCastTextAtIndex = (index: number) => {

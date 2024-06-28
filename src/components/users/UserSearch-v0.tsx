@@ -79,7 +79,6 @@ export default function UserSearch() {
         setShowUsers(false);
     };
     const onBlur = (e: FocusEvent<HTMLInputElement>) => {
-        console.log(e);
     };
 
     // Fetch users and update state when query value changes

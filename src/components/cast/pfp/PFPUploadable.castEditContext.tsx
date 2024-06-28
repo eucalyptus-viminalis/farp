@@ -24,7 +24,6 @@ export default function PFPUploadable(props: PFPProps) {
     const [showOverlay, setShowOverlay] = useState(false);
     // State mutations
     const overridePFP = (newPfpUrl: string) => {
-        console.log('overriding')
         context.updateCast({...cast, pfpOverride: newPfpUrl})
     };
 

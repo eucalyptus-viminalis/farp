@@ -2,8 +2,6 @@
 import { useContext, useState } from "react";
 import { EditContext } from "@/contexts/EditContext";
 import { CastEditProvider } from "@/contexts/CastEditContext";
-// import ActionButton from "../../components/button/ActionButton";
-// import PreviewNode from "../preview/PreviewNode";
 import CastEdit from "@/components/cast/CastEdit.castEditContext";
 import ActionButton from "@/components/button/ActionButton";
 import PreviewNode from "../components/PreviewNode";
@@ -28,14 +26,6 @@ export default function EditPage() {
                 >
                     {/* Bleed */}
                     <div 
-                        // className="
-                        //     absolute top-0 -translate-x-full h-full left-0 w-full 
-                        //     z-10 
-                        //     bg-gradient-to-l 
-                        //     from-app-tw-light dark:from-app-tw-dark 
-                        //     from-20%
-                        //     to-red-500 dark:to-red-600
-                        // "
                         className="
                             absolute top-0 -translate-x-full h-full left-0 w-full 
                             z-10 
@@ -47,13 +37,6 @@ export default function EditPage() {
                     >
                     </div>
                     <div 
-                        // className="
-                        //     absolute top-0 translate-x-full h-full right-0 w-full 
-                        //     z-10 
-                        //     bg-gradient-to-r from-app-tw-light dark:from-app-tw-dark 
-                        //     from-20%
-                        //     to-blue-500 dark:to-blue-600
-                        // "
                         className="
                             absolute top-0 translate-x-full h-full right-0 w-full 
                             z-10 
