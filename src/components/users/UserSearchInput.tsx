@@ -85,7 +85,6 @@ export default function UserSearchInput(props: UserSearchInputProps) {
     };
     const DEFAULT_USERNAME = "dwr";
     const onBlur = (e: FocusEvent<HTMLInputElement>) => {
-        console.log(e);
         setInputFocused(false);
         if (!cast.usernameOverride) {
             overrideUsername(DEFAULT_USERNAME);

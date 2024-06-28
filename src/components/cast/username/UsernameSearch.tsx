@@ -62,7 +62,6 @@ export default function UsernameSearch(props: UsernameProps) {
 
     // Handlers
     const onUserRowClick = (e: any) => {
-        console.log("user row clicked!");
         e.preventDefault();
         updateUser();
         setShowInput(false);
@@ -72,12 +71,10 @@ export default function UsernameSearch(props: UsernameProps) {
         // setShowUsers(false);
     };
     const handleMouseLeave = () => {
-        console.log("left");
         setMousingAround(false);
     };
     const onMouseEnter = (_: MouseEvent<HTMLLIElement>, i: number) => {
         setMousingAround(true);
-        console.log(i);
         setSelectedIndex(i);
     };
     const onKeyUpHandler = (e: KeyboardEvent<HTMLInputElement>) => {
@@ -99,17 +96,13 @@ export default function UsernameSearch(props: UsernameProps) {
             selectedIndex < users.length
         ) {
             e.preventDefault();
-            console.log("enter");
             updateUser();
             setShowInput(false);
         } else if (e.key === "Escape") {
             e.preventDefault();
-            console.log("escaped");
         } else if (e.keyCode == 27) {
             e.preventDefault();
-            console.log(27);
         }
-        console.log("end");
     };
     const onSpanClick = () => {
         setShowInput(true);
@@ -140,8 +133,6 @@ export default function UsernameSearch(props: UsernameProps) {
     };
     const onBlur = (e: FocusEvent<HTMLInputElement>) => {
         e.preventDefault();
-        console.log(e);
-        console.log("blurred");
         if (!mousingAround) {
             setShowInput(false);
             // if (!cast.usernameOverride) {
@@ -177,7 +168,6 @@ export default function UsernameSearch(props: UsernameProps) {
     useEffect(() => {
         const handleKeyDown = (event: any) => {
             if (event.key === "Enter") {
-                console.log("LMAOOO!");
                 handleBlur();
             }
         };

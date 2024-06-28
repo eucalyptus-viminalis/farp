@@ -83,7 +83,6 @@ export default function UserSearch() {
     };
 
     const onBlur = (e: FocusEvent<HTMLInputElement>) => {
-        console.log(e);
     };
 
     useEffect(()=> {

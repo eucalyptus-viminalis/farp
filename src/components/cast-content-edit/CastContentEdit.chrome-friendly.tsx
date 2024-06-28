@@ -130,7 +130,6 @@ export default function CastContentEdit() {
         }
     };
     const handleOnInput = (e: FormEvent<HTMLDivElement>) => {
-        console.log("onInput");
         e.preventDefault();
         const txt = e.currentTarget.innerText;
         updateCastText(txt);
@@ -145,7 +144,6 @@ export default function CastContentEdit() {
         }
     };
     const handlePaste = (event: ClipboardEvent) => {
-        console.log("handlePaste");
         const clipboardItems = event.clipboardData?.items;
         if (!clipboardItems) return;
 
@@ -153,7 +151,6 @@ export default function CastContentEdit() {
             const item = clipboardItems[i];
             if (item.type.indexOf("image") !== -1) {
                 event.preventDefault();
-                console.log("image found");
                 const blob = item.getAsFile();
                 if (blob) {
                     const reader = new FileReader();
