@@ -1,5 +1,6 @@
 'use client'
 import { CastPreviewContext } from "@/contexts/CastPreviewContext";
+import Image from "next/image";
 import { useContext } from "react";
 
 type PFPProps = {
@@ -19,7 +20,18 @@ export default function PFPPreview(props: PFPProps) {
         <span className="relative h-min w-auto" data-state="closed">
             {con.previewMode ==='expanded-web' && con.castType === 'root-cast' && (
                 <div className="relative">
-                    <img
+                    <Image
+                        src={src}
+                        className={`aspect-square shrink-0 rounded-full border object-cover bg-app border-default`}
+                        alt={cast.usernameOverride + ' avatar'}
+                        width={size}
+                        height={size}
+                        style={{
+                            minWidth: `${size}px`,
+                            minHeight: `${size}px`,
+                        }}
+                    />
+                    {/* <img
                         loading="lazy"
                         src={src}
                         className={`aspect-square shrink-0 rounded-full border object-cover bg-app border-default`}
@@ -30,14 +42,25 @@ export default function PFPPreview(props: PFPProps) {
                             minWidth: `${size}px`,
                             minHeight: `${size}px`,
                         }}
-                    />
+                    /> */}
                     {!following && <FollowPlusIcon />}
                 </div>
             )
             }
             {con.previewMode === 'expanded-web' && con.castType === "reply" && (
                 <div className="relative mr-2">
-                    <img
+                    <Image
+                        src={src}
+                        className={`aspect-square shrink-0 rounded-full border object-cover bg-app border-default`}
+                        alt="avatar"
+                        width={size}
+                        height={size}
+                        style={{
+                            minWidth: `${size}px`,
+                            minHeight: `${size}px`,
+                        }}
+                    />
+                    {/* <img
                         loading="lazy"
                         src={src}
                         className={`aspect-square shrink-0 rounded-full border object-cover bg-app border-default`}
@@ -48,13 +71,24 @@ export default function PFPPreview(props: PFPProps) {
                             minWidth: `${size}px`,
                             minHeight: `${size}px`,
                         }}
-                    />
+                    /> */}
                     {!following && <FollowPlusIcon />}
                 </div>
             )}
             {con.previewMode === 'expanded-web' && con.castType === "nested-reply" && (
                 <div className="relative mr-2">
-                    <img
+                    <Image
+                        src={src}
+                        className={`aspect-square shrink-0 rounded-full border object-cover bg-app border-default`}
+                        alt="avatar"
+                        width={36}
+                        height={36}
+                        style={{
+                            minWidth: `36px`,
+                            minHeight: `36px`,
+                        }}
+                    />
+                    {/* <img
                         loading="lazy"
                         src={src}
                         className={`aspect-square shrink-0 rounded-full border object-cover bg-app border-default`}
@@ -65,14 +99,25 @@ export default function PFPPreview(props: PFPProps) {
                             minWidth: `36px`,
                             minHeight: `36px`,
                         }}
-                    />
+                    /> */}
                     {!following && <FollowPlusIcon />}
                 </div>
             )}
             
             {con.previewMode === 'timeline-web' && con.castType === 'root-cast' && (
                 <div className="relative mr-2">
-                    <img
+                    <Image
+                        src={src}
+                        className={`aspect-square shrink-0 rounded-full border object-cover bg-app border-default`}
+                        alt={cast.usernameOverride + ' avatar'}
+                        width={size}
+                        height={size}
+                        style={{
+                            minWidth: `${size}px`,
+                            minHeight: `${size}px`,
+                        }}
+                    />
+                    {/* <img
                         loading="lazy"
                         src={src}
                         className={`aspect-square shrink-0 rounded-full border object-cover bg-app border-default`}
@@ -83,7 +128,7 @@ export default function PFPPreview(props: PFPProps) {
                             minWidth: `${size}px`,
                             minHeight: `${size}px`,
                         }}
-                    />
+                    /> */}
                     {!following && <FollowPlusIcon />}
                 </div>
             )}
