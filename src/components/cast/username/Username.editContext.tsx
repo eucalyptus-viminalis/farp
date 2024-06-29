@@ -170,7 +170,6 @@ export default function Username(props: UsernameProps) {
     useEffect(() => {
         const handleKeyDown = (event: any) => {
             if (event.key === "Enter") {
-                console.log("LMAOOO!");
                 handleBlur();
             }
         };

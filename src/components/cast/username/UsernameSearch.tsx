@@ -230,9 +230,6 @@ export default function UsernameSearch(props: UsernameProps) {
                                 }`}
                                 onMouseEnter={(e) => onMouseEnter(e, index)}
                                 onClick={onUserRowClick}
-                                onClickCapture={() =>
-                                    console.log("click captured")
-                                }
                             >
                                 <div className="flex flex-row">
                                     {user.pfp_url && (
