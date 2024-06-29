@@ -1,8 +1,5 @@
 import ArrowLeftIcon from "@/components/icons/ArrowLeftIcon";
 import ConvoRootCast from "../../components/cast/ConvoRootCast";
-import { ActionRow } from "@/components/cast/BottomBar";
-import StatsRow from "@/components/cast/stats/StatsRow.preview";
-import ReplyCard from "../../components/ReplyCard";
 import ReplyCast from "../../components/cast/ReplyCast";
 import { CastState } from "@/types/types";
 import NestedReplyCast from "../../components/cast/NestedReplyCast";
@@ -14,6 +11,7 @@ const exampleReply: CastState = {
     castText: "ironically the reason venmo took off is bc it was public",
     displayNameOverride: "Matthew",
     imageEmbeds: [],
+    embeds: [],
     likeCount: 153,
     liked: false,
     pfpOverride:
@@ -27,6 +25,7 @@ const exampleReply: CastState = {
 const exampleReply2: CastState = {
     activeBadgeOverride: true,
     ago: "2d",
+    embeds: [],
     bookmarked: false,
     castText:
         "What privacy would you like to see? Run through a mixer by default ?",
@@ -48,6 +47,7 @@ const exampleNestedReply: CastState = {
     bookmarked: false,
     castText:
         "Are you sure? They provide a “private” option which is pretty popular from my experience",
+    embeds: [],
     displayNameOverride: "c-node",
     imageEmbeds: [],
     likeCount: 153,
@@ -67,6 +67,7 @@ const exampleNestedReply2: CastState = {
     bookmarked: false,
     castText: "unironically\n\nftfy",
     displayNameOverride: "dawufi",
+    embeds: [],
     imageEmbeds: [],
     likeCount: 153,
     liked: false,

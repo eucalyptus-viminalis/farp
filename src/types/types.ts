@@ -1,6 +1,8 @@
-import { SearchedUser } from "@neynar/nodejs-sdk/build/neynar-api/v2";
+import { EmbeddedCast, SearchedUser } from "@neynar/nodejs-sdk/build/neynar-api/v2";
 
 export const DEFAULT_PFP_URL = "/dwr.png";
+
+export type Embed = EmbeddedCast
 
 export type PreviewMode =
     | "timeline-web"
@@ -18,10 +20,12 @@ export type CastState = {
     recasted: boolean;
     bookmarked: boolean;
     imageEmbeds: string[];
+    embeds: Embed[]
     castText: string;
     replyCount: number;
     likeCount: number;
     channelName?: string;
+    castHash?: string
     replies?: CastState[];
     user?: SearchedUser;
 };
@@ -35,6 +39,7 @@ export const ROOT_CAST_DEFAULT: CastState = {
     castText: "",
     displayNameOverride: "Dan Romero",
     imageEmbeds: [],
+    embeds: [],
     liked: false,
     pfpOverride: DEFAULT_PFP_URL,
     recasted: false,
@@ -53,6 +58,7 @@ export const REPLY_DEFAULT: CastState = {
     castText: "",
     displayNameOverride: "Vitalik Buterin",
     imageEmbeds: [],
+    embeds: [],
     liked: false,
     pfpOverride: "https://i.imgur.com/IzJxuId.jpg",
     recasted: false,
@@ -71,6 +77,7 @@ export const NESTED_REPLY_DEFAULT: CastState = {
     castText: "",
     displayNameOverride: "Vitalik Buterin",
     imageEmbeds: [],
+    embeds: [],
     liked: false,
     pfpOverride: "https://i.imgur.com/IzJxuId.jpg",
     recasted: false,
