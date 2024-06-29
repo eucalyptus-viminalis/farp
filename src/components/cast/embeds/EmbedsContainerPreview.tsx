@@ -46,8 +46,6 @@ async function classifyEmbeds(embeds: Embed[]) {
         } else {
             const contentType = await getContentType(url);
             if (contentType && contentType.startsWith("image/")) {
-                console.log('contenttype starts with image:')
-                console.log(url)
                 classifiedUrls.images.push(url);
             } else {
                 classifiedUrls.websites.push(url);
@@ -71,10 +69,6 @@ export default function EmbedsContainerPreview() {
         images: [...classifiedEmbeds.images, ...imgUrls] 
     }
     if(!embeds) return null
-    if (cx.cast.user?.username.includes('betashop')) {
-        console.log('imgUrls', imgUrls)
-        console.log(embeds)
-    }
     // const { imgUrls } = props;
     return (
         <div className="mt-2 inline-flex flex-col justify-center space-y-1">
