@@ -36,4 +36,15 @@ export async function getTrendingCasts(limit = SEARCH_LIMIT) {
     })
     return res.casts
 }
+// Function to get the content type of a URL
+
+export async function getContentType(url: string) {
+    try {
+        const response = await fetch(url, { method: "HEAD" });
+        return response.headers.get("content-type");
+    } catch (error) {
+        console.error(`Error fetching ${url}:`, error);
+        return null;
+    }
+}
 
