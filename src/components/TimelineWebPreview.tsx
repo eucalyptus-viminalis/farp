@@ -25,7 +25,7 @@ className="h-full w-full shrink-0 justify-center sm:mr-4 sm:w-[540px] lg:w-[620p
     <div className="w-full h-full">
         <div className="h-full min-h-screen border-default sm:border-x"> */}
             {/* Mode buttons */}
-            <button onClick={globalCx.shuffleCasts} className="pl-2 mb-2 text-[var(--yellow-9)]">Shuffle Casts</button>
+            <button onClick={globalCx.shuffleCasts} className="ml-2 p-2 mb-2 text-[var(--yellow-9)] border border-[var(--yellow-9)] font-semibold sm:hover:bg-[var(--yellow-3)] ">Shuffle Casts</button>
             <TimelineWebNavBarHome />
             {/* Root cast */}
             <CastPreview
