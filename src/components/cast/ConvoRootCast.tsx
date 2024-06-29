@@ -82,9 +82,7 @@ const ConvoRootCast = () => {
                                         className="relative h-min w-auto"
                                         data-state="closed"
                                     >
-                                        <span
-                                            className="text-base text-muted hover:underline"
-                                        >
+                                        <span className="text-base text-muted hover:underline">
                                             @{cast.usernameOverride}
                                         </span>
                                     </span>
@@ -118,10 +116,8 @@ const ConvoRootCast = () => {
                         </div> */}
                     </div>
                     <div className="flex flex-col whitespace-pre-wrap break-words text-lg leading-6 tracking-normal">
-                        <CastText castText={cast.castText}/>
-                        {cast.imageEmbeds.length > 0 && (
-                            <EmbedsContainerPreview imgUrls={cast.imageEmbeds}/>
-                        )}
+                        <CastText castText={cast.castText} />
+                        <EmbedsContainerPreview/>
                         {/* <div>
               I like
               <span className="relative w-full" data-state="closed">
@@ -141,7 +137,7 @@ const ConvoRootCast = () => {
                 </div>
                 <div className="px-4">
                     {/* <ActionRow /> */}
-                    <ActionRow/>
+                    <ActionRow />
                 </div>
                 <StatsRow previewMode="expanded-web" />
                 <ReplyCard />

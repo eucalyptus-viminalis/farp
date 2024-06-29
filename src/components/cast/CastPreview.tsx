@@ -1,6 +1,6 @@
 "use client";
 
-import { ReactNode } from "react";
+import { ReactNode, useEffect } from "react";
 import PFPPreview from "./pfp/PFPPreview";
 import { CastType } from "@/types/types";
 import { CastState } from "@/types/types";
@@ -116,11 +116,7 @@ export function CastPreview(props: CastProps) {
                                             {/* {cast.castText} */}
                                             <CastText castText={cast.castText}/>
                                         </div>
-                                        {cast.imageEmbeds && (
-                                            <EmbedsContainerPreview
-                                                imgUrls={cast.imageEmbeds}
-                                            />
-                                        )}
+                                        <EmbedsContainerPreview/>
                                     </div>
                                     {/* <BottomBar /> */}
                                     <BottomBarPreview />

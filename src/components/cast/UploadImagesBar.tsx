@@ -26,9 +26,14 @@ export default function UploadImagesBar() {
             reader.onload = (e) => {
                 const imageUrl = e.target?.result as string;
                 // context.dispatch({type:"SET_ROOT_CAST", payload: {...cast, imageEmbeds: [...cast.imageEmbeds, imageUrl]}})
+                // context.updateCast({
+                //     ...cast,
+                //     imageEmbeds: [...cast.imageEmbeds, imageUrl]
+                // })
                 context.updateCast({
                     ...cast,
-                    imageEmbeds: [...cast.imageEmbeds, imageUrl]
+                    imageEmbeds: [...cast.imageEmbeds, imageUrl],
+                    // embeds: [...cast.embeds, {url: imageUrl}]
                 })
                 // Update the context or perform any additional actions as needed
                 // context.dispatch({ type: 'SET_USER_PFP', payload: newPfpUrl });
@@ -45,6 +50,7 @@ export default function UploadImagesBar() {
         context.updateCast({
             ...cast,
             imageEmbeds: cast.imageEmbeds.filter((_,i)=>i !== index)
+            // embeds: cast.embeds.filter((_,i)=>i !== index),
         })
     };
 

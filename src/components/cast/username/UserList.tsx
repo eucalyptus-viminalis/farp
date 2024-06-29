@@ -40,7 +40,6 @@ export default function UserList(props: UserListProps) {
                         }`}
                         onMouseEnter={(e) => onMouseEnter(e, index)}
                         onClick={onUserRowClick}
-                        onClickCapture={() => console.log("click captured")}
                     >
                         <div className="flex flex-row">
                             {user.pfp_url && (
