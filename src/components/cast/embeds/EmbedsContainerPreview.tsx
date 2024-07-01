@@ -79,7 +79,7 @@ export default function EmbedsContainerPreview() {
                     {embeds.images.map((imgUrl, i) => {
                         return (
                             <img
-                                key={i}
+                                key={cx.cast.castHash? cx.cast.castHash + i : i}
                                 alt={"Cast image embed " + i}
                                 loading="lazy"
                                 src={imgUrl}

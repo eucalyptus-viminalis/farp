@@ -38,7 +38,7 @@ className="h-full w-full shrink-0 justify-center sm:mr-4 sm:w-[540px] lg:w-[620p
             )}
             {globalCx.trendingCasts.map((cast, i) => (
                 <CastPreview
-                    key={"cast-" + i}
+                    key={cast.castHash ? cast.castHash + i : i}
                     castType="root-cast"
                     cast={cast}
                     previewMode="timeline-web"
