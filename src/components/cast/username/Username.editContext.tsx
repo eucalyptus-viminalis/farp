@@ -120,6 +120,9 @@ export default function Username(props: UsernameProps) {
     const toggleInput = () => {
         setShowInput((prev) => !prev);
     };
+    useEffect(()=>{
+        setQ(username)
+    }, [username])
 
     const handleBlur = () => {
         setShowInput(false);
