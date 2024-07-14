@@ -1,45 +1,78 @@
 import type { Metadata } from "next";
-import {Analytics} from '@vercel/analytics/react'
-import { Inter } from "next/font/google";
+import { Analytics } from "@vercel/analytics/react";
 import "./globals.css";
-import "./wc.css"
-import '../css/custom.css'
+import "./wc.css";
+import "../css/custom.css";
 import { EditProvider } from "@/contexts/EditContext";
 import { GlobalContextProvider } from "@/contexts/GlobalContext";
+import ModeButtons from "./ModeButtons";
+import PageButtons from "./PageButtons";
+import { inter } from "@/fonts/fonts";
+import { DCEditProvider } from "@/contexts/DCEditContext";
 
-const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "farp",
-  description: "chat, is this real?",
-  openGraph: {
-    title: 'farp',
-    description: 'chat, is this real?',
-    type: 'website',
-
-  }
+    title: "farp",
+    description: "chat, is this real?",
+    openGraph: {
+        title: "farp",
+        description: "chat, is this real?",
+        type: "website",
+    },
 };
 
 export default function RootLayout({
-  children,
+    children,
 }: Readonly<{
-  children: React.ReactNode;
+    children: React.ReactNode;
 }>) {
-  return (
-    <html lang="en">
-      <body className={inter.className + ' overflow-x-clip bg-app'}>
-        <GlobalContextProvider>
-          <EditProvider>
-            {children}
-          </EditProvider>
-        </GlobalContextProvider>
-        <footer
-          className="bg-app border-t py-4 border-faint flex flex-col justify-center items-center" 
-        >
-          <span className="p-2 text-[var(--yellow-11)]">farp</span>
-        </footer>
-        <Analytics/>
-        </body>
-    </html>
-  );
+    return (
+        <html lang="en">
+            <body className={inter.className + " overflow-x-clip bg-app"}>
+                <GlobalContextProvider>
+                    <EditProvider>
+                        <DCEditProvider>
+                            <div className="container mx-auto min-h-full h-max">
+                                <div className="flex min-h-screen flex-row justify-center">
+                                    <main className="h-full bg-app relative w-full shrink-0 justify-center sm:mr-4 sm:w-[540px] lg:w-[620px]">
+                                        {/* Bleed */}
+                                        <div
+                                            className="
+                                              absolute top-0 -translate-x-full h-full left-0 w-full
+                                              z-10
+                                              bg-gradient-to-l
+                                              from-app-tw-light dark:from-app-tw-dark
+                                              from-20%
+                                              to-[var(--yellow-6)] dark:to-[var(--yellow-6)]
+                                            "
+                                        ></div>
+                                        <div
+                                            className="
+                                                absolute top-0 translate-x-full h-full right-0 w-full
+                                                z-10
+                                                bg-gradient-to-r from-app-tw-light dark:from-app-tw-dark
+                                                from-20%
+                                                to-[var(--yellow-6)] dark:to-[var(--yellow-6)]
+                                            "
+                                        ></div>
+                                        <div className="w-full h-full">
+                                            <div className="h-full min-h-screen border-default sm:border-x">
+                                                <PageButtons/>
+                                                <ModeButtons/>
+                                                {children}
+                                            </div>
+                                        </div>
+                                    </main>
+                                </div>
+                            </div>
+                        </DCEditProvider>
+                    </EditProvider>
+                </GlobalContextProvider>
+                <footer className="bg-app border-t py-4 border-faint flex flex-col justify-center items-center">
+                    <span className="p-2 text-[var(--yellow-11)]">farp</span>
+                </footer>
+                <Analytics />
+            </body>
+        </html>
+    );
 }
