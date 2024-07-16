@@ -5,7 +5,8 @@ export default function TopNav() {
     const displayname = "Deployer";
     return (
         <nav className="sticky top-0 z-10 flex-col border-b-0 bg-app border-default sm:border-b sm:border-b-0">
-            <div className="hidden sm:flex sm:px-4 h-14 flex-row items-center justify-between">
+            {/* <div className="hidden sm:flex sm:px-4 h-14 flex-row items-center justify-between"> */}
+            <div className="sm:flex sm:px-4 h-14 flex-row items-center justify-between">
                 <div className="w-full">
                     <div className="flex w-full flex-row">
                         <div className="mr-1 flex cursor-pointer flex-col items-center justify-center rounded-full p-2 hover:bg-overlay-faint lg:hidden">

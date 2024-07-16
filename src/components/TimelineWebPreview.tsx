@@ -3,13 +3,8 @@
 import TimelineWebNavBarHome from "./nav/Nav";
 import { CastPreview } from "./cast/CastPreview";
 import { useContext } from "react";
-import TimeAgo from "javascript-time-ago";
-import en from "javascript-time-ago/locale/en";
 import { EditContext } from "@/contexts/EditContext";
 import { GlobalContext } from "@/contexts/GlobalContext";
-
-TimeAgo.addDefaultLocale(en);
-export const timeAgo = new TimeAgo("en-US");
 
 export default function TimelineWebPreview() {
     // Context

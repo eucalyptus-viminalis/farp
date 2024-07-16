@@ -1,12 +1,16 @@
 "use client";
 import ActionButton from "@/components/button/ActionButton";
 import { GlobalContext, Page } from "@/contexts/GlobalContext";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useContext } from "react";
 
 export default function PageButtons() {
+    const pathname = usePathname()
+
     // Context
     const cx = useContext(GlobalContext);
-    const { page, setPage } = cx;
+    const { setPage } = cx;
 
     // Handlers
     const handleOnClick = (page: Page) => {
@@ -21,18 +25,22 @@ export default function PageButtons() {
                 p-1
             "
         >
-            <ActionButton
-                handleOnClick={() => handleOnClick("cast")}
-                withBg={page === "cast"}
-            >
-                Cast
-            </ActionButton>
-            <ActionButton
-                handleOnClick={() => handleOnClick("dc")}
-                withBg={page === "dc"}
-            >
-                DC
-            </ActionButton>
+            <Link href={"/"}>
+                <ActionButton
+                    handleOnClick={() => handleOnClick("cast")}
+                    withBg={pathname === "/"}
+                >
+                    Cast
+                </ActionButton>
+            </Link>
+            <Link href={"/dc"}>
+                <ActionButton
+                    handleOnClick={() => handleOnClick("dc")}
+                    withBg={pathname=== "/dc"}
+                >
+                    DC
+                </ActionButton>
+            </Link>
         </div>
     );
 }

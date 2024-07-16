@@ -14,6 +14,21 @@ const POPULAR_KOLS: {
         username: "dwr",
     },
     {
+        displayName: "Ran Domero",
+        pfp: "/ran.avif",
+        username: "randomeror",
+    },
+    {
+        displayName: "Dana Pumelo",
+        pfp: "/dana.avif",
+        username: "dwp",
+    },
+    {
+        displayName: "Polymarket",
+        pfp: "/polymarket.avif",
+        username: "polymarket",
+    },
+    {
         displayName: "Donald J. Trump",
         pfp: "/trump.jpg",
         username: "realDonaldTrump",
@@ -71,8 +86,8 @@ export default function KOLS() {
                                 })
                             }}
                             style={{
-                                width: "70px", // Adjust size to accommodate outer border
-                                height: "70px", // Adjust size to accommodate outer border
+                                width: "46px", // Adjust size to accommodate outer border
+                                height: "46px", // Adjust size to accommodate outer border
                                 // padding: "10px", // Adjust padding to achieve the outer border effect
                             }}
                         >
@@ -84,11 +99,11 @@ export default function KOLS() {
                                     object-cover bg-app border-default
                                 `}
                                 alt={kol.username + " avatar"}
-                                width={64}
-                                height={64}
+                                width={44}
+                                height={44}
                                 style={{
-                                    minWidth: `${64}px`,
-                                    minHeight: `${64}px`,
+                                    minWidth: `${44}px`,
+                                    minHeight: `${44}px`,
                                 }}
                             />
                         </div>

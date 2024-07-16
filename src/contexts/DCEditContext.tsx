@@ -1,5 +1,5 @@
 "use client";
-import { DC } from "@/components/dc/FullDC";
+import { DC } from "@/types/types";
 import { SearchedUser } from "@neynar/nodejs-sdk/build/neynar-api/v2";
 import { createContext, Dispatch, ReactNode, useReducer } from "react";
 
@@ -30,6 +30,8 @@ const initialState: DCEditState = {
 export type DCEditAction =
     | { type: "SET_USER"; payload: SearchedUser }
     | { type: "ADD_MESSAGE"; payload: DC }
+    | { type: "RESET_MESSAGES"; payload: true }
+    | { type: "UPDATE_MESSAGE"; payload: {msg: DC, index: number} }
     | { type: "DELETE_MESSAGE"; payload: { index: number } }
     | { type: "OVERRIDE_PFP"; payload: string }
     | { type: "OVERRIDE_DISPLAY_NAME"; payload: string }
@@ -56,8 +58,14 @@ const reducer = (state: DCEditState, action: DCEditAction): DCEditState => {
             };
         case "ADD_MESSAGE":
             return { ...state, msgs: [...state.msgs, payload] };
+        case "RESET_MESSAGES":
+            return { ...state, msgs: [] };
+        case "UPDATE_MESSAGE":
+            const newMsgs = state.msgs
+            newMsgs[payload.index] = payload.msg
+            return { ...state, msgs: newMsgs };
         case "DELETE_MESSAGE":
-            return { ...state, msgs: state.msgs.splice(payload.index) };
+            return { ...state, msgs: [...state.msgs.filter((_,i) => i !== payload.index)] };
         case "OVERRIDE_PFP":
             return { ...state, pfpOverride: payload };
         case "OVERRIDE_ACTIVE_BADGE":

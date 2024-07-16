@@ -1,29 +1,40 @@
-import { inter } from "@/fonts/fonts";
-import URLDisplay from "./URLDisplay";
-import DoubleCheckmarks from "./read-status/DoubleCheckmarks";
+import ImageEmbed from "./ImageEmbed";
+import CaptionWithTimestamp from "./CaptionWithTimestamp";
 
 type MessageProps = {
     index: number;
     castText: string;
     timeDisplayString: string;
-    bigGap?: boolean
+    bigGap?: boolean;
     translate?: number;
     isSelfDC?: boolean;
     isReply?: boolean;
+    imgSrc?: string
 };
 export default function Message(props: MessageProps) {
-    const { index, castText, translate, timeDisplayString, isSelfDC, isReply, bigGap } =
-        props;
+    const {
+        index,
+        castText,
+        imgSrc,
+        translate,
+        timeDisplayString,
+        isSelfDC,
+        isReply,
+        bigGap,
+    } = props;
     return (
         <div
             data-index={index}
             className={`
                     w-full
-                    ${translate && 'absolute top-0'} 
-                    ${!translate && ''}
+                    ${translate && "absolute top-0"} 
+                    ${!translate && ""}
                 `}
             style={{
-                transform: translate ? `translateY(${translate}px) scaleY(-1)` : 'scaleY(-1)',
+                transform: translate
+                    ? `translateY(${translate}px) scaleY(-1)`
+                    : "scaleY(-1)",
+                // transform: translate ? `translateY(${translate}px) scaleY(-1)` : '',
             }}
         >
             <div className="mr-[2px] flex flex-col">
@@ -32,7 +43,7 @@ export default function Message(props: MessageProps) {
                         group flex max-w-[80%]     
                         ${!isSelfDC && "flex-row self-start"}
                         ${isSelfDC && "flex-row-reverse self-end"}
-                        ${bigGap ? 'mb-3' : 'mb-1'}
+                        ${bigGap ? "mb-3" : "mb-1"}
                 `}
                 >
                     <div className="flex flex-col">
@@ -45,56 +56,21 @@ export default function Message(props: MessageProps) {
                         >
                             <div className="flex flex-col">
                                 {/* <div className="flex flex-row rounded-lg p-2 bg-direct-cast text-default"> */}
-                                <div
-                                    className={`
-                                        flex flex-row rounded-lg p-2 
-                                        ${
-                                            !isSelfDC &&
-                                            "bg-direct-cast text-default"
-                                        }
-                                        ${
-                                            isSelfDC &&
-                                            "bg-self-direct-cast text-light rounded-tr"
-                                        }
-                                    `}
-                                >
-                                    <pre
-                                        className={
-                                            inter.className +
-                                            " relative grow justify-stretch place-self-start whitespace-pre-wrap text-[.95rem] leading-[1.3rem] break-gracefully"
-                                        }
-                                    >
-                                        {castText}
-                                        <div className="mb-[2px] ml-2 inline-flex space-x-1 text-right opacity-0">
-                                            {/* <div className="mr-2 min-w-[50px] text-xs text-muted w-max !min-w-0 text-end"> */}
-                                            <div
-                                                className={`
-                                                    mr-2 min-w-[50px] text-xs
-                                                    w-max !min-w-0 text-end
-                                                    ${isSelfDC && "text-light"}
-                                                    ${!isSelfDC && "text-muted"}
-                                                `}
-                                            >
-                                                {timeDisplayString}
-                                            </div>
-                                            {isSelfDC && <DoubleCheckmarks />}
-                                        </div>
-                                        <div className="absolute bottom-[-4pt] right-[-2pt] mb-[2px] ml-2 inline-flex space-x-1 text-right">
-                                            {/* <div className="mr-2 min-w-[50px] text-xs text-muted w-max !min-w-0 text-end"> */}
-                                            <div
-                                                className={`
-                                                    mr-2 min-w-[50px] text-xs
-                                                    w-max !min-w-0 text-end
-                                                    ${isSelfDC && "text-light"}
-                                                    ${!isSelfDC && "text-muted"}
-                                                `}
-                                            >
-                                                {timeDisplayString}
-                                            </div>
-                                            {isSelfDC && <DoubleCheckmarks />}
-                                        </div>
-                                    </pre>
-                                </div>
+                                {imgSrc && (
+                                    <ImageEmbed
+                                        imgSrc={imgSrc} 
+                                        timeDisplay={timeDisplayString}
+                                        hasCaption={castText && castText.trim().length !== 0 ? true : false}
+                                    />
+                                )}
+                                {castText && (
+                                    <CaptionWithTimestamp
+                                        castText={castText} 
+                                        timeDisplay={timeDisplayString}
+                                        asCaption={imgSrc ? true : false}
+                                        isSelfDC={isSelfDC}
+                                    />
+                                )}
                             </div>
                             {/* Hover actions */}
                             {/* <div className="flex items-center space-x-3 opacity-0 transition-all group-hover:opacity-100 ml-2 flex-row"> */}
@@ -156,32 +132,31 @@ export default function Message(props: MessageProps) {
                                     </div>
                                 </div>
                                 {isSelfDC && (
-
-                                <div
-                                    className="flex"
-                                    aria-haspopup="dialog"
-                                    aria-expanded="false"
-                                    aria-controls="radix-:rn7:"
-                                    data-state="closed"
-                                >
-                                    <svg
-                                        aria-hidden="true"
-                                        focusable="false"
-                                        role="img"
-                                        className="mt-0.5 cursor-pointer text-muted hover:text-muted-light"
-                                        viewBox="0 0 16 16"
-                                        width="14"
-                                        height="14"
-                                        fill="currentColor"
-                                        style={{
-                                            display: "inline-block",
-                                            verticalAlign: "text-bottom",
-                                            overflow: "visible",
-                                        }}
+                                    <div
+                                        className="flex"
+                                        aria-haspopup="dialog"
+                                        aria-expanded="false"
+                                        aria-controls="radix-:rn7:"
+                                        data-state="closed"
                                     >
-                                        <path d="M8 9a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3ZM1.5 9a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3Zm13 0a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3Z" />
-                                    </svg>
-                                </div>
+                                        <svg
+                                            aria-hidden="true"
+                                            focusable="false"
+                                            role="img"
+                                            className="mt-0.5 cursor-pointer text-muted hover:text-muted-light"
+                                            viewBox="0 0 16 16"
+                                            width="14"
+                                            height="14"
+                                            fill="currentColor"
+                                            style={{
+                                                display: "inline-block",
+                                                verticalAlign: "text-bottom",
+                                                overflow: "visible",
+                                            }}
+                                        >
+                                            <path d="M8 9a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3ZM1.5 9a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3Zm13 0a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3Z" />
+                                        </svg>
+                                    </div>
                                 )}
                             </div>
                         </div>

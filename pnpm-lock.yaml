@@ -17,6 +17,9 @@ dependencies:
   '@vercel/og':
     specifier: ^0.6.2
     version: 0.6.2
+  dayjs:
+    specifier: ^1.11.11
+    version: 1.11.11
   draft-js:
     specifier: ^0.11.7
     version: 0.11.7(react-dom@18.3.1)(react@18.3.1)
@@ -1179,6 +1182,10 @@ packages:
     engines: {node: '>=0.11'}
     dependencies:
       '@babel/runtime': 7.24.7
+    dev: false
+
+  /dayjs@1.11.11:
+    resolution: {integrity: sha512-okzr3f11N6WuqYtZSvm+F776mB41wRZMhKP+hc34YdW+KmtYYK9iqvHSwo2k9FEH3fhGXvOPV6yz2IcSrfRUDg==}
     dev: false
 
   /debug@3.2.7:

@@ -10,6 +10,7 @@ import FullDC from "@/components/dc/FullDC";
 import DCEditNode from "@/components/dc/DCEditNode.dcEdit";
 import KOLSDC from "@/components/dc/kols/KOLS.dcEdit";
 import KOLS from "./KOLS";
+import DCPreviewNode from "@/components/dc/DCPreviewNode.dcEdit";
 
 type EditMode = "edit" | "preview";
 
@@ -22,7 +23,7 @@ export default function EditPage() {
 
     return (
         <>
-            {page === "dc" && (
+            {/* {page === "dc" && (
                 <>
                     {mode === "edit" && (
                         <div className="">
@@ -30,10 +31,10 @@ export default function EditPage() {
                             <DCEditNode/>
                         </div>
                     )}
-                    {mode === "preview" && <FullDC />}
+                    {mode === "preview" && <DCPreviewNode/>}
                 </>
-            )}
-            {page === "cast" && (
+            )} */}
+            {/* {page === "cast" && ( */}
                 <>
                     {mode === "edit" && (
                         <div className="">
@@ -69,7 +70,7 @@ export default function EditPage() {
                     )}
                     {mode === "preview" && <PreviewNode />}
                 </>
-            )}
+            {/* )} */}
         </>
     );
 }

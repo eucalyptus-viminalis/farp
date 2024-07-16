@@ -1,7 +1,7 @@
 export default function EmojiInputBtn() {
     return (
         <div
-            className="flex cursor-pointer flex-row items-center rounded-md p-1 px-4 py-2 !mb-[1px] flex h-[40px] w-[40px] min-w-[40px] items-center justify-center self-end !rounded-full !bg-transparent !p-0 hover:!bg-overlay-faint disabled:hover:!bg-transparent"
+            className="hidden sm:flex cursor-pointer flex-row items-center rounded-md p-1 px-4 py-2 !mb-[1px] flex h-[40px] w-[40px] min-w-[40px] items-center justify-center self-end !rounded-full !bg-transparent !p-0 hover:!bg-overlay-faint disabled:hover:!bg-transparent"
             // type="button"
             aria-haspopup="dialog"
             aria-expanded="false"

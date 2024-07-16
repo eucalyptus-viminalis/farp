@@ -15,10 +15,11 @@ export const metadata: Metadata = {
     title: "farp",
     description: "chat, is this real?",
     openGraph: {
-        title: "farp",
+        title: 'farp',
         description: "chat, is this real?",
         type: "website",
     },
+    keywords: ['Farp', 'Farcaster', 'Fake Cast Generator', 'Warpcast']
 };
 
 export default function RootLayout({
@@ -57,6 +58,7 @@ export default function RootLayout({
                                         ></div>
                                         <div className="w-full h-full">
                                             <div className="h-full min-h-screen border-default sm:border-x">
+                                                <span className="absolute text-[var(--yellow-8)]">[beta]</span>
                                                 <PageButtons/>
                                                 <ModeButtons/>
                                                 {children}
@@ -68,9 +70,9 @@ export default function RootLayout({
                         </DCEditProvider>
                     </EditProvider>
                 </GlobalContextProvider>
-                <footer className="bg-app border-t py-4 border-faint flex flex-col justify-center items-center">
+                {/* <footer className="bg-app border-t py-4 border-faint flex flex-col justify-center items-center">
                     <span className="p-2 text-[var(--yellow-11)]">farp</span>
-                </footer>
+                </footer> */}
                 <Analytics />
             </body>
         </html>
