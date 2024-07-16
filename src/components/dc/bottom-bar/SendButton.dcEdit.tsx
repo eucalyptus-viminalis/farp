@@ -1,11 +1,40 @@
-export default function SendButton() {
+import { MouseEvent } from "react";
+
+type SendButtonProps = {
+    onClick: (e: MouseEvent) => void
+    disabled: boolean
+}
+export default function SendButton(props: SendButtonProps) {
+    const {onClick,disabled} = props
     return (
-        <button className="rounded-lg font-semibold border border-transparent bg-action-primary text-light active:border-action-primary-active disabled:bg-action-primary-disabled disabled:text-action-primary-disabled disabled:active:border-transparent px-[0.9333rem] py-[0.4333rem] text-sm !mb-[1px] flex h-[40px] w-[40px] min-w-[40px] items-center justify-center self-end !rounded-full !p-0 !text-action-purple bg-action disabled:!bg-overlay-medium">
+        <button 
+            // className="rounded-lg font-semibold border border-transparent bg-action-primary text-light active:border-action-primary-active disabled:bg-action-primary-disabled disabled:text-action-primary-disabled disabled:active:border-transparent px-[0.9333rem] py-[0.4333rem] text-sm !mb-[1px] flex h-[40px] w-[40px] min-w-[40px] items-center justify-center self-end !rounded-full !p-0 !text-action-purple bg-action disabled:!bg-overlay-medium"
+            disabled={disabled}
+            className={`
+                rounded-lg 
+                font-semibold 
+                border border-transparent 
+                active:border-action-primary-active 
+                px-[0.9333rem] py-[0.4333rem] 
+                text-sm !mb-[1px] flex h-[40px] w-[40px] min-w-[40px] 
+                items-center justify-center self-end 
+                !rounded-full !p-0 
+                text-[var(--yellow-1)]
+                bg-action-primary 
+                bg-[var(--yellow-9)]
+
+                disabled:bg-action-primary-disabled 
+                disabled:bg-[var(--yellow-7)]
+                disabled:text-action-primary-disabled 
+                disabled:active:border-transparent 
+                `}
+            onClick={onClick}
+        >
             <svg
                 aria-hidden="true"
                 focusable="false"
                 role="img"
-                className="pl-[3px] text-light"
+                className="pl-[3px] text-[var(--yellow-1)]"
                 viewBox="0 0 24 24"
                 width={24}
                 height={24}

@@ -1,19 +1,31 @@
 'use client'
-import { useContext } from "react";
-import Message from "./Message";
+import { useContext, useEffect, useRef } from "react";
 import { DCEditContext } from "@/contexts/DCEditContext";
 import TopNav from "./top-nav/TopNav.dcEdit";
-import MessageInput from "./bottom-bar/MessageInput.dcEdit";
 import SendButton from "./bottom-bar/SendButton.dcEdit";
 import ImageInputBtn from "./bottom-bar/ImageInputBtn.dcEdit";
 import EmojiInputBtn from "./bottom-bar/EmojiInputBtn.dcEdit";
 import MessageInputDraftJS from "./bottom-bar/MessageInputDraftJS.dcEdit";
+import BottomInputBar from "./bottom-bar/BottomInputBar";
+import Message from "./message/Message.messageEdit";
+import { MessageEditProvider } from "@/contexts/MessageEditContext";
 
 export default function DCEditNode() {
     const cx = useContext(DCEditContext)
     const {dispatch,state,} = cx
+    const scrollRef = useRef<HTMLDivElement>(null)
+    const {msgs} = state
+    const prevMsgsLengthRef = useRef(msgs.length);
+
+    useEffect(() => {
+        if (scrollRef.current && msgs.length > prevMsgsLengthRef.current) {
+            scrollRef.current.scrollTop = scrollRef.current.scrollHeight;
+        }
+        prevMsgsLengthRef.current = msgs.length;
+    }, [msgs.length]);
     return (
-        <div className="h-full w-full relative h-screen max-h-screen w-full grow">
+        // <div className="h-full w-full relative h-screen max-h-screen w-full grow">
+        <div className="w-full relative h-[70vh] sm:h-[75vh] max-h-screen w-full grow">
             <div className="flex h-full w-full flex-col">
                 <div className="flex w-full flex-col justify-center border-b bg-app border-default">
                     <TopNav />
@@ -22,6 +34,7 @@ export default function DCEditNode() {
                     {/* Scrollable area */}
                     <div
                         className="scrollbar-vert mt-0.5 h-full w-full overflow-auto scroll-auto"
+                        ref={scrollRef}
                         // style={{ transform: "scaleY(-1)" }}
                     >
                         <div
@@ -32,34 +45,23 @@ export default function DCEditNode() {
                             }}
                         >
                             {/* DCs */}
-                            {state.msgs.map((dc, i) => (
-                                <Message 
-                                    key={i} 
-                                    castText={dc.txt}
-                                    index={i}
-                                    timeDisplayString={dc.timeDisplay}
-                                    // translate={50}
-                                    isSelfDC={dc.isSelfDC}
-                                    bigGap={(i === 0 || state.msgs[i].isSelfDC !== state.msgs[i-1].isSelfDC)}
-                                />
+                            {state.msgs.toReversed().map((dc, i) => (
+                                <MessageEditProvider
+                                    dispatch={dispatch}
+                                    msg={dc}
+                                    key={state.msgs.length -1 - i}
+                                    msgIndex={state.msgs.length -1 - i}
+                                >
+                                    <Message
+                                        key={state.msgs.length -1 - i}
+                                        bigGap={(i === 0 || state.msgs[i].isSelfDC !== state.msgs[i-1].isSelfDC)}
+                                    />
+                                </MessageEditProvider>
                             ))}
                         </div>
                     </div>
                 </div>
-                <div className="relative flex w-full flex-row justify-between border-t p-3 bg-overlay-faint border-default">
-                    {/* Hidden */}
-                    <input
-                        type="file"
-                        className="w-full rounded border p-2 text-sm bg-input border-default text-default hidden"
-                        id="dc-img-input"
-                        accept="image/jpeg,image/jpg,image/png"
-                    />
-                    <EmojiInputBtn/>
-                    <ImageInputBtn/>
-                    {/* <MessageInput/> */}
-                    <MessageInputDraftJS/>
-                    <SendButton/>
-                </div>
+                <BottomInputBar/>
             </div>
         </div>
     );

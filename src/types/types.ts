@@ -1,3 +1,4 @@
+import { Reaction } from "@/components/dc/FullDC";
 import { EmbeddedCast, SearchedUser } from "@neynar/nodejs-sdk/build/neynar-api/v2";
 
 export const DEFAULT_PFP_URL = "/dwr.png";
@@ -87,4 +88,13 @@ export const NESTED_REPLY_DEFAULT: CastState = {
     likeCount: 69,
     channelName: undefined,
     replies: [],
+};
+export type DC = {
+    txt: string;
+    timeDisplay: string;
+    isSelfDC: boolean;
+    date?: string   // yyyy-mm-dd
+    replyTo?: DC;
+    reactions?: Reaction[];
+    imgSrc?: string
 };

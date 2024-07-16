@@ -1,4 +1,4 @@
-import { timeAgo } from "@/components/TimelineWebPreview";
+import { timeAgo } from "@/timeago";
 
 import { getTrendingCasts } from "@/app/serverAction";
 import { CastState } from "@/types/types";

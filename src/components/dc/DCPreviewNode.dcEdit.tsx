@@ -1,37 +1,14 @@
-import { DC } from "@/types/types";
+"use client";
+import { useContext } from "react";
 import Message from "./message/Message";
-import TopNav from "./top-nav/TopNav";
 import URLDisplay from "./URLDisplay";
+import { DCEditContext } from "@/contexts/DCEditContext";
+import TopNav from "./top-nav/TopNav.dcPreview";
+import MessageImage from "./message/MessageImage";
 
-export type Reaction = {
-    icon: string
-    count: number
-}
-
-const dcArr: DC[] = [
-    {
-        isSelfDC: false,
-        timeDisplay: '3:03 PM',
-        txt: 'Oops :(\n\nBest of luck 🤞🏽',
-        // replyTo,
-    },
-    {
-        isSelfDC: true,
-        // timeDisplay: '12:01 PM',
-        timeDisplay: '3d',
-        txt: 'will b quite busy next couple months',
-        // replyTo,
-    },
-    {
-        isSelfDC: true,
-        // timeDisplay: '12:01PM',
-        timeDisplay: '3d',
-        txt: 'hey i’ll check it out but dont think l i’ll hav time to participate : /',
-        // replyTo,
-    },
-]
-
-export default function FullDC() {
+export default function DCPreviewNode() {
+    const cx = useContext(DCEditContext);
+    const { state } = cx;
     return (
         <div className="h-full w-full relative h-screen max-h-screen w-full grow">
             <div className="flex h-full w-full flex-col">
@@ -46,35 +23,60 @@ export default function FullDC() {
                     >
                         <div
                             className="relative min-h-full w-full flex flex-col justify-start"
-                            style={{ 
-                                // height: "400px", 
-                                transform: 'scaleY(-1)'
+                            style={{
+                                // height: "4000px",
+                                transform: "scaleY(-1)",
                             }}
                         >
                             {/* DCs */}
-                            {dcArr.map((dc, i) => (
-                                <Message 
-                                    key={i} 
-                                    castText={dc.txt}
-                                    index={i}
-                                    timeDisplayString={dc.timeDisplay}
-                                    // translate={50}
-                                    isSelfDC={dc.isSelfDC}
-                                    bigGap={(i === 0 || dcArr[i].isSelfDC !== dcArr[i-1].isSelfDC)}
-                                />
+                            {state.msgs.toReversed().map((dc, i) => (
+                                <>
+                                    <Message
+                                        key={state.msgs.length - 1 - i}
+                                        castText={dc.txt}
+                                        index={state.msgs.length - 1 - i}
+                                        timeDisplayString={dc.timeDisplay}
+                                        // translate={50}
+                                        isSelfDC={dc.isSelfDC}
+                                        imgSrc={dc.imgSrc}
+                                        bigGap={
+                                            i === 0 ||
+                                            state.msgs[i].isSelfDC !==
+                                                state.msgs[i - 1].isSelfDC
+                                        }
+                                    />
+                                    {/* {dc.imgSrc ? (
+                                        <MessageImage
+                                            imgSrc={dc.imgSrc}
+                                            index={state.msgs.length - 1 - i}
+                                            timeDisplay={dc.timeDisplay}
+                                            key={state.msgs.length - 1 - i}
+                                            castText={dc.txt}
+                                            isSelfDC={dc.isSelfDC}
+                                        />
+                                    ) : (
+                                        <Message
+                                            key={state.msgs.length - 1 - i}
+                                            castText={dc.txt}
+                                            index={state.msgs.length - 1 - i}
+                                            timeDisplayString={dc.timeDisplay}
+                                            // translate={50}
+                                            isSelfDC={dc.isSelfDC}
+                                            bigGap={
+                                                i === 0 ||
+                                                state.msgs[i].isSelfDC !==
+                                                    state.msgs[i - 1].isSelfDC
+                                            }
+                                        />
+                                    )} */}
+                                </>
                             ))}
                         </div>
                     </div>
                 </div>
                 <div className="relative flex w-full flex-row justify-between border-t p-3 bg-overlay-faint border-default">
-                    <input
-                        type="file"
-                        className="w-full rounded border p-2 text-sm bg-input border-default text-default hidden"
-                        id="dc-img-input"
-                        accept="image/jpeg,image/jpg,image/png"
-                    />
                     <div
-                        className="flex cursor-pointer flex-row items-center rounded-md p-1 px-4 py-2 !rounded-full hover:!bg-overlay-faint"
+                        className="flex flex-row items-center rounded-md p-1 px-4 py-2 !rounded-full sm:hover:!bg-overlay-faint"
                         aria-haspopup="dialog"
                         aria-expanded="false"
                         aria-controls="radix-:r87:"
@@ -99,7 +101,7 @@ export default function FullDC() {
                         </svg>
                     </div>
                     <button
-                        className="rounded-lg font-semibold border border-transparent bg-action-primary text-light active:border-action-primary-active disabled:bg-action-primary-disabled disabled:text-action-primary-disabled disabled:active:border-transparent px-[0.9333rem] py-[0.4333rem] text-sm !mb-[1px] flex h-[40px] w-[40px] min-w-[40px] items-center justify-center self-end !rounded-full !bg-transparent !p-0 hover:!bg-overlay-faint disabled:hover:!bg-transparent"
+                        className="rounded-lg cursor-default font-semibold border border-transparent bg-action-primary text-light active:border-action-primary-active disabled:bg-action-primary-disabled disabled:text-action-primary-disabled disabled:active:border-transparent px-[0.9333rem] py-[0.4333rem] text-sm !mb-[1px] flex h-[40px] w-[40px] min-w-[40px] items-center justify-center self-end !rounded-full !bg-transparent !p-0 sm:hover:!bg-overlay-faint sm:disabled:hover:!bg-transparent"
                         type="button"
                     >
                         <svg
@@ -120,7 +122,20 @@ export default function FullDC() {
                             <path d="M11.75 4.5a.75.75 0 0 1 .75.75V11h5.75a.75.75 0 0 1 0 1.5H12.5v5.75a.75.75 0 0 1-1.5 0V12.5H5.25a.75.75 0 0 1 0-1.5H11V5.25a.75.75 0 0 1 .75-.75Z"></path>
                         </svg>
                     </button>
-                    <div className="relative scrollbar-vert mx-1 max-h-[600px] min-h-[40px] w-[332pt] overflow-hidden overflow-y-auto break-words rounded border p-2 px-3 text-sm bg-input text-default border-default">
+                    <div
+                        className={`
+                            relative scrollbar-vert 
+                            mx-1 
+                            max-h-[600px] min-h-[40px] w-[332pt] 
+                            overflow-hidden overflow-y-auto break-words 
+                            rounded border 
+                            p-2 px-3 
+                            text-sm 
+                            bg-input 
+                            text-default 
+                            border-default
+                        `}
+                    >
                         <div className="DraftEditor-root">
                             <div className="DraftEditor-editorContainer">
                                 <div
@@ -158,7 +173,7 @@ export default function FullDC() {
                             </div>
                         </div>
                     </div>
-                    <button className="rounded-lg font-semibold border border-transparent bg-action-primary text-light active:border-action-primary-active disabled:bg-action-primary-disabled disabled:text-action-primary-disabled disabled:active:border-transparent px-[0.9333rem] py-[0.4333rem] text-sm !mb-[1px] flex h-[40px] w-[40px] min-w-[40px] items-center justify-center self-end !rounded-full !p-0 !text-action-purple bg-action disabled:!bg-overlay-medium">
+                    <button disabled className="rounded-lg cursor-default font-semibold border border-transparent bg-action-primary text-light active:border-action-primary-active disabled:bg-action-primary-disabled disabled:text-action-primary-disabled disabled:active:border-transparent px-[0.9333rem] py-[0.4333rem] text-sm !mb-[1px] flex h-[40px] w-[40px] min-w-[40px] items-center justify-center self-end !rounded-full !p-0 !text-action-purple bg-action disabled:!bg-overlay-medium">
                         <svg
                             aria-hidden="true"
                             focusable="false"
