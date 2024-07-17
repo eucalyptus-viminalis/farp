@@ -1,6 +1,6 @@
 'use client'
 import { GlobalContext } from "@/contexts/GlobalContext";
-import '@/css/dc.css'
+// import '@/css/dc.css'
 import { useContext } from "react";
 import KOLSDC from "@/components/dc/kols/KOLS.dcEdit";
 import DCEditNode from "@/components/dc/DCEditNode.dcEdit";
