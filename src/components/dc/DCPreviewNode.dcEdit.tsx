@@ -34,6 +34,7 @@ export default function DCPreviewNode() {
                                     <Message
                                         key={state.msgs.length - 1 - i}
                                         castText={dc.txt}
+                                        msg={dc}
                                         index={state.msgs.length - 1 - i}
                                         timeDisplayString={dc.timeDisplay}
                                         // translate={50}

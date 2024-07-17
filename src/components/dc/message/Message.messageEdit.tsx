@@ -5,6 +5,7 @@ import { MessageEditContext } from "@/contexts/MessageEditContext";
 import HoverActions from "./HoverActions.messageEdit";
 import CaptionWithTimestamp from "./CaptionWithTimestamp.messageEdit";
 import ImageEmbed from "./ImageEmbed.messageEdit";
+import Reaction from "./Reaction";
 
 type MessageProps = {
     bigGap?: boolean
@@ -58,6 +59,13 @@ export default function Message(props: MessageProps) {
                                 )}
                                 {msg.txt && (
                                     <CaptionWithTimestamp/>
+                                )}
+                                {/* Reactions */}
+                                {msg.reaction && (
+                                    <Reaction
+                                        reaction={msg.reaction} 
+                                        isSelfDC={msg.isSelfDC}
+                                    />
                                 )}
                             </div>
                             {/* Hover actions */}

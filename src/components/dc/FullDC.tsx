@@ -52,7 +52,7 @@ export default function FullDC() {
                             }}
                         >
                             {/* DCs */}
-                            {dcArr.map((dc, i) => (
+                            {/* {dcArr.map((dc, i) => (
                                 <Message 
                                     key={i} 
                                     castText={dc.txt}
@@ -62,7 +62,7 @@ export default function FullDC() {
                                     isSelfDC={dc.isSelfDC}
                                     bigGap={(i === 0 || dcArr[i].isSelfDC !== dcArr[i-1].isSelfDC)}
                                 />
-                            ))}
+                            ))} */}
                         </div>
                     </div>
                 </div>
