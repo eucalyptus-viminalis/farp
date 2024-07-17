@@ -24,6 +24,11 @@ const POPULAR_KOLS: {
         username: "dwp",
     },
     {
+        displayName: "Base",
+        pfp: "/base.jpg",
+        username: "base",
+    },
+    {
         displayName: "Polymarket",
         pfp: "/polymarket.avif",
         username: "polymarket",
