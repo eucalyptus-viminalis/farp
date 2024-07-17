@@ -56,9 +56,8 @@ const EmojiPopover = (props: EmojiPopoverProps) => {
                             hidePopover={hidePopover}
                         />
                     ))}
-                    <div className="inline-block w-9 items-center justify-start rounded-full p-1 text-center align-middle text-xl text-muted hover:cursor-pointer hover:bg-overlay-medium" 
-                        // type="button" 
-                    aria-haspopup="dialog" aria-expanded="false" aria-controls="radix-:rke:" data-state="closed">+</div>
+                    {/* <div className="inline-block w-9 items-center justify-start rounded-full p-1 text-center align-middle text-xl text-muted hover:cursor-pointer hover:bg-overlay-medium" 
+                    aria-haspopup="dialog" aria-expanded="false" aria-controls="radix-:rke:" data-state="closed">+</div> */}
                 </div>
             </div>
         </div>
