@@ -1,7 +1,10 @@
 import ImageEmbed from "./ImageEmbed";
 import CaptionWithTimestamp from "./CaptionWithTimestamp";
+import { DC } from "@/types/types";
+import Reaction from "./Reaction";
 
 type MessageProps = {
+    msg: DC
     index: number;
     castText: string;
     timeDisplayString: string;
@@ -20,6 +23,7 @@ export default function Message(props: MessageProps) {
         timeDisplayString,
         isSelfDC,
         isReply,
+        msg,
         bigGap,
     } = props;
     return (
@@ -69,6 +73,13 @@ export default function Message(props: MessageProps) {
                                         timeDisplay={timeDisplayString}
                                         asCaption={imgSrc ? true : false}
                                         isSelfDC={isSelfDC}
+                                    />
+                                )}
+                                {/* Reactions */}
+                                {msg.reaction && (
+                                    <Reaction
+                                        reaction={msg.reaction} 
+                                        isSelfDC={msg.isSelfDC}
                                     />
                                 )}
                             </div>

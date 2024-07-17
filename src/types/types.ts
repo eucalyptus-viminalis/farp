@@ -96,5 +96,6 @@ export type DC = {
     date?: string   // yyyy-mm-dd
     replyTo?: DC;
     reactions?: Reaction[];
+    reaction?: string   // TODO: should use reactions instead
     imgSrc?: string
 };
