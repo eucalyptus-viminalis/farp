@@ -62,7 +62,7 @@ export default function CalendarBtn() {
             {/* {showDatePicker && ( */}
                 <input 
                     type="date" 
-                    className="absolute"
+                    className="absolute z-10"
                     // onChange={handleChange} 
                     onInput={handleInput}
                     // onChange={(e)=>setDate(e.currentTarget.value)} 
