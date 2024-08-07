@@ -13,6 +13,8 @@ type GlobalContext = {
     setPage: Dispatch<SetStateAction<Page>>;
     setMode: Dispatch<SetStateAction<Mode>>;
     mode: Mode;
+    showPowerbadge: boolean
+    setShowPowerbadge: Dispatch<SetStateAction<boolean>>;
 };
 
 export const GlobalContext = createContext<GlobalContext>({
@@ -21,13 +23,16 @@ export const GlobalContext = createContext<GlobalContext>({
     mode: 'edit',
     page: 'cast',
     setPage: () => {},
-    setMode: () => {}
+    setMode: () => {},
+    showPowerbadge: false,
+    setShowPowerbadge: () => {}
 });
 
 export function GlobalContextProvider({ children }: { children: ReactNode }) {
     const { realCasts, shuffleCasts } = useRealCasts();
     const [mode, setMode] = useState<Mode>('edit')
     const [page, setPage] = useState<Page>('cast')
+    const [showPowerbadge, setShowPowerbadge] = useState(false)
     return (
         <GlobalContext.Provider
             value={{
@@ -36,7 +41,9 @@ export function GlobalContextProvider({ children }: { children: ReactNode }) {
                 mode,
                 page,
                 setMode,
-                setPage
+                setPage,
+                showPowerbadge,
+                setShowPowerbadge
             }}
         >
             {children}
