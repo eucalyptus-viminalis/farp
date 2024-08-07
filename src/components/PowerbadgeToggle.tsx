@@ -27,6 +27,7 @@ export default function PowerbadgeToggle() {
                         cursor-default
                     `}
                 id="powerbadge-mode"
+                checked={cx.showPowerbadge}
                 onCheckedChange={handleOnChange}
                 // style={{ '-webkit-tap-highlight-color': 'rgba(0, 0, 0, 0)' }}
                 style={{
