@@ -1,14 +1,17 @@
 "use client";
 
 import { PreviewMode } from "@/types/types";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import ActionButton from "@/components/button/ActionButton";
 import TimelineWebPreview from "./TimelineWebPreview";
 import ExpandedWebPreview from "./ExpandedWebPreview";
+import { GlobalContext } from "@/contexts/GlobalContext";
+import PowerbadgeToggle from "./PowerbadgeToggle";
 
 function PreviewNode() {
     // States
     const [previewMode, setPreviewMode] = useState<PreviewMode>("timeline-web");
+    const cx = useContext(GlobalContext);
     // Handlers
     const handleOnClick = (previewMode: PreviewMode) => {
         setPreviewMode(previewMode);
@@ -37,12 +40,20 @@ function PreviewNode() {
                     {`Expanded`}
                 </ActionButton>
             </div>
-            {previewMode === 'timeline-web' && (
-                <TimelineWebPreview/>
-            )}
-            {previewMode === 'expanded-web' && (
+            <div
+                className="
+                    flex
+                    justify-start
+                    gap-1
+                    p-2
+                "
+            >
+                <PowerbadgeToggle/>
+            </div>
+            {previewMode === "timeline-web" && <TimelineWebPreview />}
+            {previewMode === "expanded-web" && (
                 // <ConvoWebNavBar />
-                <ExpandedWebPreview/>
+                <ExpandedWebPreview />
             )}
         </>
     );

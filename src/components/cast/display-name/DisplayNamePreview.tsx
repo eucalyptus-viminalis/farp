@@ -1,3 +1,8 @@
+'use client'
+
+import { GlobalContext } from "@/contexts/GlobalContext";
+import { useContext } from "react";
+
 type DisplayNameProps = {
     displayName: string;
     activeBadge?: boolean;
@@ -5,6 +10,7 @@ type DisplayNameProps = {
 
 export default function DisplayNamePreview(props: DisplayNameProps) {
     const { displayName, activeBadge } = props;
+    const cx = useContext(GlobalContext)
 
     return (
         <span className="relative h-min w-auto" data-state="closed">
@@ -27,7 +33,7 @@ export default function DisplayNamePreview(props: DisplayNameProps) {
                         {displayName}
                     </span>
                     {/* Active Badge */}
-                    {activeBadge && (
+                    {cx.showPowerbadge && activeBadge && (
                         <div className="ml-1 flex flex-row items-center space-x-1">
                             <div className="flex flex-shrink-0 items-center justify-center rounded-full text-active-badge h-[14px] w-[14px]">
                                 <img
