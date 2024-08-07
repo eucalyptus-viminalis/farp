@@ -1,13 +1,15 @@
-'use client'
+"use client";
 
 import { DCEditContext } from "@/contexts/DCEditContext";
 import { useContext } from "react";
 import TipButton from "./TipButton";
 import Kebab from "./Kebab";
+import { GlobalContext } from "@/contexts/GlobalContext";
 
 export default function TopNav() {
-    const cx = useContext(DCEditContext)
-    const {state} = cx
+    const cx = useContext(DCEditContext);
+    const globalcx = useContext(GlobalContext);
+    const { state } = cx;
 
     return (
         <nav className="sticky top-0 z-10 flex-col border-b-0 bg-app border-default sm:border-b sm:border-b-0">
@@ -23,7 +25,7 @@ export default function TopNav() {
                             {/* PFP */}
                             <span
                                 className="relative inline-block h-min shrink-0"
-                                title={state.usernameOverride + ' avatar'}
+                                title={state.usernameOverride + " avatar"}
                             >
                                 <div className="relative">
                                     <img
@@ -57,22 +59,24 @@ export default function TopNav() {
                                         <span className="!block min-w-0 overflow-hidden text-ellipsis whitespace-nowrap break-words text-default sm:hover:underline text-base font-semibold">
                                             {state.displayNameOverride}
                                         </span>
-                                        <div className="ml-1 flex flex-row items-center space-x-1">
-                                            <div className="relative cursor-pointer rounded-full hover:bg-overlay-faint">
-                                                <div className="flex flex-shrink-0 items-center justify-center rounded-full text-active-badge h-[14px] w-[14px]">
-                                                    <img
-                                                        loading="lazy"
-                                                        src="/ActiveBadge.png"
-                                                        alt="Active Badge"
-                                                        className="object-contain"
-                                                        style={{
-                                                            width: "12px",
-                                                            height: "12px",
-                                                        }}
-                                                    />
+                                        {globalcx.showPowerbadge && (
+                                            <div className="ml-1 flex flex-row items-center space-x-1">
+                                                <div className="relative cursor-pointer rounded-full hover:bg-overlay-faint">
+                                                    <div className="flex flex-shrink-0 items-center justify-center rounded-full text-active-badge h-[14px] w-[14px]">
+                                                        <img
+                                                            loading="lazy"
+                                                            src="/ActiveBadge.png"
+                                                            alt="Active Badge"
+                                                            className="object-contain"
+                                                            style={{
+                                                                width: "12px",
+                                                                height: "12px",
+                                                            }}
+                                                        />
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
+                                        )}
                                     </div>
                                     {/* Username */}
                                     <div className="text-xs text-faint">
@@ -84,9 +88,9 @@ export default function TopNav() {
                         <div className="flex flex-col justify-around">
                             <div className="right flex flex-col">
                                 <div className="flex flex-row space-x-4">
-                                {/* <div className="flex flex-row space-x-4 pr-2 sm:pr-0"> */}
-                                    <TipButton/>
-                                    <Kebab/>
+                                    {/* <div className="flex flex-row space-x-4 pr-2 sm:pr-0"> */}
+                                    <TipButton />
+                                    <Kebab />
                                 </div>
                             </div>
                         </div>

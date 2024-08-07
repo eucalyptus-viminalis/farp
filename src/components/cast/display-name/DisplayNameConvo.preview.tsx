@@ -1,10 +1,12 @@
 "use client";
 
 import { CastPreviewContext } from "@/contexts/CastPreviewContext";
+import { GlobalContext } from "@/contexts/GlobalContext";
 import { useContext } from "react";
 
 export default function DisplayNameConvo() {
     const con = useContext(CastPreviewContext);
+    const globalcx = useContext(GlobalContext)
     const cast = con.cast;
     const displayName = cast.displayNameOverride;
     const activeBadge = cast.activeBadgeOverride;
@@ -21,7 +23,7 @@ export default function DisplayNameConvo() {
                         <span className="!block min-w-0 overflow-hidden text-ellipsis whitespace-nowrap break-words text-default hover:underline text-base font-semibold">
                             {displayName}
                         </span>
-                        {activeBadge && (
+                        {globalcx.showPowerbadge && activeBadge && (
                             <div className="ml-1 flex flex-row items-center space-x-1">
                                 <div className="flex flex-shrink-0 items-center justify-center rounded-full text-active-badge h-[14px] w-[14px]">
                                     <img
