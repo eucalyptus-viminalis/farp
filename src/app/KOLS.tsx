@@ -45,6 +45,7 @@ const POPULAR_FARPS: {
     username: "solana",
   },
 ];
+
 export default function KOLS() {
   const cx = useContext(GlobalContext);
   const { mode } = cx;
