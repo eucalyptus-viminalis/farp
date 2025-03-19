@@ -28,11 +28,11 @@ export default function FarpletPreviewNode() {
           <div className="flex w-full flex-col justify-center bg-app border-default">
             <TopNavFarplet />
           </div>
-          <div className="flex h-full flex-col overflow-auto pl-2">
+          <div className="flex h-full flex-col overflow-auto px-2">
             {/* Scrollable area */}
-            <div className="h-full w-full overflow-auto scroll-auto">
+            <div className="h-full mt-2 w-full overflow-auto scroll-auto">
               {/* Big balance */}
-              <span className="text-7xl w-full flex flex-row justify-center items-center font-semibold text-center p-10">
+              <span className="text-5xl w-full flex flex-row justify-center items-center font-semibold text-center p-5 mb-2">
                 {"$" + totalBalanceUSD().toFixed(2)}
               </span>
               {/* Big Buttons */}

@@ -13,7 +13,6 @@ export default function DCPage() {
     <>
       {mode === "edit" && (
         <div className="">
-          <KOLSDC />
           <FarpletEditNode />
         </div>
       )}
