@@ -11,23 +11,23 @@ export default function TokenBalanceRow(props: Props) {
   return (
     <div
       key={i}
-      className="flex h-[100px] flex-row gap-3 items-center justify-between w-full text-xl p-2"
+      className="flex flex-row gap-3 items-center justify-between w-full text-base py-2"
     >
       {/* token logo */}
-      <div className="flex h-full flex-col justify-center items-center">
+      <div className="flex p-1 h-full flex-col justify-center items-center">
         <Image
           alt={"token-logo-" + i}
-          src={tokenBalance.logo}
-          width={64}
-          height={64}
+          src={tokenBalance.logo ?? ""}
+          width={48}
+          height={48}
           // objectFit={ ''}
           // fill
           className="object-contain object-center"
         />
       </div>
       {/* network logo */}
-      <div className="flex flex-col justify-center grow">
-        <span>{tokenBalance.name}</span>
+      <div className="flex flex-col gap-0 justify-center grow">
+        <span className="">{tokenBalance.name}</span>
         <span className="text-gray-400">
           {parseFloat(tokenBalance.balance.toFixed(6)).toString() +
             " " +
@@ -35,7 +35,7 @@ export default function TokenBalanceRow(props: Props) {
         </span>
       </div>
       <div className="flex flex-col justify-center">
-        <span className="px-4 text-xl">
+        <span className="px-2 text-base">
           {"$" + tokenBalance.usdBalance.toFixed(2)}
         </span>
       </div>

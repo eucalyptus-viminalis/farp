@@ -38,7 +38,7 @@ export default function RootLayout({
                 <FarpletProvider>
                   <div className="container mx-auto min-h-full h-max">
                     <div className="flex min-h-screen flex-row justify-center">
-                      <main className="h-full bg-app relative w-full shrink-0 justify-center sm:mr-4 sm:w-[540px] lg:w-[620px]">
+                      <main className="h-full bg-app overflow-x-clip relative w-full shrink-0 justify-center sm:mr-4 sm:w-[540px] lg:w-[620px]">
                         {/* Bleed */}
                         <div
                           className="
