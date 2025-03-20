@@ -247,7 +247,7 @@ export default function TokenSearch() {
       >
         <input
           ref={inputRef}
-          autoFocus
+          // autoFocus
           onFocus={onFocus}
           name="token-search-input"
           placeholder="Search"
