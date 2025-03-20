@@ -77,7 +77,7 @@ export default function FarpletPreviewNode() {
             ></div> */}
             </div>
           </div>
-          <div className="sticky bottom-0">
+          <div className="fixed w-full left-0 bottom-0">
             <BottomBar />
           </div>
           {/* maybe put the tab icons here? */}

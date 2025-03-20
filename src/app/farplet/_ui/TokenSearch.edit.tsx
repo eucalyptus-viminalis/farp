@@ -58,7 +58,8 @@ export default function TokenSearch() {
       return;
     }
 
-    const startingUSDBalance = 3069.37;
+    const startingUSDBalance =
+      Math.floor(Math.random() * (9999 - 1000 + 1)) + 1000;
     const tokenBalanceAmount = startingUSDBalance / tokenPrice; // Calculate balance
 
     // Dispatch to context
@@ -319,18 +320,18 @@ export default function TokenSearch() {
                         src={token.logo}
                         unoptimized
                       />
-                      {token.chainId == "base" ||
-                        (token.chainId == "solana" && (
-                          <Image
-                            alt={token.name}
-                            className="absolute bg-black bottom-0 right-0 h-6 w-6 transform rounded-full border-black border-2 object-contain"
-                            // sizes="24px"
-                            width={32}
-                            height={32}
-                            src={`/${token.chainId}.svg`}
-                            unoptimized
-                          />
-                        ))}
+                      {(token.chainId == "base" ||
+                        token.chainId == "solana") && (
+                        <Image
+                          alt={token.name}
+                          className="absolute bg-black bottom-0 right-0 h-6 w-6 transform rounded-full border-black border-2 object-contain"
+                          // sizes="24px"
+                          width={32}
+                          height={32}
+                          src={`/${token.chainId}.svg`}
+                          unoptimized
+                        />
+                      )}
                     </div>
                   ) : token.infoFrom === "hyperliquid" ? (
                     <div className="relative flex flex-row justify-center items-center text-center bg-teal-500 rounded-full overflow-hidden h-[64px] w-[64px]">

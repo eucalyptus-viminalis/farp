@@ -8,6 +8,7 @@ import {
 import { useAllMids } from "./useAllMids";
 import { TokenInfo } from "@/contexts/FarpletContext";
 
+const allowedNatives = ["eth"];
 export const useTokens = (q: string) => {
   const [debouncedQ, setDebouncedQ] = useState(q);
   const [tokens, setTokens] = useState<TokenInfo[]>([]);
@@ -23,7 +24,7 @@ export const useTokens = (q: string) => {
   }, [q]);
 
   useEffect(() => {
-    if (!debouncedQ) {
+    if (!debouncedQ || debouncedQ.length < 2) {
       setTokens([]);
       return;
     }
@@ -78,7 +79,10 @@ export const useTokens = (q: string) => {
                 infoFrom: "hyperliquid",
               }))
             : [];
-        setTokens([...hlTokens, ...newTokens]);
+        const filteredHLTokens = hlTokens.filter((token) =>
+          allowedNatives.includes(token.name.toLowerCase()),
+        );
+        setTokens([...filteredHLTokens, ...newTokens]);
       } catch (error) {
         console.error("Error fetching tokens useTokens.mixed.ts:", error);
       }
