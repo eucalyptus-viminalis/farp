@@ -41,10 +41,11 @@ export const useTokens = (q: string) => {
           data.pairs || []
         ).filter(
           (token: DexSearchResponsePair) =>
-            (token.liquidity?.usd &&
-              token.marketCap &&
-              token.chainId == "base") ||
-            (token.chainId == "solana" && token.info && token.info.imageUrl),
+            token.liquidity?.usd &&
+            token.marketCap &&
+            (token.chainId == "base" || token.chainId == "solana") &&
+            token.info &&
+            token.info.imageUrl,
         );
 
         console.log("filteredTokens", JSON.stringify(filteredTokens, null, 2));

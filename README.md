@@ -10,6 +10,10 @@
 Search for pairs matching query (rate-limit 300 requests per minute)
 https://api.dexscreener.com/latest/dex/search?q=<query>
 
+### Hyperliquid
+Get prices for native tokens like ETH, BTC, SOL, HYPE etc.
+https://api.hyperliquid.xyz/info
+
 ### CoinGecko
 The CoinGecko Demo API plan has a rate limit of 30 calls/min, while paid plans offer a higher rate limit of 500 to 1,000 calls/min.
 https://www.coingecko.com/en/api
