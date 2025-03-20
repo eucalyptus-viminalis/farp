@@ -53,33 +53,36 @@ export interface FarpletState {
   addy: string;
 }
 
+const initialETHBalance: TokenBalance = {
+  usdBalance: 2202.49,
+  balance: 1.13,
+  name: "Ethereum",
+  networkLogo: "/base.jpg",
+  coinGeckoId: "ethereum",
+  isNativeToken: true,
+  logo: "https://assets.coingecko.com/coins/images/279/small/ethereum.png",
+  symbol: "ETH",
+  address: "0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+  chainId: "base",
+  decimals: 18,
+};
+const initialUSDCBalance: TokenBalance = {
+  usdBalance: 6239.12,
+  balance: 6239.12,
+  name: "USD Coin",
+  coinGeckoId: "usd-coin",
+  networkLogo: "/base.jpg",
+  logo: "https://assets.coingecko.com/coins/images/6319/small/USD_Coin_icon.png",
+  isNativeToken: false,
+  symbol: "USDC",
+  address: "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913",
+  chainId: "base",
+  decimals: 6,
+};
+
 const initialTokenBalances: TokenBalance[] = [
-  {
-    usdBalance: 2202.49,
-    balance: 1.13,
-    name: "Ethereum",
-    networkLogo: "/base.jpg",
-    coinGeckoId: "ethereum",
-    isNativeToken: true,
-    logo: "https://assets.coingecko.com/coins/images/279/small/ethereum.png",
-    symbol: "ETH",
-    address: "0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
-    chainId: "base",
-    decimals: 18,
-  },
-  {
-    usdBalance: 6239.12,
-    balance: 6239.12,
-    name: "USD Coin",
-    coinGeckoId: "usd-coin",
-    networkLogo: "/base.jpg",
-    logo: "https://assets.coingecko.com/coins/images/6319/small/USD_Coin_icon.png",
-    isNativeToken: false,
-    symbol: "USDC",
-    address: "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913",
-    chainId: "base",
-    decimals: 6,
-  },
+  initialETHBalance,
+  initialUSDCBalance,
 ];
 
 const initialState: FarpletState = {
@@ -111,6 +114,8 @@ export type FarpletAction =
     }
   | { type: "DELETE_TOKEN_BALANCE"; payload: { index: number } }
   | { type: "RESET_TOKEN_BALANCE"; payload: true }
+  | { type: "ADD_ETH"; payload: true }
+  | { type: "ADD_USDC"; payload: true }
   | { type: "OVERRIDE_PFP"; payload: { pfpOverride: string } }
   | { type: "OVERRIDE_ADDY"; payload: { addy: string } };
 
@@ -168,6 +173,16 @@ const reducer = (state: FarpletState, action: FarpletAction): FarpletState => {
       return {
         ...state,
         tokenBalances: initialTokenBalances,
+      };
+    case "ADD_ETH":
+      return {
+        ...state,
+        tokenBalances: [...state.tokenBalances, initialETHBalance],
+      };
+    case "ADD_USDC":
+      return {
+        ...state,
+        tokenBalances: [...state.tokenBalances, initialUSDCBalance],
       };
 
     case "OVERRIDE_PFP":

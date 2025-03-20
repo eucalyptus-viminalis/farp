@@ -1,15 +1,17 @@
 import PFP from "@/components/cast/pfp/PFP.dcEdit";
 import ResetBtn from "./ResetBtn.farpletEdit";
 import { formatAddress } from "../_lib/formatAddress";
+import AddETHBtn from "./AddETHBtn";
+import AddUSDCBtn from "./AddUSDCBtn";
 
 export default function TopNav() {
   const addy = "0xdfsdfsfsd";
   return (
     <nav className="sticky top-0 z-10 flex-col border-b-0 bg-app border-default sm:border-b sm:border-b-0">
-      <div className="flex p-3 sm:px-4 h-14 flex-row items-center justify-between">
+      <div className="flex p-0 h-18 flex-row items-center justify-between">
         <div className="w-full h-full">
           <div className="flex w-full relative h-full flex-row justify-between">
-            <div className="flex flex-col justify-center space-x-2">
+            <div className="flex m-3 flex-col justify-center space-x-2">
               {/* PFP */}
               <PFP />
             </div>
@@ -24,9 +26,11 @@ export default function TopNav() {
                   formatAddress(addy).slice(2).toUpperCase()}
               </span>
             </div>
-            <div className="flex flex-col justify-around">
+            <div className="flex flex-col justify-around mr-2">
               <div className="right flex flex-col">
-                <div className="flex flex-row space-x-4">
+                <div className="flex flex-row gap-3">
+                  <AddETHBtn />
+                  <AddUSDCBtn />
                   <ResetBtn />
                 </div>
               </div>
