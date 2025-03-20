@@ -16,9 +16,12 @@ import { PlusIcon, SearchIcon } from "lucide-react";
 import {
   DexSearchResponsePair,
   DexSearchResponsePairWithInfo,
-  useTokens,
 } from "../_hooks/useTokens.dex";
+
 import { newton } from "viem/chains";
+import { timeAgo } from "@/timeago";
+import { useTokens } from "../_hooks/useTokens.mixed";
+import { TokenInfo } from "@/contexts/FarpletContext";
 
 const DEFAULT_USERNAME = "dwr";
 
@@ -42,13 +45,13 @@ export default function TokenSearch() {
   const { tokens } = useTokens(deferredQ);
 
   // State mutations
-  const addToken = async (newToken: DexSearchResponsePairWithInfo) => {
+  const addToken = async (newToken: TokenInfo) => {
     console.log("addToken triggered");
     console.log("newToken", JSON.stringify(newToken, null, 2));
 
     // Fetch price from the server action
     // const tokenPrice = await fetchTokenPrice(newToken.id);
-    const tokenPrice = Number(newToken.priceUsd);
+    const tokenPrice = Number(newToken.price);
 
     if (!tokenPrice) {
       console.error("Failed to fetch token price.");
@@ -63,14 +66,15 @@ export default function TokenSearch() {
       type: "ADD_TOKEN_BALANCE",
       payload: {
         tokenBalance: {
-          address: newToken.baseToken.address,
+          address: newToken.address,
           chainId: newToken.chainId,
           balance: tokenBalanceAmount,
-          logo: newToken.info.imageUrl,
-          name: newToken.baseToken.name,
-          symbol: newToken.baseToken.symbol,
+          logo: newToken.logo,
+          name: newToken.name,
+          symbol: newToken.symbol,
           usdBalance: startingUSDBalance,
-          header: newToken.info.header,
+          header: newToken.header,
+          isNativeToken: newToken.isNativeToken,
         },
       },
     });
@@ -80,6 +84,7 @@ export default function TokenSearch() {
   const onTokenRowClick = (e: any) => {
     e.preventDefault();
     const newToken = tokens[selectedIndex];
+    console.log("selectedIndex", selectedIndex);
     addToken(newToken);
     setQ("");
     setShowInput(false);
@@ -296,35 +301,90 @@ export default function TokenSearch() {
               //   {token.name} ({token.symbol.toUpperCase()})
               // </li>
               <li
-                key={token.pairAddress}
+                key={token.name + token.infoFrom + token.marketCap}
                 className={`bg-app p-2 border-b-2 border-faint ${
                   selectedIndex === index ? "underline" : ""
                 }`}
                 onMouseEnter={(e) => onMouseEnter(e, index)}
                 onClick={onTokenRowClick}
               >
-                <div className="flex flex-row">
-                  {token.info.imageUrl ? (
-                    <div className="relative rounded-full overflow-hidden h-[64px] w-[64px]">
+                <div className="flex flex-row justify-between gap-2">
+                  {token.logo ? (
+                    <div className="relative rounded-full overflow-visible h-[64px] w-[64px]">
                       <Image
-                        alt={token.baseToken.name}
-                        className="object-cover"
+                        alt={token.name}
+                        className="object-cover rounded-full"
                         sizes="64px"
                         fill
-                        src={token.info.imageUrl}
+                        src={token.logo}
                         unoptimized
                       />
+                      {token.chainId == "base" ||
+                        (token.chainId == "solana" && (
+                          <Image
+                            alt={token.name}
+                            className="absolute bg-black bottom-0 right-0 h-6 w-6 transform rounded-full border-black border-2 object-contain"
+                            // sizes="24px"
+                            width={32}
+                            height={32}
+                            src={`/${token.chainId}.svg`}
+                            unoptimized
+                          />
+                        ))}
+                    </div>
+                  ) : token.infoFrom === "hyperliquid" ? (
+                    <div className="relative flex flex-row justify-center items-center text-center bg-teal-500 rounded-full overflow-hidden h-[64px] w-[64px]">
+                      <span className="">on HL</span>
                     </div>
                   ) : (
                     <span>no image</span>
                   )}
-                  <div className="flex flex-col">
-                    <span className="font-semibold">
-                      {token.baseToken.name}
-                    </span>
+                  <div className="flex flex-col grow">
+                    <span className="font-semibold">{token.name}</span>
                     <span className="text-muted">
-                      {"(" + token.baseToken.symbol + ")"}
+                      {"(" + token.symbol + ")"}
                     </span>
+                  </div>
+                  <div className="right-side flex flex-col">
+                    {token.infoFrom == "hyperliquid" && (
+                      <div className="flex flex-row gap-2 justify-between">
+                        <span className="text-gray-400">{"Exchange: "}</span>
+                        <span>{"Hyperliquid"}</span>
+                      </div>
+                    )}
+                    {token.infoFrom == "hyperliquid" && token.price && (
+                      <div className="flex flex-row gap-2 justify-between">
+                        <span className="text-gray-400">{"Price: "}</span>
+                        <span>{token.price}</span>
+                      </div>
+                    )}
+                    {token.marketCap && (
+                      <div className="flex flex-row gap-2 justify-between">
+                        <span className="text-gray-400">{"MC: "}</span>
+                        <span>
+                          ${Number(token.marketCap).toLocaleString("en-US")}
+                        </span>{" "}
+                      </div>
+                    )}
+                    {token.liquidity && (
+                      <div className="flex flex-row gap-2 justify-between">
+                        <span className="text-gray-400">{"Liq: "}</span>
+                        <span>
+                          ${Number(token.liquidity).toLocaleString("en-US")}
+                        </span>{" "}
+                      </div>
+                    )}
+                    {token.pairCreatedAt && (
+                      <div className="flex flex-row gap-2 justify-between">
+                        <span className="text-gray-400">{"Created: "}</span>
+                        <span>
+                          {timeAgo.format(
+                            new Date(Number(token.pairCreatedAt)),
+                            "round",
+                          )}
+                        </span>
+                      </div>
+                    )}
                   </div>
                 </div>
               </li>

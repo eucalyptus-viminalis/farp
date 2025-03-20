@@ -1,14 +1,14 @@
 "use client";
-import { DCEditContext } from "@/contexts/DCEditContext";
+import { FarpletContext } from "@/contexts/FarpletContext";
 import { ResetIcon } from "@radix-ui/react-icons";
 import { useContext } from "react";
 export default function ResetBtn() {
-  const cx = useContext(DCEditContext);
+  const cx = useContext(FarpletContext);
   const { dispatch } = cx;
   const handleReset = () => {
     dispatch({
       payload: true,
-      type: "RESET_MESSAGES",
+      type: "RESET_TOKEN_BALANCE",
     });
   };
   return (

@@ -1,7 +1,6 @@
 import { frameConnector } from "@/lib/frameConnector";
 import { createConfig, http, WagmiProvider } from "wagmi";
 import { base } from "wagmi/chains";
-// import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
 export const config = createConfig({
   chains: [base],
@@ -11,19 +10,10 @@ export const config = createConfig({
   connectors: [frameConnector()],
 });
 
-// const queryClient = new QueryClient();
-
 export default function WagmiBaseProvider({
   children,
 }: {
   children: React.ReactNode;
 }) {
-  return (
-    <WagmiProvider config={config}>
-      {/* <QueryClientProvider client={queryClient}>
-        {children}
-      </QueryClientProvider> */}
-      {children}
-    </WagmiProvider>
-  );
+  return <WagmiProvider config={config}>{children}</WagmiProvider>;
 }

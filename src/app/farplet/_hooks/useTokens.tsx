@@ -40,7 +40,7 @@ export const useTokens = (q: string) => {
         const coins: CoinGeckoToken[] = data.coins;
         setTokens(coins || []);
       } catch (error) {
-        console.error("Error fetching tokens:", error);
+        console.error("Error fetching tokens useTokens.tsx:", error);
       }
     };
 

@@ -1,12 +1,11 @@
 "use client";
 import TopNav from "./TopNav.farpletEdit";
-import BigButtons from "./BigButtons";
 import BottomBar from "./BottomBar.edit";
 import { useFarplet } from "../_hooks/useFarplet";
 import TokenBalanceRow from "./TokenBalanceRow.edit";
-import { ChevronDown, PlusIcon } from "lucide-react";
 import TokenSearch from "./TokenSearch.edit";
-import Username from "@/components/cast/username/Username.editContext";
+import BigButtons from "./BigButtons";
+import TabRow from "./TabRow.preview";
 
 export default function FarpletEditNode() {
   const { dispatch, state, totalBalanceUSD } = useFarplet();
@@ -27,20 +26,10 @@ export default function FarpletEditNode() {
         <div className="flex w-full flex-col justify-center bg-app border-default">
           <TopNav />
           {/* Big balance */}
-          <span className="text-7xl font-semibold text-center p-10">
+          <span className="text-5xl w-full flex flex-row justify-center items-center font-semibold text-center p-5 mb-2">
             {"$" + totalBalanceUSD().toFixed(2)}
           </span>
-          <div className="flex h-16 flex-row items-center justify-between text-gray-400 text-xl font-semibold">
-            <span className="text-center w-full h-full flex flex-col justify-center border-b-4">
-              Tokens
-            </span>
-            <span className="flex flex-col justify-center h-full text-center w-full">
-              Activity
-            </span>
-            <span className="flex flex-col justify-center h-full text-center w-full">
-              Collectibles
-            </span>
-          </div>
+          <TabRow />
         </div>
         <div className="flex relative h-full flex-col overflow-auto pl-2">
           {state.tokenBalances.map((tokenBalance, i) => (

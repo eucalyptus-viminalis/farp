@@ -1,6 +1,5 @@
 import { TokenBalance } from "@/contexts/FarpletContext";
-import { Cross1Icon, Cross2Icon } from "@radix-ui/react-icons";
-import { CrossIcon, X } from "lucide-react";
+import { Cross2Icon } from "@radix-ui/react-icons";
 import Image from "next/image";
 import { useFarplet } from "../_hooks/useFarplet";
 import USDBalance from "./USDBalance.edit";
@@ -25,23 +24,21 @@ export default function TokenBalanceRow(props: Props) {
   return (
     <div
       key={i}
-      className="flex h-[100px] flex-row gap-3 items-center justify-between w-full text-xl p-2"
+      className="flex flex-row gap-3 items-center justify-between w-full text-base py-2"
     >
       {/* token logo */}
-      <div className="flex h-full flex-col justify-center items-center">
+      <div className="flex p-1 h-full flex-col justify-center items-center">
         <Image
           alt={"token-logo-" + i}
-          src={tokenBalance.logo}
-          width={64}
-          height={64}
-          // objectFit={ ''}
-          // fill
+          src={tokenBalance.logo ?? ""}
+          width={48}
+          height={48}
           className="object-contain object-center"
         />
       </div>
       {/* network logo */}
-      <div className="flex flex-col justify-center grow">
-        <div className="flex flex-row gap-2 justify-start items-center">
+      <div className="flex flex-col gap-0 justify-center grow">
+        <div className="flex flex-row gap-1 justify-start items-center">
           <span>{tokenBalance.name}</span>
           <div
             className="flex p-0.5 items-center justify-center hover:bg-yellow-500 hover:bg-opacity-30 rounded-full"
