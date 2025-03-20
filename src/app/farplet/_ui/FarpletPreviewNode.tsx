@@ -28,9 +28,17 @@ export default function FarpletPreviewNode() {
           <div className="flex w-full flex-col justify-center bg-app border-default">
             <TopNavFarplet />
           </div>
-          <div className="flex h-full flex-col overflow-auto px-2">
+          <div className="flex h-full flex-col px-2">
             {/* Scrollable area */}
-            <div className="h-full mt-2 w-full overflow-auto scroll-auto">
+            <div
+              className="scrollbar-vert h-full mt-2 w-full overflow-y-auto overflow-x-clip "
+              // TODO: add scrollbar customization?
+              // https://chatgpt.com/share/67db983e-6914-8008-b46f-c36b2648a668
+              style={{
+                scrollbarGutter: "stable",
+                scrollbarWidth: "none",
+              }}
+            >
               {/* Big balance */}
               <span className="text-5xl w-full flex flex-row justify-center items-center font-semibold text-center p-5 mb-2">
                 {"$" + totalBalanceUSD().toFixed(2)}
@@ -39,8 +47,13 @@ export default function FarpletPreviewNode() {
               <BigButtons />
               {/* sticky tab */}
               <TabRow />
-              {/* <div className="scrollbar-vert min-h-full w-full"> */}
-              <div className="scrollbar-vert min-h-full w-full overflow-auto">
+              <div
+                // className="scrollbar-vert min-h-full w-full overflow-y-auto"
+                className="scrollbar-vert relative min-h-full w-full overflow-y-auto"
+                style={{
+                  scrollbarWidth: "thin",
+                }}
+              >
                 {state.tokenBalances.map((tokenBalance, i) => (
                   <TokenBalanceRow
                     index={i}
@@ -64,7 +77,7 @@ export default function FarpletPreviewNode() {
             ></div> */}
             </div>
           </div>
-          <div>
+          <div className="sticky bottom-0">
             <BottomBar />
           </div>
           {/* maybe put the tab icons here? */}

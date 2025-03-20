@@ -20,8 +20,6 @@ export default function TokenBalanceRow(props: Props) {
           src={tokenBalance.logo ?? ""}
           width={48}
           height={48}
-          // objectFit={ ''}
-          // fill
           className="object-contain object-center"
         />
       </div>

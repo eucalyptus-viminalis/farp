@@ -75,7 +75,7 @@ export default function NotiCount() {
                             bg-inherit
                             bg-app
                             font-mono
-                            text-lg sm:text-base
+                            text-base sm:text-base
                             ${!inputFocused && "hidden"}
                         `}
           style={{
@@ -91,7 +91,7 @@ export default function NotiCount() {
       ) : (
         <span
           className="
-                      text-base font-bold
+                      text-xs font-bold
                       text-[var(--yellow-9)] dark:text-[var(--yellow-9)]
                       hover:underline
                       "

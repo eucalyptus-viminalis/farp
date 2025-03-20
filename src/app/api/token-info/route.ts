@@ -35,7 +35,7 @@ export async function GET(req: Request) {
     }
 
     const data = await response.json();
-
+    console.log(JSON.stringify(data, null, 2));
     // Extract metadata from `data[0].universe`
     const assetIndex = data[0].universe.findIndex(
       (asset: any) => asset.name === symbol,

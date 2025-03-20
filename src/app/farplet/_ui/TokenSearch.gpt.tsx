@@ -16,7 +16,7 @@ const TokenSearch = () => {
         const data = await response.json();
         setTokens(data.coins || []);
       } catch (error) {
-        console.error("Error fetching tokens:", error);
+        console.error("Error fetching tokens TokenSearch.gpt:", error);
       }
     };
 

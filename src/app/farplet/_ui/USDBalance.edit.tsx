@@ -56,7 +56,7 @@ export default function USDBalance(props: Props) {
         console.debug("tokenBalance", JSON.stringify(tokenBalance, null, 2));
         return;
       }
-      const tokenBalanceAmount = q / price; // Calculate balance
+      const tokenBalanceAmount = Number((q / price).toFixed(5)); // Returns a number
       // Dispatch to context
       dispatch({
         type: "UPDATE_TOKEN_BALANCE",
@@ -125,7 +125,7 @@ export default function USDBalance(props: Props) {
         inputElement.removeEventListener("keydown", handleKeyDown);
       }
     };
-  }, [handleBlur]);
+  });
 
   return (
     <div className="flex min-w-0 flex-row items-center">
@@ -135,7 +135,7 @@ export default function USDBalance(props: Props) {
           type="number"
           className={`
                                 bg-inherit
-                                text-lg sm:text-base
+                                text-base
                                 font-mono
                                 ${!inputFocused && "hidden"}
                             `}
@@ -160,7 +160,7 @@ export default function USDBalance(props: Props) {
                                 min-w-0
                                 px-4
                                 overflow-hidden
-                                text-ellipsis text-[var(--yellow-9)] text-xl
+                                text-ellipsis text-[var(--yellow-9)] text-base
                                 whitespace-nowrap
                                 break-words
                                 sm:hover:underline

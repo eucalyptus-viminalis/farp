@@ -13,10 +13,10 @@ export interface DexSearchResponsePair {
     symbol: string;
   };
   priceUsd: string;
-  liquidity: {
-    usd: number;
+  liquidity?: {
+    usd?: number;
   };
-  marketCap: string;
+  marketCap?: number;
   pairCreatedAt: number;
   info?: {
     imageUrl?: string;
@@ -26,6 +26,10 @@ export interface DexSearchResponsePair {
 }
 
 export interface DexSearchResponsePairWithInfo extends DexSearchResponsePair {
+  liquidity: {
+    usd: number;
+  };
+  marketCap: number;
   info: {
     imageUrl: string;
     header?: string;
@@ -64,12 +68,16 @@ export const useTokens = (q: string) => {
         const filteredTokens: DexSearchResponsePairWithInfo[] = (
           data.pairs || []
         ).filter(
-          (token: DexSearchResponsePair) => token.info && token.info.imageUrl,
+          (token: DexSearchResponsePair) =>
+            token.liquidity?.usd &&
+            token.marketCap &&
+            token.info &&
+            token.info.imageUrl,
         );
         console.log("filteredTokens", JSON.stringify(filteredTokens, null, 2));
         setTokens(filteredTokens || []);
       } catch (error) {
-        console.error("Error fetching tokens:", error);
+        console.error("Error fetching tokens useTokens.dex.ts:", error);
       }
     };
 

@@ -13,7 +13,7 @@ export default function BottomBar() {
   const { state } = useFarplet();
   return (
     <>
-      <div className="flex flex-row border-t-2 border-gray-50 border-opacity-5 py-6 text-base justify-between">
+      <div className="flex w-full bg-app flex-row border-t border-purple-100 border-opacity-10 py-4 text-base justify-between">
         <IonIcon className="w-full h-7" icon={homeOutline} />
         <IonIcon className="w-full h-7" icon={searchOutline} />
         <IonIcon className="w-full h-7" icon={gridOutline} />

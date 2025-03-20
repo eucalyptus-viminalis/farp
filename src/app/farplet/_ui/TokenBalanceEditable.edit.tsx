@@ -125,7 +125,7 @@ export default function TokenBalanceEditable(props: Props) {
         inputElement.removeEventListener("keydown", handleKeyDown);
       }
     };
-  }, [handleBlur]);
+  });
 
   return (
     <div className="flex min-w-0 flex-row items-center">
@@ -135,7 +135,7 @@ export default function TokenBalanceEditable(props: Props) {
           type="number"
           className={`
                                 bg-inherit
-                                text-lg sm:text-base
+                                text-base
                                 font-mono
                                 ${!inputFocused && "hidden"}
                             `}
