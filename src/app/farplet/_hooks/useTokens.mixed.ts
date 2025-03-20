@@ -46,6 +46,7 @@ export const useTokens = (q: string) => {
             token.marketCap &&
             (token.chainId == "base" || token.chainId == "solana") &&
             token.info &&
+            token.priceUsd &&
             token.info.imageUrl,
         );
 
