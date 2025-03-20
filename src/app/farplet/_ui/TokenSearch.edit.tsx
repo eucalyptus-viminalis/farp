@@ -59,7 +59,7 @@ export default function TokenSearch() {
     }
 
     const startingUSDBalance =
-      Math.floor(Math.random() * (9999 - 1000 + 1)) + 1000;
+      Math.floor(Math.random() * (99999 - 1000 + 1)) + 1000;
     const tokenBalanceAmount = startingUSDBalance / tokenPrice; // Calculate balance
 
     // Dispatch to context
