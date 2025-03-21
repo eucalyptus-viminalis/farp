@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { Cross1Icon } from "@radix-ui/react-icons";
+import { Cross1Icon, TrashIcon } from "@radix-ui/react-icons";
 import { Editor, EditorState, DraftHandleValue } from "draft-js";
 import "draft-js/dist/Draft.css";
 import { Dispatch, SetStateAction } from "react";
@@ -48,6 +48,7 @@ export default function MessageInputDraftJS(props: MessageInputDraftJSProps) {
         bg-input
         text-default
         border-[var(--yellow-9)]
+        bg-red-500
       `}
     >
       {image && (
@@ -61,6 +62,16 @@ export default function MessageInputDraftJS(props: MessageInputDraftJSProps) {
           `}
         >
           <div className="flex flex-row gap-2">
+            {/* TODO: Delete this basic img tag during refactor */}
+            {/* <img
+              alt="image embed"
+              className={`
+                relative max-h-[500px] w-5/6
+                object-cover object-top
+                rounded border border-default
+              `}
+              src={image}
+            /> */}
             <Image
               alt="image embed"
               className={`

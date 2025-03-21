@@ -1,18 +1,18 @@
 "use client";
-import { UpdateIcon } from "@radix-ui/react-icons";
 import { MouseEvent, useContext, useState } from "react";
-import EmojiInputBtn from "./EmojiInputBtn.dcEdit";
 import ImageInputBtn from "./ImageInputBtn.dcEdit";
 import MessageInputDraftJS from "./MessageInputDraftJS.dcEdit";
 import SendButton from "./SendButton.dcEdit";
 import { DCEditContext } from "@/contexts/DCEditContext";
 import { DraftHandleValue, EditorState, Modifier, RichUtils } from "draft-js";
 import React from "react";
+import SwitchReplyAsButton from "./SwitchReplyAsButton";
 
 export default function BottomInputBar() {
   // Context
   const cx = useContext(DCEditContext);
   const { dispatch, state } = cx;
+
   // State
   const [editorState, setEditorState] = useState(() =>
     EditorState.createEmpty(),
@@ -20,6 +20,7 @@ export default function BottomInputBar() {
   const [isSelfDC, setIsSelfDC] = useState(false);
   const [image, setImage] = useState<string | undefined>(undefined);
 
+  // Methods
   const clearImage = () => {
     setImage(undefined);
   };
@@ -91,7 +92,7 @@ export default function BottomInputBar() {
     setEditorState(getResetEditorState(editorState));
     return "handled";
   };
-  const handleClick = (e: MouseEvent) => {
+  const handleSendBtnClick = (e: MouseEvent) => {
     const fakeEvent = new KeyboardEvent("keydown", { key: "Enter" });
     handleReturn(fakeEvent as unknown as React.KeyboardEvent, editorState);
   };
@@ -126,15 +127,18 @@ export default function BottomInputBar() {
         />
         {/* <EmojiInputBtn /> */}
         <ImageInputBtn updateImage={updateImage} />
-        {/* <MessageInput/> */}
         <div
           className={`
-                        w-[220pt] sm:w-[300pt] md:w-[332pt]
-                        flex flex-col gap-1
-                    `}
+            w-[220pt] sm:w-[300pt] md:w-[332pt]
+            flex flex-col gap-1
+          `}
         >
-          <div className="flex flex-row gap-2 ml-1 mb-2">
+          <div
+            id="switch-reply-as-row"
+            className="flex flex-row gap-1 ml-1 mb-2"
+          >
             <span
+              id="you-them-text"
               className="text-default font-mono"
               style={{
                 width: "4ch",
@@ -142,13 +146,7 @@ export default function BottomInputBar() {
             >
               {isSelfDC ? "you" : "them"}
             </span>
-            <button onClick={() => setIsSelfDC((prev) => !prev)}>
-              <UpdateIcon
-                height={20}
-                width={20}
-                className="text-[var(--yellow-9)]"
-              />
-            </button>
+            <SwitchReplyAsButton onClick={() => setIsSelfDC((prev) => !prev)} />
           </div>
           <MessageInputDraftJS
             editorState={editorState}
@@ -160,7 +158,7 @@ export default function BottomInputBar() {
           />
         </div>
         <SendButton
-          onClick={handleClick}
+          onClick={handleSendBtnClick}
           disabled={
             editorState.getCurrentContent().getPlainText().trim().length ===
               0 && !image
