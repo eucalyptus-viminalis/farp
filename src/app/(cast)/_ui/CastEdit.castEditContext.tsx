@@ -7,6 +7,7 @@ import { useContext, useEffect } from "react";
 import { CastEditContext } from "@/contexts/CastEditContext";
 import CastContentEdit from "./cast-content-edit/CastContentEdit.chrome-friendly";
 import CastDraftEditor from "./cast-content-edit/CastDraftEditor";
+import CastEditLexical from "./cast-content-edit/CastEditLexical";
 
 type Reply = {
   index: number;
@@ -71,7 +72,8 @@ function CastEdit() {
               <div className="relative w-full min-w-0">
                 <CastHeader />
                 {/* <CastContentEdit /> */}
-                <CastDraftEditor />
+                {/* <CastDraftEditor /> */}
+                <CastEditLexical />
                 <BottomBar />
               </div>
             </div>
