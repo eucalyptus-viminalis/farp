@@ -47,10 +47,10 @@ const POPULAR_FARPS: {
 ];
 
 export default function KOLS() {
-  const cx = useContext(GlobalContext);
-  const { mode } = cx;
-  const context = useContext(EditContext);
-  const rootCast = context.state.rootCast;
+  const globalCx = useContext(GlobalContext);
+  const { mode } = globalCx;
+  const editCx = useContext(EditContext);
+  const rootCast = editCx.state.rootCast;
   return (
     <div className="flex flex-col justify-center items-center p-2">
       <div className="flex flex-wrap gap-2">
@@ -59,17 +59,17 @@ export default function KOLS() {
             <div
               key={i}
               className={`
-                                                        relative flex flex-col items-center justify-center sm:hover:cursor-pointer
-                                                        ${
-                                                          rootCast.usernameOverride ==
-                                                          farper.username
-                                                            ? "border-[var(--yellow-9)] border-2"
-                                                            : "border-gray-500 border-2"
-                                                        }
-                                                        rounded-full
-                                                    `}
+              relative flex flex-col items-center justify-center sm:hover:cursor-pointer
+              ${
+                rootCast.usernameOverride == farper.username
+                  ? "border-[var(--yellow-9)] border-2"
+                  : "border-gray-500 border-2"
+              }
+              rounded-full
+              `}
+              // TODO: Change state.user?
               onClick={() => {
-                context.dispatch({
+                editCx.dispatch({
                   type: "SET_ROOT_CAST",
                   payload: {
                     ...rootCast,
