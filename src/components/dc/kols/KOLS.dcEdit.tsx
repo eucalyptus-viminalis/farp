@@ -97,10 +97,12 @@ export default function KOLS() {
             >
               <Image
                 src={kol.pfp}
+                key={i}
+                title={kol.username}
                 className={`
-                                    aspect-square shrink-0 rounded-full
-                                    border
-                                    object-cover bg-app border-default
+                  aspect-square shrink-0 rounded-full
+                  border
+                  object-cover bg-app border-default
                                 `}
                 alt={kol.username + " avatar"}
                 width={44}
