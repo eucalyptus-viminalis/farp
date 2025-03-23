@@ -6,6 +6,9 @@ import TokenBalanceRow from "./TokenBalanceRow.edit";
 import TokenSearch from "./TokenSearch.edit";
 import BigButtons from "./BigButtons";
 import TabRow from "./TabRow.preview";
+import AddETHBtn from "./AddETHBtn";
+import AddUSDCBtn from "./AddUSDCBtn";
+import ResetBtn from "./ResetBtn.farpletEdit";
 
 export default function FarpletEditNode() {
   const { dispatch, state, totalBalanceUSD } = useFarplet();
@@ -35,6 +38,15 @@ export default function FarpletEditNode() {
           {state.tokenBalances.map((tokenBalance, i) => (
             <TokenBalanceRow index={i} key={i} tokenBalance={tokenBalance} />
           ))}
+          <div className="flex mt-2 flex-col justify-around mr-2">
+            <div className="right flex flex-col">
+              <div className="flex flex-row gap-3">
+                <AddETHBtn />
+                <AddUSDCBtn />
+                <ResetBtn />
+              </div>
+            </div>
+          </div>
           <TokenSearch />
           {/* <div>
             <button className="flex rounded-xl flex-col justify-center items-center w-20 h-20 text-7xl text-[var(--yellow-11)] bg-gray-50 bg-opacity-5">

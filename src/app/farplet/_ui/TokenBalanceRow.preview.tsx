@@ -36,7 +36,7 @@ export default function TokenBalanceRow(props: Props) {
           tokenBalance.chainId == "solana") && (
           <Image
             alt={tokenBalance.name}
-            className="absolute bg-black bottom-0 right-0 h-6 w-6 transform rounded-full border-black border-2 object-contain"
+            className="absolute bg-black bottom-0 right-0 h-6 w-6 transform rounded-full border-white dark:border-black border-2 object-contain"
             // sizes="24px"
             width={32}
             height={32}

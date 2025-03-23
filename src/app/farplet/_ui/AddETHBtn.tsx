@@ -1,7 +1,9 @@
 "use client";
+
 import { FarpletContext } from "@/contexts/FarpletContext";
 import { PlusIcon } from "@radix-ui/react-icons";
 import { useContext } from "react";
+
 export default function AddETHBtn() {
   const cx = useContext(FarpletContext);
   const { dispatch } = cx;
@@ -24,7 +26,8 @@ export default function AddETHBtn() {
       onClick={handleReset}
       className="cursor-pointer text
       text-[var(--yellow-9)]
-      disabled:text-gray-500
+      disabled:text-gray-300
+      disabled:dark:text-gray-600
       disabled:cursor-default
       "
       disabled={hasETH} // Disable if ETH exists

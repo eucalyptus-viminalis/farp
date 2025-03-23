@@ -41,7 +41,7 @@ function EditorInner({
       onBlur={() => setTextareaFocused(false)}
       onFocus={() => setTextareaFocused(true)}
       className={`
-        group relative overflow-y-auto rounded text-base bg-input text-default z-20
+        group relative overflow-y-auto rounded text-base bg-input text-default
       `}
     >
       <PlainTextPlugin
@@ -49,6 +49,7 @@ function EditorInner({
           <ContentEditable
             ref={contentEditableRef}
             className={`outline-none min-h-20 max-h-64
+              text-lg
           ${!textareaFocused && "hover:cursor-pointer"}
           ${
             !textareaFocused &&

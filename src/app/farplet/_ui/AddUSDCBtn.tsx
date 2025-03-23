@@ -24,7 +24,8 @@ export default function AddUSDCBtn() {
       onClick={handleReset}
       className="cursor-pointer text
       text-[var(--yellow-9)]
-      disabled:text-gray-500
+      disabled:text-gray-300
+      disabled:dark:text-gray-600
       disabled:cursor-default
       "
       disabled={hasUSDC} // Disable if USDC exists

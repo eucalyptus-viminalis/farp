@@ -28,7 +28,7 @@ export default function FarpletPreviewNode() {
           <div className="flex w-full flex-col justify-center bg-app border-default">
             <TopNavFarplet />
           </div>
-          <div className="flex h-full flex-col px-2">
+          <div className="flex h-full flex-col px-0">
             {/* Scrollable area */}
             <div
               className="scrollbar-vert h-full mt-2 w-full overflow-y-auto overflow-x-clip "
@@ -49,7 +49,7 @@ export default function FarpletPreviewNode() {
               <TabRow />
               <div
                 // className="scrollbar-vert min-h-full w-full overflow-y-auto"
-                className="scrollbar-vert relative min-h-full w-full overflow-y-auto"
+                className="scrollbar-vert px-2 relative min-h-full w-full overflow-y-auto"
                 style={{
                   scrollbarWidth: "thin",
                 }}

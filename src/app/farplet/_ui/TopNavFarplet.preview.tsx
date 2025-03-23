@@ -1,8 +1,10 @@
 import PFP from "@/components/cast/pfp/PFP.dcEdit";
 import { formatAddress } from "../_lib/formatAddress";
+import { useFarplet } from "../_hooks/useFarplet";
 
 export default function TopNavFarplet() {
-  const addy = "0xdfsdfsfsd";
+  const { state } = useFarplet();
+  const addy = state.addy;
   return (
     <nav className="sticky top-0 z-10 flex-col border-b-0 bg-app border-default sm:border-b sm:border-b-0">
       <div className="flex py-3 px-4 sm:px-4 flex-row items-center justify-between">
