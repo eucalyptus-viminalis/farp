@@ -98,6 +98,7 @@ export default function KOLS() {
               <Image
                 src={kol.pfp}
                 key={i}
+                unoptimized
                 title={kol.username}
                 className={`
                   aspect-square shrink-0 rounded-full
