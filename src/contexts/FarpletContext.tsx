@@ -1,6 +1,7 @@
 "use client";
 
 import { SearchedUser } from "@neynar/nodejs-sdk/build/neynar-api/v2";
+import { Undo } from "lucide-react";
 import { createContext, Dispatch, ReactNode, useReducer } from "react";
 
 export interface FarpletContextType {
@@ -46,6 +47,7 @@ export type TokenBalance = {
 export interface FarpletState {
   totalUsdBalance: number;
   pfpOverride: string;
+  usernameOverride: string;
   tokenBalances: TokenBalance[];
   notiCount: number;
   dcCount: number;
@@ -90,6 +92,7 @@ const initialState: FarpletState = {
   notiCount: 3,
   totalUsdBalance: 30609.7,
   pfpOverride: "/vitalik.jpeg",
+  usernameOverride: "vitalik.eth",
   addy: "0xd8da6bf26964af9d7eed9e03e53415d37aa96045",
   tokenBalances: initialTokenBalances,
   user: undefined,
@@ -117,6 +120,7 @@ export type FarpletAction =
   | { type: "ADD_ETH"; payload: true }
   | { type: "ADD_USDC"; payload: true }
   | { type: "OVERRIDE_PFP"; payload: { pfpOverride: string } }
+  | { type: "OVERRIDE_USERNAME"; payload: { usernameOverride: string } }
   | { type: "OVERRIDE_ADDY"; payload: { addy: string } };
 
 const reducer = (state: FarpletState, action: FarpletAction): FarpletState => {
@@ -185,6 +189,8 @@ const reducer = (state: FarpletState, action: FarpletAction): FarpletState => {
         tokenBalances: [...state.tokenBalances, initialUSDCBalance],
       };
 
+    case "OVERRIDE_USERNAME":
+      return { ...state, usernameOverride: payload.usernameOverride };
     case "OVERRIDE_PFP":
       return { ...state, pfpOverride: payload.pfpOverride };
 

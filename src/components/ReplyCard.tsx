@@ -10,12 +10,12 @@ const ReplyCard = () => {
       <div className="flex flex-row items-center space-x-2">
         <button
           className="relative inline-block h-min shrink-0"
-          title={cx.state.rootCast.usernameOverride}
+          title={replyoor.username}
         >
           <div className="relative mr-2">
             <img
               loading="lazy"
-              src={cx.state.rootCast.pfpOverride}
+              src={replyoor.pfp}
               className="aspect-square shrink-0 rounded-full border object-cover bg-app border-default"
               alt={replyoor.username + " avatar"}
               style={{

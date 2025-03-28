@@ -20,7 +20,6 @@ export default function BottomBar() {
         bg-app
         border-t sm:border-x border-default
         py-4
-        text-base
         "
       >
         <IonIcon className="w-full h-7" icon={homeOutline} />
@@ -29,10 +28,7 @@ export default function BottomBar() {
         <IonIcon className="w-full h-7" icon={wallet} />
         <div className="w-full flex items-center justify-center">
           <div className="relative flex items-center justify-center">
-            {/* Notification Icon */}
             <IonIcon className="w-7 h-7" icon={notificationsOutline} />
-
-            {/* Red Circle (Badge) */}
             <span className="w-5 h-5 text-white bg-red-600 flex items-center justify-center text-center text-xs rounded-full absolute top-0.5 right-0.5 transform translate-x-1/2 -translate-y-1/2">
               {state.notiCount}
             </span>
@@ -40,10 +36,7 @@ export default function BottomBar() {
         </div>
         <div className="w-full flex items-center justify-center">
           <div className="relative flex items-center justify-center">
-            {/* Notification Icon */}
             <IonIcon className="w-7 h-7" icon={chatbubblesOutline} />
-
-            {/* Red Circle (Badge) */}
             <span className="w-5 h-5 flex text-white items-center justify-center text-center text-xs rounded-full bg-red-600 absolute top-0.5 right-0.5 transform translate-x-1/2 -translate-y-1/2">
               {state.dcCount}
             </span>
