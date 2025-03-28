@@ -2,7 +2,6 @@
 
 import {
   ChangeEvent,
-  FocusEvent,
   MouseEvent,
   useState,
   KeyboardEvent,
