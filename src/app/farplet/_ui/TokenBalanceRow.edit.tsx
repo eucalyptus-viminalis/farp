@@ -1,9 +1,9 @@
-import { TokenBalance } from "@/contexts/FarpletContext";
 import { Cross2Icon } from "@radix-ui/react-icons";
 import Image from "next/image";
 import { useFarplet } from "../_hooks/useFarplet";
 import USDBalance from "./USDBalance.edit";
 import TokenBalanceEditable from "./TokenBalanceEditable.edit";
+import { TokenBalance } from "@/app/_context/FarpletContext";
 
 type Props = {
   tokenBalance: TokenBalance;

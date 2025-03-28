@@ -1,8 +1,6 @@
 import { formatAddress } from "../_lib/formatAddress";
 import { DicesIcon } from "lucide-react";
 import { useFarplet } from "../_hooks/useFarplet";
-import UsernameSearch from "@/components/cast/username/UsernameSearch";
-import { EditProvider } from "@/contexts/EditContext";
 import Username from "./Username.edit";
 import PFP from "./PFP.edit";
 
