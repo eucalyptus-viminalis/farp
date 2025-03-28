@@ -12,27 +12,18 @@ import {
   useDeferredValue,
 } from "react";
 import Image from "next/image";
-import UserSearchInput from "../../users/UserSearchInput";
-import { useUsers } from "./hooks";
-import { EditContext } from "@/contexts/EditContext";
-
-type UsernameProps = {
-  asEmbed?: boolean;
-};
-const DEFAULT_USERNAME = "dwr";
+import { useUsers } from "@/components/cast/username/hooks";
+import { FarpletContext } from "@/contexts/FarpletContext";
 
 // Assumming root cast
-export default function UsernameSearch(props: UsernameProps) {
-  // Props
-  const { asEmbed } = props;
-
+export default function Username() {
   // Context
-  const context = useContext(EditContext);
-  const user = context.state.user;
-  const username = user.username;
+  const cx = useContext(FarpletContext);
+  const { dispatch, state } = cx;
+  const username = state.user?.username;
 
   // States
-  const [q, setQ] = useState<string>(username ?? "");
+  const [q, setQ] = useState<string>(username ?? state.usernameOverride);
   const [showUsers, setShowUsers] = useState<boolean>(true);
   const [selectedIndex, setSelectedIndex] = useState<number>(-1);
   const [showInput, setShowInput] = useState<boolean>(false);
@@ -47,24 +38,28 @@ export default function UsernameSearch(props: UsernameProps) {
   // State mutations
   const updateUser = () => {
     const newUser = users[selectedIndex];
-    context.dispatch({
+    dispatch({
       type: "SET_USER",
-      payload: {
-        fid: newUser.fid,
-        pfp: newUser.pfp_url ?? "/dwr.png",
-        username: newUser.username,
-      },
+      payload: { user: newUser },
+    });
+    dispatch({
+      type: "OVERRIDE_PFP",
+      payload: { pfpOverride: newUser.pfp_url ?? "" },
+    });
+
+    dispatch({
+      type: "OVERRIDE_USERNAME",
+      payload: { usernameOverride: newUser.username },
     });
   };
-  const overrideUsername = (username: string) => {
-    context.dispatch({
-      type: "SET_USER",
-      payload: {
-        ...user,
-        username: username,
-      },
-    });
-  };
+
+  // TODO: dont think we need this for farplet cx
+  // const overrideUsername = (username: string) => {
+  //   dispatch({
+  //     type: "ove",
+  //     payload: username,
+  //   });
+  // };
 
   // Handlers
   const onUserRowClick = (e: any) => {
@@ -121,32 +116,27 @@ export default function UsernameSearch(props: UsernameProps) {
       inputRef.current.select();
     }
   }, [showInput, inputRef]);
+
   const toggleInput = () => {
     setShowInput((prev) => !prev);
   };
 
+  useEffect(() => {
+    setQ(username ?? "");
+  }, [username]);
+
   const handleBlur = () => {
     setShowInput(false);
-    if (!username) {
-      overrideUsername(DEFAULT_USERNAME);
-    }
+    // if (!username) {
+    //   overrideUsername(DEFAULT_USERNAME);
+    // }
   };
+
   const onInputChange = (e: ChangeEvent<HTMLInputElement>) => {
     e.preventDefault();
-    overrideUsername(e.currentTarget.value.trim());
+    // overrideUsername(e.currentTarget.value.trim());
     setQ(e.currentTarget.value.trim());
     setSelectedIndex(-1);
-  };
-  const onBlur = (e: FocusEvent<HTMLInputElement>) => {
-    e.preventDefault();
-    if (!mousingAround) {
-      setShowInput(false);
-      // if (!cast.usernameOverride) {
-      //     overrideUsername(DEFAULT_USERNAME);
-      //     setQ(DEFAULT_USERNAME);
-      // }
-      setShowUsers(false);
-    }
   };
 
   // Effects
@@ -195,7 +185,7 @@ export default function UsernameSearch(props: UsernameProps) {
       }
       window.removeEventListener("keypress", handleKeyPress);
     };
-  }, [handleBlur]);
+  });
 
   return (
     <>
@@ -206,23 +196,21 @@ export default function UsernameSearch(props: UsernameProps) {
           name="user-search-input"
           className="
                     bg-inherit text-inherit font-mono
-                    text-lg
+                    text-lg sm:text-base
                 "
           style={{
             minWidth: "8ch",
-            width: username.length + 1 + "ch",
+            width: (state.user?.username.length ?? 0) + 1 + "ch",
           }}
           onChange={onInputChange}
-          value={username}
-          // onBlur={onBlur}
-          // onBlurCapture={()=>console.log('onblur captured')}
+          value={q}
           type="text"
           onKeyDown={onKeyDownHandler}
           onKeyUp={onKeyUpHandler}
         />
         <ul
           onMouseLeave={handleMouseLeave}
-          className="w-96 absolute z-50 rounded-lg border border-faint bg-app overflow-auto max-h-72"
+          className="w-96 absolute z-10 rounded-lg border border-faint bg-app overflow-auto max-h-72"
         >
           {showUsers &&
             users.map((user, index) => (
@@ -258,63 +246,15 @@ export default function UsernameSearch(props: UsernameProps) {
       </label>
       <span
         hidden={showInput}
-        className="relative h-min w-auto"
-        data-state="closed"
+        className={`
+                    text-xs
+                    text-[var(--yellow-9)]
+                    sm:hover:underline
+                `}
+        onClick={onSpanClick}
       >
-        <div
-          title="Override username"
-          // className={`relative
-          //     text-muted
-          //     hover:underline ${
-          //     asEmbed ? "text-sm" : ""
-          // }`}
-          className={`relative
-                        text-[var(--yellow-9)]
-                        hover:underline
-                        ${asEmbed ? "text-sm" : ""}`}
-          onClick={onSpanClick}
-        >
-          {"@" + username}
-        </div>
+        {"@" + state.usernameOverride}
       </span>
     </>
   );
-
-  if (showInput) {
-    return (
-      // <input
-      //     ref={inputRef}
-      //     type="text"
-      //     className={`
-      //         bg-inherit
-      //         ${!inputFocused && "hidden"}
-      //         font-mono
-      //     `}
-      //     style={{
-      //         minWidth: "8ch",
-      //         width: username.length + 1 + "ch",
-      //     }}
-      //     autoFocus
-      //     onFocus={handleFocus}
-      //     onChange={onChangeHandler}
-      //     value={username}
-      //     onBlur={handleBlur}
-      // />
-      <UserSearchInput hidden={!showInput} toggleView={toggleInput} />
-    );
-  } else {
-    return (
-      <span className="relative h-min w-auto" data-state="closed">
-        <div
-          title="Override username"
-          className={`relative text-muted hover:underline ${
-            asEmbed ? "text-sm" : ""
-          }`}
-          onClick={onSpanClick}
-        >
-          {"@" + username}
-        </div>
-      </span>
-    );
-  }
 }

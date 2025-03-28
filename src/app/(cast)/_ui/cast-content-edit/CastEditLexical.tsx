@@ -99,11 +99,14 @@ export default function CastEditLexical(props: Props) {
       });
     },
   };
-
   const onChange = (editorState: EditorState) => {
     editorState.read(() => {
-      const text = document.getSelection()?.anchorNode?.textContent || "";
-      cx.updateCast({ ...cx.cast, castText: text });
+      const root = $getRoot();
+      let text = "";
+      for (const child of root.getChildren()) {
+        text += child.getTextContent() + "\n";
+      }
+      cx.updateCast({ ...cx.cast, castText: text.trimEnd() });
     });
   };
 

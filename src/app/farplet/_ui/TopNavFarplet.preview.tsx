@@ -1,6 +1,6 @@
-import PFP from "@/components/cast/pfp/PFP.dcEdit";
 import { formatAddress } from "../_lib/formatAddress";
 import { useFarplet } from "../_hooks/useFarplet";
+import PFP from "./PFP.preview";
 
 export default function TopNavFarplet() {
   const { state } = useFarplet();

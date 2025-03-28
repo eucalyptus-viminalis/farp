@@ -33,7 +33,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <ColorSchemeProvider>
-        <body className={inter.className + " overflow-x-clip bg-app"}>
+        <body className={inter.className + " overflow bg-app w-screen"}>
           <Providers>
             <MyQueryClientProvider>
               <GlobalContextProvider>

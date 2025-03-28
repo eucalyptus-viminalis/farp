@@ -1,7 +1,10 @@
-import PFP from "@/components/cast/pfp/PFP.dcEdit";
 import { formatAddress } from "../_lib/formatAddress";
 import { DicesIcon } from "lucide-react";
 import { useFarplet } from "../_hooks/useFarplet";
+import UsernameSearch from "@/components/cast/username/UsernameSearch";
+import { EditProvider } from "@/contexts/EditContext";
+import Username from "./Username.edit";
+import PFP from "./PFP.edit";
 
 export default function TopNav() {
   const { state, dispatch } = useFarplet();
@@ -30,9 +33,10 @@ export default function TopNav() {
       <div className="flex p-0 h-18 flex-row items-center justify-between">
         <div className="w-full h-full">
           <div className="flex w-full relative h-full flex-row justify-between">
-            <div className="flex m-3 flex-col justify-center space-x-2">
+            <div className="flex m-3 z-50 flex-col justify-center space-x-0">
               {/* PFP */}
               <PFP />
+              <Username />
             </div>
             <div
               id="center-overlay"

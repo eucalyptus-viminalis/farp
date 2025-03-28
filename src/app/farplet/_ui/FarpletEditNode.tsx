@@ -32,7 +32,7 @@ export default function FarpletEditNode() {
           <span className="text-5xl w-full flex flex-row justify-center items-center font-semibold text-center p-5 mb-2">
             {"$" + totalBalanceUSD().toFixed(2)}
           </span>
-          <TabRow />
+          {/* <TabRow /> */}
         </div>
         <div className="flex relative h-full flex-col overflow-auto pl-2">
           {state.tokenBalances.map((tokenBalance, i) => (
