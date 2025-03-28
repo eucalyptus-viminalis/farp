@@ -1,6 +1,6 @@
 "use client";
 
-import { FarpletContext } from "@/contexts/FarpletContext";
+import { FarpletContext } from "@/app/_context/FarpletContext";
 import { PlusIcon } from "@radix-ui/react-icons";
 import { useContext } from "react";
 

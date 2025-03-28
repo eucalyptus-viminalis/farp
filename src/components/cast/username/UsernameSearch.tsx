@@ -14,7 +14,7 @@ import {
 import Image from "next/image";
 import UserSearchInput from "../../users/UserSearchInput";
 import { useUsers } from "./hooks";
-import { EditContext } from "@/contexts/EditContext";
+import { EditContext } from "@/app/_context/EditContext";
 
 type UsernameProps = {
   asEmbed?: boolean;

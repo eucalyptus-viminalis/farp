@@ -1,7 +1,7 @@
 "use client";
 
 import { useContext } from "react";
-import { FarpletContext } from "@/contexts/FarpletContext";
+import { FarpletContext } from "@/app/_context/FarpletContext";
 
 type PFPProps = {
   size?: number;

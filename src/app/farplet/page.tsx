@@ -1,10 +1,9 @@
 "use client";
-import { GlobalContext } from "@/contexts/GlobalContext";
 // import '@/css/dc.css'
 import { useContext } from "react";
-import KOLSDC from "@/components/dc/kols/KOLS.dcEdit";
 import FarpletEditNode from "./_ui/FarpletEditNode";
 import FarpletPreviewNode from "./_ui/FarpletPreviewNode";
+import { GlobalContext } from "../_context/GlobalContext";
 
 export default function DCPage() {
   const cx = useContext(GlobalContext);

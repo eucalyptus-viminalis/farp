@@ -1,71 +1,16 @@
 "use client";
+import { DCEditContext } from "@/app/_context/DCEditContext";
+import { appConfig } from "@/app/appConfig";
 import Image from "next/image";
 import { useContext } from "react";
-import { DCEditContext } from "@/contexts/DCEditContext";
 
-const POPULAR_KOLS: {
-  displayName: string;
-  pfp: string;
-  username: string;
-}[] = [
-  {
-    displayName: "Dan Romero",
-    pfp: "/dwr.png",
-    username: "dwr",
-  },
-  {
-    displayName: "Ran Domero",
-    pfp: "/ran.avif",
-    username: "randomeror",
-  },
-  {
-    displayName: "Dana Pumelo",
-    pfp: "/dana.avif",
-    username: "dwp",
-  },
-  {
-    displayName: "Base",
-    pfp: "/base.jpg",
-    username: "base",
-  },
-  {
-    displayName: "Polymarket",
-    pfp: "/polymarket.avif",
-    username: "polymarket",
-  },
-  {
-    displayName: "Donald J. Trump",
-    pfp: "/trump.jpg",
-    username: "realDonaldTrump",
-  },
-  {
-    displayName: "threadguy🎩",
-    pfp: "/threadguy.jpg",
-    username: "threadguy",
-  },
-  {
-    displayName: "Vitalik Buterin",
-    pfp: "/vitalik.avif",
-    username: "vitalik.eth",
-  },
-  {
-    displayName: "ansem",
-    pfp: "/ansem.jpg",
-    username: "ansem",
-  },
-  {
-    displayName: "solana",
-    pfp: "/solana.jpg",
-    username: "solana",
-  },
-];
-export default function KOLS() {
+export default function KOLSection() {
   const cx = useContext(DCEditContext);
   const { dispatch, state } = cx;
   return (
     <div className="flex flex-col justify-center items-center p-2">
       <div className="flex flex-wrap gap-2">
-        {POPULAR_KOLS.map((kol, i) => {
+        {appConfig.kols.map((kol, i) => {
           return (
             <div
               key={i}

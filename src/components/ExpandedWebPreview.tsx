@@ -4,9 +4,9 @@ import ConvoRootCast from "./cast/ConvoRootCast";
 import ReplyCast from "./cast/ReplyCast";
 import NestedReplyCast from "./cast/NestedReplyCast";
 import { useContext } from "react";
-import { EditContext } from "@/contexts/EditContext";
 import { CastPreviewProvider } from "@/contexts/CastPreviewContext";
 import UsernameSearch from "@/components/cast/username/UsernameSearch";
+import { EditContext } from "@/app/_context/EditContext";
 
 const MAX_NESTED_REPLY_DISPLAY = 2;
 

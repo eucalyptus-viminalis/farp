@@ -1,6 +1,6 @@
 "use client";
 
-import { FarpletContext } from "@/contexts/FarpletContext";
+import { FarpletContext } from "@/app/_context/FarpletContext";
 import { useContext } from "react";
 
 export function useFarplet() {

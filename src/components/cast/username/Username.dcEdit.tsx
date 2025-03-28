@@ -13,8 +13,7 @@ import {
 } from "react";
 import Image from "next/image";
 import { useUsers } from "./hooks";
-import { CastEditContext } from "@/contexts/CastEditContext";
-import { DCEditContext } from "@/contexts/DCEditContext";
+import { DCEditContext } from "@/app/_context/DCEditContext";
 
 type UsernameProps = {
   asEmbed?: boolean;
