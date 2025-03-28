@@ -1,5 +1,5 @@
 "use client";
-import { EditContext } from "@/contexts/EditContext";
+import { EditContext } from "@/app/_context/EditContext";
 import React, { useContext } from "react";
 
 const ReplyCard = () => {

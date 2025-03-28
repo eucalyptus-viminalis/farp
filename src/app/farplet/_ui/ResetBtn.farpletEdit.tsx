@@ -1,5 +1,5 @@
 "use client";
-import { FarpletContext } from "@/contexts/FarpletContext";
+import { FarpletContext } from "@/app/_context/FarpletContext";
 import { ResetIcon } from "@radix-ui/react-icons";
 import { useContext } from "react";
 export default function ResetBtn() {

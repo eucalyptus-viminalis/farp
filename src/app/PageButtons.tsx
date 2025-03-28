@@ -1,9 +1,9 @@
 "use client";
 import ActionButton from "@/components/button/ActionButton";
-import { GlobalContext, Page } from "@/contexts/GlobalContext";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useContext } from "react";
+import { GlobalContext, Page } from "./_context/GlobalContext";
 
 export default function PageButtons() {
   const pathname = usePathname();

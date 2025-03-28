@@ -1,11 +1,9 @@
 "use client";
 import { useContext } from "react";
 import Message from "./message/Message";
-import URLDisplay from "./URLDisplay";
-import { DCEditContext } from "@/contexts/DCEditContext";
 import TopNav from "./top-nav/TopNav.dcPreview";
-import MessageImage from "./message/MessageImage";
 import PowerbadgeToggle from "../PowerbadgeToggle";
+import { DCEditContext } from "@/app/_context/DCEditContext";
 
 export default function DCPreviewNode() {
   const cx = useContext(DCEditContext);

@@ -3,10 +3,10 @@ import { MouseEvent, useContext, useState } from "react";
 import ImageInputBtn from "./ImageInputBtn.dcEdit";
 import MessageInputDraftJS from "./MessageInputDraftJS.dcEdit";
 import SendButton from "./SendButton.dcEdit";
-import { DCEditContext } from "@/contexts/DCEditContext";
 import { DraftHandleValue, EditorState, Modifier, RichUtils } from "draft-js";
 import React from "react";
 import SwitchReplyAsButton from "./SwitchReplyAsButton";
+import { DCEditContext } from "@/app/_context/DCEditContext";
 
 export default function BottomInputBar() {
   // Context

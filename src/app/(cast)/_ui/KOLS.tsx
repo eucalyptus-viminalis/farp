@@ -1,60 +1,16 @@
 "use client";
 import Image from "next/image";
-import { EditContext } from "@/contexts/EditContext";
-import { GlobalContext } from "@/contexts/GlobalContext";
 import { useContext } from "react";
+import { EditContext } from "../../_context/EditContext";
+import { appConfig } from "@/app/appConfig";
 
-const POPULAR_FARPS: {
-  displayName: string;
-  pfp: string;
-  username: string;
-}[] = [
-  {
-    displayName: "Dan Romero",
-    pfp: "/dwr.png",
-    username: "dwr",
-  },
-  {
-    displayName: "Donald J. Trump",
-    pfp: "/trump.jpg",
-    username: "realDonaldTrump",
-  },
-  {
-    displayName: "President Biden",
-    pfp: "/biden.jpg",
-    username: "POTUS",
-  },
-  {
-    displayName: "Vitalik Buterin",
-    pfp: "/vitalik.avif",
-    username: "vitalik.eth",
-  },
-  {
-    displayName: "thread🎩",
-    pfp: "/threadguy.jpg",
-    username: "threadguy",
-  },
-  {
-    displayName: "ansem",
-    pfp: "/ansem.jpg",
-    username: "ansem",
-  },
-  {
-    displayName: "solana",
-    pfp: "/solana.jpg",
-    username: "solana",
-  },
-];
-
-export default function KOLS() {
-  const globalCx = useContext(GlobalContext);
-  const { mode } = globalCx;
+export default function KOLSection() {
   const editCx = useContext(EditContext);
   const rootCast = editCx.state.rootCast;
   return (
     <div className="flex flex-col justify-center items-center p-2">
       <div className="flex flex-wrap gap-2">
-        {POPULAR_FARPS.map((farper, i) => {
+        {appConfig.kols.map((farper, i) => {
           return (
             <div
               key={i}
@@ -88,10 +44,10 @@ export default function KOLS() {
               <Image
                 src={farper.pfp}
                 className={`
-                                                            aspect-square shrink-0 rounded-full
-                                                            border
-                                                            object-cover bg-app border-default
-                                                        `}
+                    aspect-square shrink-0 rounded-full
+                    border
+                    object-cover bg-app border-default
+                `}
                 alt={farper.username + " avatar"}
                 width={44}
                 height={44}

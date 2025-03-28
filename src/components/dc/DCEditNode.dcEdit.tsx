@@ -1,10 +1,10 @@
 "use client";
 import { useContext, useEffect, useRef } from "react";
-import { DCEditContext } from "@/contexts/DCEditContext";
 import TopNav from "./top-nav/TopNav.dcEdit";
 import BottomInputBar from "./bottom-bar/BottomInputBar";
 import Message from "./message/Message.messageEdit";
 import { MessageEditProvider } from "@/contexts/MessageEditContext";
+import { DCEditContext } from "@/app/_context/DCEditContext";
 
 export default function DCEditNode() {
   const cx = useContext(DCEditContext);

@@ -1,18 +1,12 @@
 "use client";
 
 import { useContext } from "react";
-import { EditContext } from "@/contexts/EditContext";
 import { CastEditProvider } from "@/contexts/CastEditContext";
 import CastEdit from "@/app/(cast)/_ui/CastEdit.castEditContext";
 import PreviewNode from "../components/PreviewNode";
-import { GlobalContext } from "@/contexts/GlobalContext";
-import FullDC from "@/components/dc/FullDC";
-import DCEditNode from "@/components/dc/DCEditNode.dcEdit";
-import KOLSDC from "@/components/dc/kols/KOLS.dcEdit";
-import KOLS from "./KOLS";
-import DCPreviewNode from "@/components/dc/DCPreviewNode.dcEdit";
-
-type EditMode = "edit" | "preview";
+import KOLSection from "./(cast)/_ui/KOLS";
+import { EditContext } from "./_context/EditContext";
+import { GlobalContext } from "./_context/GlobalContext";
 
 export default function EditPage() {
   // Context
@@ -25,7 +19,7 @@ export default function EditPage() {
     <>
       {mode === "edit" && (
         <div className="">
-          <KOLS />
+          <KOLSection />
           <CastEditProvider
             cast={rootCast}
             castType="root-cast"
