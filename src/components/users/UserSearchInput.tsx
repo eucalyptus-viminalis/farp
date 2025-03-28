@@ -12,7 +12,7 @@ import {
   useRef,
 } from "react";
 import Image from "next/image";
-import { searchUser } from "../../app/serverAction";
+import { searchUser } from "../../app/server-actions";
 import { EditContext } from "@/app/_context/EditContext";
 
 type UserSearchInputProps = {
