@@ -3,11 +3,11 @@ import { Analytics } from "@vercel/analytics/react";
 import "./globals.css";
 import "./wc.css";
 import "../css/custom.css";
-import ModeButtons from "./ModeButtons";
-import PageButtons from "./PageButtons";
+import PageButtons from "./_ui/PageButtons";
 import { inter } from "@/fonts/fonts";
 import { Providers } from "./providers";
 import { ColorSchemeProvider } from "./_context/ColorSchemeCtx";
+import ModeButtons from "./_ui/ModeButtons";
 
 export const metadata: Metadata = {
   title: "farp",

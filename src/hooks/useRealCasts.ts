@@ -1,6 +1,6 @@
 import { timeAgo } from "@/timeago";
 
-import { getTrendingCasts } from "@/app/serverAction";
+import { getTrendingCasts } from "@/app/server-actions";
 import { CastState } from "@/types/types";
 import { EmbedCastId, EmbedUrl, EmbeddedCast, SearchedUser } from "@neynar/nodejs-sdk/build/neynar-api/v2";
 import { useState, useEffect } from "react";

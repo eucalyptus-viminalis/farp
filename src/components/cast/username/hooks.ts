@@ -1,5 +1,5 @@
 'use client'
-import {searchChannel, searchUser} from "@/app/serverAction";
+import {searchChannel, searchUser} from "@/app/server-actions";
 import { Channel, SearchedUser } from "@neynar/nodejs-sdk/build/neynar-api/v2";
 import { useEffect, useState } from "react";
 

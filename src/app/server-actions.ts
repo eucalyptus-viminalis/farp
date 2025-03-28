@@ -13,6 +13,7 @@ export async function searchChannel(q: string) {
     return res.channels
     
 }
+
 export async function searchUser(q: string) {
     const res = await neynar_client.searchUser(
         q,
@@ -26,6 +27,7 @@ export async function searchUser(q: string) {
     return res.result.users
     
 }
+
 export async function getTrendingCasts(limit = SEARCH_LIMIT) {
     const res = await neynar_client.fetchTrendingFeed({
         // channelId,
@@ -36,8 +38,8 @@ export async function getTrendingCasts(limit = SEARCH_LIMIT) {
     })
     return res.casts
 }
-// Function to get the content type of a URL
 
+// Function to get the content type of a URL
 export async function getContentType(url: string) {
     try {
         const response = await fetch(url, { method: "HEAD" });

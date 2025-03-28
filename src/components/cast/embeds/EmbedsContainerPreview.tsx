@@ -1,9 +1,9 @@
 "use client";
-import { getContentType } from "@/app/serverAction";
+import { getContentType } from "@/app/server-actions";
 import { CastPreviewContext } from "@/contexts/CastPreviewContext";
 import { isEmbedCastId, isEmbedUrl } from "@/hooks/useRealCasts";
 import { Embed } from "@/types/types";
-import { CastId, EmbeddedCast } from "@neynar/nodejs-sdk/build/neynar-api/v2";
+import { CastId } from "@neynar/nodejs-sdk/build/neynar-api/v2";
 import React, { useContext, useEffect, useState } from "react";
 
 function isImageUrl(url: string) {

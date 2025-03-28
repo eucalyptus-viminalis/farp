@@ -3,16 +3,22 @@ type KOL = {
   pfp: string;
   username: string;
 };
+
 const KOLS: KOL[] = [
   {
     displayName: "Dan Romero",
     pfp: "/dwr.png",
-    username: "dwr",
+    username: "dwr.eth",
   },
   {
     displayName: "Vitalik Buterin",
     pfp: "/vitalik.avif",
     username: "vitalik.eth",
+  },
+  {
+    displayName: "jesse.base.eth 🔵",
+    pfp: "/jesse.gif",
+    username: "jessepollak",
   },
   {
     displayName: "Donald J. Trump",
