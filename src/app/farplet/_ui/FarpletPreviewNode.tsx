@@ -22,7 +22,7 @@ export default function FarpletPreviewNode() {
   // }, [msgs.length]);
   return (
     // <div className="h-full w-full relative h-screen max-h-screen w-full grow">
-    <div className="h-full w-full relative max-h-screen w-full grow">
+    <div className="h-full w-full relative min-h-screen max-h-screen w-full grow">
       <div className="flex h-full w-full flex-col">
         <div className="flex w-full flex-col justify-center bg-app border-default">
           <TopNavFarplet />
