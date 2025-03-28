@@ -1,4 +1,4 @@
-import { TokenBalance } from "@/contexts/FarpletContext";
+import { TokenBalance } from "@/app/_context/FarpletContext";
 import Image from "next/image";
 
 type Props = {

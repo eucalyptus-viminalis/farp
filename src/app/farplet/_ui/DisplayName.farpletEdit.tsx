@@ -1,12 +1,13 @@
 "use client";
 
-import { DCEditContext } from "@/contexts/DCEditContext";
+import { DCEditContext } from "@/app/_context/DCEditContext";
 import { useContext, useRef, useState, useEffect, ChangeEvent } from "react";
 
 // Assuming root cast
 export default function DisplayName() {
   // Context
   const cx = useContext(DCEditContext);
+
   const { dispatch, state } = cx;
   const displayName = state.displayNameOverride;
   const activeBadge = state.activeBadgeOverride;

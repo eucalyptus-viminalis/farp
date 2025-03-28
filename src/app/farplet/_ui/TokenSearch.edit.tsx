@@ -2,7 +2,6 @@
 
 import {
   ChangeEvent,
-  FocusEvent,
   MouseEvent,
   useState,
   KeyboardEvent,
@@ -12,18 +11,11 @@ import {
 } from "react";
 import Image from "next/image";
 import { useFarplet } from "../_hooks/useFarplet";
-import { PlusIcon, SearchIcon } from "lucide-react";
-import {
-  DexSearchResponsePair,
-  DexSearchResponsePairWithInfo,
-} from "../_hooks/useTokens.dex";
+import { SearchIcon } from "lucide-react";
 
-import { newton } from "viem/chains";
 import { timeAgo } from "@/timeago";
 import { useTokens } from "../_hooks/useTokens.mixed";
-import { TokenInfo } from "@/contexts/FarpletContext";
-
-const DEFAULT_USERNAME = "dwr";
+import { TokenInfo } from "@/app/_context/FarpletContext";
 
 // Assumming root cast
 export default function TokenSearch() {

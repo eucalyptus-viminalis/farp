@@ -2,7 +2,7 @@
 
 import { useContext, useRef, useState } from "react";
 import { UploadIcon } from "@radix-ui/react-icons";
-import { FarpletContext } from "@/contexts/FarpletContext";
+import { FarpletContext } from "@/app/_context/FarpletContext";
 
 type PFPProps = {
   size?: number;
