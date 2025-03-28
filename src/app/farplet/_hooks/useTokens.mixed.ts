@@ -6,7 +6,7 @@ import {
   DexSearchResponsePairWithInfo,
 } from "./useTokens.dex";
 import { useAllMids } from "./useAllMids";
-import { TokenInfo } from "@/contexts/FarpletContext";
+import { TokenInfo } from "@/app/_context/FarpletContext";
 
 const allowedNatives = ["eth"];
 export const useTokens = (q: string) => {
