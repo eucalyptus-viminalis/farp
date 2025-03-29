@@ -1,5 +1,4 @@
 "use client";
-import TopNav from "./TopNav.farpletEdit";
 import BigButtons from "./BigButtons";
 import BottomBar from "./BottomBar.preview";
 import { useFarplet } from "../_hooks/useFarplet";

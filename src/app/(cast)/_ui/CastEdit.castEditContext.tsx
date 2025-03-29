@@ -1,13 +1,11 @@
 "use client";
-import BottomBar from "../../../components/cast/BottomBar";
 // import CastContentEdit from "../cast-content-edit/CastContentEdit-no-fullscreen";
-import CastHeader from "../../../components/cast/CastHeader.editContext";
-import PFPUploadable from "../../../components/cast/pfp/PFPUploadable.castEditContext";
 import { useContext, useEffect } from "react";
-import { CastEditContext } from "@/contexts/CastEditContext";
-import CastContentEdit from "./cast-content-edit/CastContentEdit.chrome-friendly";
-import CastDraftEditor from "./cast-content-edit/CastDraftEditor";
+import { CastEditContext } from "@/app/(cast)/_context/CastEditContext";
 import CastEditLexical from "./cast-content-edit/CastEditLexical";
+import BottomBar from "./BottomBar.edit";
+import CastHeader from "./CastHeader.editContext";
+import PFPUploadable from "./pfp/PFPUploadable.castEditContext";
 
 type Reply = {
   index: number;

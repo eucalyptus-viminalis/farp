@@ -11,8 +11,8 @@ import {
   useDeferredValue,
 } from "react";
 import Image from "next/image";
-import { useUsers } from "@/components/cast/username/hooks";
 import { FarpletContext } from "@/app/_context/FarpletContext";
+import { useUsers } from "@/app/(cast)/_ui/username/hooks";
 
 // Assumming root cast
 export default function Username() {

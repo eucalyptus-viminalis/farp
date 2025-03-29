@@ -1,7 +1,7 @@
 "use client";
-import ActionButton from "@/components/button/ActionButton";
 import { useContext } from "react";
 import { GlobalContext, Mode } from "../_context/GlobalContext";
+import ActionButton from "./ActionButton";
 
 export default function ModeButtons() {
   // Context

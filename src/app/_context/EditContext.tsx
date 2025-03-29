@@ -1,5 +1,5 @@
 "use client";
-import { ROOT_CAST_DEFAULT } from "@/types/types";
+import { ROOT_CAST_DEFAULT } from "@/app/(cast)/_context/CastEditContext";
 import { CastState } from "@/types/types";
 import { PreviewMode } from "@/types/types";
 import { Dispatch, ReactNode, createContext, useReducer } from "react";

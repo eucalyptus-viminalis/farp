@@ -4,8 +4,6 @@ import BottomBar from "./BottomBar.edit";
 import { useFarplet } from "../_hooks/useFarplet";
 import TokenBalanceRow from "./TokenBalanceRow.edit";
 import TokenSearch from "./TokenSearch.edit";
-import BigButtons from "./BigButtons";
-import TabRow from "./TabRow.preview";
 import AddETHBtn from "./AddETHBtn";
 import AddUSDCBtn from "./AddUSDCBtn";
 import ResetBtn from "./ResetBtn.farpletEdit";

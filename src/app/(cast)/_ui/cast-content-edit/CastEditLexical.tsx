@@ -1,8 +1,7 @@
 "use client";
 
 import { useContext, useEffect, useRef, useState } from "react";
-import { CastEditContext } from "@/contexts/CastEditContext";
-import UploadImagesBar from "@/components/cast/UploadImagesBar";
+import { CastEditContext } from "@/app/(cast)/_context/CastEditContext";
 import { LexicalComposer } from "@lexical/react/LexicalComposer";
 import { PlainTextPlugin } from "@lexical/react/LexicalPlainTextPlugin";
 import { ContentEditable } from "@lexical/react/LexicalContentEditable";
@@ -13,6 +12,7 @@ import {
   $createTextNode,
   EditorState,
 } from "lexical";
+import UploadImagesBar from "../UploadImagesBar";
 
 type Props = {};
 
