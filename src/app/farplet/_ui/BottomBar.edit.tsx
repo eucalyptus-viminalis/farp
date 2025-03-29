@@ -4,8 +4,6 @@ import {
   homeOutline,
   searchOutline,
   gridOutline,
-  notificationsOutline,
-  chatbubblesOutline,
 } from "ionicons/icons";
 import DCTabIcon from "./DCTabIcon.edit";
 import NotiTabIcon from "./NotiTabIcon.edit";

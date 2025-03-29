@@ -12,9 +12,9 @@ import {
   useRef,
   useState,
 } from "react";
-import UploadImagesBar from "../../../../components/cast/UploadImagesBar";
-import { CastEditContext } from "@/contexts/CastEditContext";
-import UserList from "../../../../components/cast/username/UserList";
+import { CastEditContext } from "@/app/(cast)/_context/CastEditContext";
+import UploadImagesBar from "../UploadImagesBar";
+import UserList from "../username/UserList";
 
 // Assumming root cast
 export default function CastContentEdit() {

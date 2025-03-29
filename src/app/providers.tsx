@@ -9,9 +9,12 @@ import { FarpletProvider } from "./_context/FarpletContext";
 import { GlobalContextProvider } from "./_context/GlobalContext";
 import MyQueryClientProvider from "./_context/QueryContext";
 
-const WagmiBaseProvider = dynamic(() => import("@/contexts/WagmiProvider"), {
-  ssr: false,
-});
+const WagmiBaseProvider = dynamic(
+  () => import("@/app/_context/WagmiProvider"),
+  {
+    ssr: false,
+  },
+);
 
 export function Providers({ children }: { children: React.ReactNode }) {
   const [context, setContext] = useState<Context.FrameContext | undefined>();

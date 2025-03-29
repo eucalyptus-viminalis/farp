@@ -1,5 +1,5 @@
 "use client";
-import { useRealCasts } from "@/hooks/useRealCasts";
+import { useRealCasts } from "@/app/(cast)/_data/useRealCasts";
 import { CastState } from "@/types/types";
 import {
   Dispatch,

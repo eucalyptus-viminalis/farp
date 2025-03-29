@@ -1,12 +1,5 @@
 import { PaperAirplaneIcon } from "@primer/octicons-react";
-import {
-  Repeat,
-  CopyIcon,
-  PlaneIcon,
-  LucidePlane,
-  SendIcon,
-  LucideSend,
-} from "lucide-react";
+import { Repeat, CopyIcon } from "lucide-react";
 
 export default function BigButtons() {
   return (

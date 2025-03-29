@@ -1,12 +1,12 @@
 "use client";
 
 import { useContext } from "react";
-import { CastEditProvider } from "@/contexts/CastEditContext";
+import { CastEditProvider } from "@/app/(cast)/_context/CastEditContext";
 import CastEdit from "@/app/(cast)/_ui/CastEdit.castEditContext";
-import PreviewNode from "../components/PreviewNode";
 import KOLSection from "./(cast)/_ui/KOLS";
 import { EditContext } from "./_context/EditContext";
 import { GlobalContext } from "./_context/GlobalContext";
+import PreviewNode from "./(cast)/_ui/PreviewNode";
 
 export default function EditPage() {
   // Context

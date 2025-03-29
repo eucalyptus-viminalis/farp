@@ -1,10 +1,10 @@
 "use client";
 // import '@/css/dc.css'
 import { useContext } from "react";
-import KOLSDC from "@/components/dc/kols/KOLS.dcEdit";
-import DCEditNode from "@/components/dc/DCEditNode.dcEdit";
-import DCPreviewNode from "@/components/dc/DCPreviewNode.dcEdit";
 import { GlobalContext } from "../_context/GlobalContext";
+import DCEditNode from "./_ui/DCEditNode.dcEdit";
+import DCPreviewNode from "./_ui/DCPreviewNode.dcEdit";
+import KOLSection from "./_ui/kols/KOLS.dcEdit";
 
 export default function DCPage() {
   const cx = useContext(GlobalContext);
@@ -13,7 +13,7 @@ export default function DCPage() {
     <>
       {mode === "edit" && (
         <div className="">
-          <KOLSDC />
+          <KOLSection />
           <DCEditNode />
         </div>
       )}
