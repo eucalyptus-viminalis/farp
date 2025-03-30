@@ -1,4 +1,3 @@
-import { Reaction } from "@/components/dc/FullDC";
 import {
   EmbeddedCast,
   SearchedUser,
@@ -26,6 +25,16 @@ export type CastState = {
 
 export type CastType = "root-cast" | "reply" | "quoted-cast" | "nested-reply";
 
+// TODO: Delete this
+// export type DC = {
+//     txt: string;
+//     timeDisplay: string;
+//     isSelfDC: boolean;
+//     unix?: string;
+//     replyTo?: DC;
+//     reactions?: Reaction[];
+// };
+
 export type DC = {
   txt: string;
   timeDisplay: string;
@@ -44,3 +53,8 @@ export type PreviewMode =
   | "expanded-web"
   | "timeline-mobile"
   | "expanded-mobile";
+
+export type Reaction = {
+  icon: string;
+  count: number;
+};

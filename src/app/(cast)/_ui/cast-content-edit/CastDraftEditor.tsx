@@ -1,7 +1,5 @@
 "use client";
 
-import UploadImagesBar from "@/components/cast/UploadImagesBar";
-import { CastEditContext } from "@/contexts/CastEditContext";
 import {
   Editor,
   EditorState,
@@ -11,6 +9,8 @@ import {
 } from "draft-js";
 import "draft-js/dist/Draft.css";
 import { FormEvent, useContext, useEffect, useState } from "react";
+import { CastEditContext } from "../../_context/CastEditContext";
+import UploadImagesBar from "../UploadImagesBar";
 
 type Props = {};
 
