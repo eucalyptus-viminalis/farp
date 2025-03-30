@@ -65,7 +65,7 @@ function EditorInner({
         // placeholder={<div className="text-zinc-400">Type your message...</div>}
         placeholder={
           <div
-            className="absolute top-0 left-0 text-gray-500"
+            className="absolute top-0 left-0 text-gray-500 pointer-events-none"
             hidden={textareaFocused}
           >
             Type your message...
