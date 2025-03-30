@@ -13,7 +13,7 @@ import {
 } from "react";
 import Image from "next/image";
 import { CastEditContext } from "@/app/(cast)/_context/CastEditContext";
-import { useChannels } from "../username/hooks";
+import { useChannels } from "@/app/_data/hooks";
 
 type UsernameProps = {
   asEmbed?: boolean;
