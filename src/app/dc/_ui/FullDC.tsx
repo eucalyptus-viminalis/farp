@@ -1,10 +1,5 @@
 import TopNav from "./top-nav/TopNav";
 
-export type Reaction = {
-  icon: string;
-  count: number;
-};
-
 export default function FullDC() {
   return (
     <div className="h-full w-full relative h-screen max-h-screen w-full grow">
