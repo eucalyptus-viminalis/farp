@@ -12,8 +12,8 @@ import {
   useDeferredValue,
 } from "react";
 import Image from "next/image";
-import { useUsers } from "./hooks";
 import { DCEditContext } from "@/app/_context/DCEditContext";
+import { useUsers } from "@/app/_data/hooks";
 
 type UsernameProps = {
   asEmbed?: boolean;

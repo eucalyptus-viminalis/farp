@@ -12,7 +12,7 @@ import {
 } from "react";
 import Image from "next/image";
 import { FarpletContext } from "@/app/_context/FarpletContext";
-import { useUsers } from "@/app/(cast)/_ui/username/hooks";
+import { useUsers } from "@/app/_data/hooks";
 
 // Assumming root cast
 export default function Username() {

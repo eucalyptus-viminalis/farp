@@ -12,8 +12,8 @@ import {
   useDeferredValue,
 } from "react";
 import Image from "next/image";
-import { useUsers } from "./hooks";
 import { CastEditContext } from "@/app/(cast)/_context/CastEditContext";
+import { useUsers } from "@/app/_data/hooks";
 
 type UsernameProps = {
   asEmbed?: boolean;

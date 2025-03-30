@@ -1,9 +1,9 @@
 "use client";
 
-import PFP from "@/app/farplet/_ui/PFP.edit";
-import Username from "@/app/farplet/_ui/Username.edit";
 import DisplayName from "./DisplayName.dcEdit";
 import ResetBtn from "./ResetBtn.dcEdit";
+import Username from "../Username.dcEdit";
+import PFP from "../PFP.dcEdit";
 
 export default function TopNav() {
   return (
