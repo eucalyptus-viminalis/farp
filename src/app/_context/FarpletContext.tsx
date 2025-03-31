@@ -1,7 +1,14 @@
 "use client";
 
 import { SearchedUser } from "@neynar/nodejs-sdk/build/neynar-api/v2";
-import { createContext, Dispatch, ReactNode, useReducer } from "react";
+import {
+  createContext,
+  Dispatch,
+  ReactNode,
+  useEffect,
+  useReducer,
+} from "react";
+import { useFarcasterCtx } from "./FarcasterCtx";
 
 export interface FarpletContextType {
   state: FarpletState;
@@ -50,7 +57,7 @@ export interface FarpletState {
   tokenBalances: TokenBalance[];
   notiCount: number;
   dcCount: number;
-  user?: SearchedUser;
+  user?: FarpletUser;
   addy: string;
 }
 
@@ -104,8 +111,15 @@ const initialState: FarpletState = {
 //   address: "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913",
 //   decimals: 6,
 // },
+
+type FarpletUser = {
+  username: string;
+  pfp: string;
+  fid: number;
+};
+
 export type FarpletAction =
-  | { type: "SET_USER"; payload: { user: SearchedUser } }
+  | { type: "SET_USER"; payload: { user: FarpletUser } }
   | { type: "SET_DC_COUNT"; payload: { dcCount: number } }
   | { type: "SET_NOTI_COUNT"; payload: { notiCount: number } }
   | { type: "SET_TOTAL_USD_BALANCE"; payload: { totalUsdBalance: number } }
@@ -129,7 +143,8 @@ const reducer = (state: FarpletState, action: FarpletAction): FarpletState => {
       return {
         ...state,
         user: payload.user,
-        pfpOverride: payload.user.pfp_url ?? "/vitalik.jpeg",
+        usernameOverride: payload.user.username,
+        pfpOverride: payload.user.pfp,
       };
 
     case "SET_DC_COUNT":
@@ -203,6 +218,40 @@ const reducer = (state: FarpletState, action: FarpletAction): FarpletState => {
 
 export const FarpletProvider = ({ children }: { children: ReactNode }) => {
   const [state, dispatch] = useReducer(reducer, initialState);
+  const { state: fcState } = useFarcasterCtx();
+
+  useEffect(() => {
+    if (fcState.isSdkLoaded && fcState.farcasterContext) {
+      const { pfpUrl, username, fid } = fcState.farcasterContext.user;
+      if (pfpUrl && username && fid) {
+        if (!state.user) {
+          dispatch({
+            type: "SET_USER",
+            payload: {
+              user: {
+                fid,
+                pfp: pfpUrl,
+                username,
+              },
+            },
+          });
+        } else {
+          dispatch({
+            type: "OVERRIDE_PFP",
+            payload: {
+              pfpOverride: pfpUrl,
+            },
+          });
+          dispatch({
+            type: "OVERRIDE_USERNAME",
+            payload: {
+              usernameOverride: username,
+            },
+          });
+        }
+      }
+    }
+  }, [fcState, state.user]);
 
   return (
     <FarpletContext.Provider value={{ state, dispatch }}>
