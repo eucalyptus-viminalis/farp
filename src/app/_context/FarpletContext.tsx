@@ -235,19 +235,6 @@ export const FarpletProvider = ({ children }: { children: ReactNode }) => {
               },
             },
           });
-        } else {
-          dispatch({
-            type: "OVERRIDE_PFP",
-            payload: {
-              pfpOverride: pfpUrl,
-            },
-          });
-          dispatch({
-            type: "OVERRIDE_USERNAME",
-            payload: {
-              usernameOverride: username,
-            },
-          });
         }
       }
     }
