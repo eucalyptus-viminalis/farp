@@ -4,7 +4,7 @@ type KOL = {
   username: string;
 };
 
-const KOLS: KOL[] = [
+const kols: KOL[] = [
   {
     displayName: "Dan Romero",
     pfp: "/dwr.png",
@@ -52,8 +52,13 @@ const KOLS: KOL[] = [
   },
 ];
 
+// DEBUG: Optional: Validate env vars on startup
+// if (!process.env.NEYNAR_API_KEY) {
+//   throw new Error("Missing NEYNAR_API_KEY environment variable");
+// }
+
 export const appConfig = {
   neynar_api_key: process.env.NEYNAR_API_KEY!,
   hostUrl: process.env.HOST_URL || "http://localhost:3000",
-  kols: KOLS,
+  kols: kols,
 };
