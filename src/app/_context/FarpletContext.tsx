@@ -1,6 +1,5 @@
 "use client";
 
-import { SearchedUser } from "@neynar/nodejs-sdk/build/neynar-api/v2";
 import {
   createContext,
   Dispatch,
