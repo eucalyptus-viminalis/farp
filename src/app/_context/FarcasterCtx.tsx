@@ -60,11 +60,13 @@ export const FarcasterProvider = ({ children }: { children: ReactNode }) => {
         } else {
           console.error("Failed to retrieve Farcaster context.");
         }
+        if (!frameContext.client.added) {
+          await sdk.actions.addFrame();
+        }
       } catch (error) {
         console.error("Error initializing Farcaster SDK:", error);
       }
     };
-
     // if (!state.isSdkLoaded) {
     initializeSdk();
     // }
