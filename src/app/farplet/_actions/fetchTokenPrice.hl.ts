@@ -10,6 +10,7 @@ export async function fetchTokenPrice(tokenId: string): Promise<number | null> {
     );
 
     if (!response.ok) {
+      console.error("failed to fetch token price @ fetchTokenPrice.hl.ts");
       throw new Error(`Failed to fetch token price for ${tokenId}`);
     }
 
