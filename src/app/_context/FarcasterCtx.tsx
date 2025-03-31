@@ -95,7 +95,7 @@ export const FarcasterProvider = ({ children }: { children: ReactNode }) => {
     if (sdk && !state.isSdkLoaded) {
       loadContext();
       console.log(JSON.stringify(state.farcasterContext));
-    } else if (state.isSdkLoaded) {
+    } else if (sdk && state.isSdkLoaded) {
       sdk.actions.ready();
     }
   }, [state.isSdkLoaded, state.farcasterContext]);
