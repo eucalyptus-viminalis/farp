@@ -134,11 +134,11 @@ export default function USDBalance(props: Props) {
           ref={inputRef}
           type="number"
           className={`
-                                bg-inherit
-                                text-base
-                                font-mono
-                                ${!inputFocused && "hidden"}
-                            `}
+              bg-inherit
+              text-lg
+              font-mono
+              ${!inputFocused && "hidden"}
+          `}
           style={{
             minWidth: "12ch",
             width: q.toString().length + "ch",
