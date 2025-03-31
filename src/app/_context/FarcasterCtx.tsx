@@ -65,9 +65,9 @@ export const FarcasterProvider = ({ children }: { children: ReactNode }) => {
       }
     };
 
-    if (!state.isSdkLoaded) {
-      initializeSdk();
-    }
+    // if (!state.isSdkLoaded) {
+    initializeSdk();
+    // }
   }, [state.isSdkLoaded]);
 
   return (
