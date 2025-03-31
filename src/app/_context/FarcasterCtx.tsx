@@ -1,104 +1,74 @@
 "use client";
 
-import sdk, { Context } from "@farcaster/frame-sdk";
 import {
-  createContext,
-  Dispatch,
-  ReactNode,
-  useContext,
   useEffect,
   useReducer,
+  createContext,
+  useContext,
+  ReactNode,
+  Dispatch,
 } from "react";
+import sdk, { Context } from "@farcaster/frame-sdk";
 
-export interface FrameContext {
-  state: FrameState;
-  dispatch: Dispatch<FrameAction>;
-}
-export const FrameContext = createContext<FrameContext>({} as FrameContext);
-
-export interface FrameState {
+// Define the shape of our state
+interface FrameState {
   farcasterContext: Context.FrameContext | null;
   isSdkLoaded: boolean;
 }
 
+// Define action types
+type FrameAction =
+  | { type: "SET_CONTEXT"; payload: Context.FrameContext }
+  | { type: "SET_SDK_LOADED"; payload: boolean };
+
+// Initial state
 const initialState: FrameState = {
   farcasterContext: null,
   isSdkLoaded: false,
 };
 
-export type FrameAction =
-  | { type: "SET_CONTEXT"; payload: { farcasterContext: Context.FrameContext } }
-  | { type: "UPDATE_IS_SDK_LOADED"; payload: { isSdkLoaded: boolean } };
-
+// Reducer function to manage state transitions
 const reducer = (state: FrameState, action: FrameAction): FrameState => {
-  const { payload, type } = action;
-  switch (type) {
+  switch (action.type) {
     case "SET_CONTEXT":
-      return {
-        ...state,
-        farcasterContext: payload.farcasterContext,
-      };
-    case "UPDATE_IS_SDK_LOADED":
-      return {
-        ...state,
-        isSdkLoaded: payload.isSdkLoaded,
-      };
+      return { ...state, farcasterContext: action.payload };
+    case "SET_SDK_LOADED":
+      return { ...state, isSdkLoaded: action.payload };
     default:
       return state;
   }
 };
 
+// Create context with initial state
+const FrameContext = createContext<
+  { state: FrameState; dispatch: Dispatch<FrameAction> } | undefined
+>(undefined);
+
+// Provider component to wrap your application
 export const FarcasterProvider = ({ children }: { children: ReactNode }) => {
   const [state, dispatch] = useReducer(reducer, initialState);
 
   useEffect(() => {
-    const loadFakeContext = () => {
-      console.log("loading fake ctx");
-      const fakeContext: Context.FrameContext = {
-        client: { added: false, clientFid: -1 },
-        user: { fid: 2 },
-      };
-      dispatch({
-        type: "SET_CONTEXT",
-        payload: { farcasterContext: fakeContext },
-      });
-      dispatch({
-        type: "UPDATE_IS_SDK_LOADED",
-        payload: { isSdkLoaded: false },
-      });
-    };
-    const loadContext = async () => {
+    const initializeSdk = async () => {
       try {
-        console.log("trying to load frame ctx now...");
+        await sdk.actions.ready(); // Ensure the SDK is fully loaded
         const frameContext = await sdk.context;
         if (frameContext) {
-          dispatch({
-            type: "UPDATE_IS_SDK_LOADED",
-            payload: { isSdkLoaded: true },
-          });
-          dispatch({
-            type: "SET_CONTEXT",
-            payload: { farcasterContext: frameContext },
-          });
-          sdk.actions.ready();
+          dispatch({ type: "SET_CONTEXT", payload: frameContext });
+          dispatch({ type: "SET_SDK_LOADED", payload: true });
+          sdk.actions.ready(); // Notify that the app is ready
         } else {
-          // loadFakeContext();
-          // do nothing
-          console.debug("sdk.context not found");
+          console.error("Failed to retrieve Farcaster context.");
         }
       } catch (error) {
-        console.error("Failed to load SDK context:", error);
-        // loadFakeContext();
+        console.error("Error initializing Farcaster SDK:", error);
       }
     };
 
-    if (sdk && !state.isSdkLoaded) {
-      loadContext();
-      console.log(JSON.stringify(state.farcasterContext));
-    } else if (sdk && state.isSdkLoaded) {
-      sdk.actions.ready();
+    if (!state.isSdkLoaded) {
+      initializeSdk();
     }
-  }, [state.isSdkLoaded, state.farcasterContext]);
+  }, [state.isSdkLoaded]);
 
   return (
     <FrameContext.Provider value={{ state, dispatch }}>
@@ -107,12 +77,11 @@ export const FarcasterProvider = ({ children }: { children: ReactNode }) => {
   );
 };
 
+// Custom hook to use the FrameContext
 export const useFarcasterCtx = () => {
   const context = useContext(FrameContext);
-
   if (!context) {
-    throw new Error("useFarcasterCtx must be used within a FrameProvider");
+    throw new Error("useFarcasterCtx must be used within a FarcasterProvider");
   }
-
   return context;
 };
