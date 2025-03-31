@@ -11,7 +11,11 @@ const WagmiBaseProvider = dynamic(
   },
 );
 
-export function FarcasterProvider({ children }: { children: React.ReactNode }) {
+export function WagmiBaseProviderProviderLOL({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   const [context, setContext] = useState<Context.FrameContext | undefined>();
   const [isSDKLoaded, setIsSDKLoaded] = useState(false);
 

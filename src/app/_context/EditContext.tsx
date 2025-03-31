@@ -2,7 +2,14 @@
 import { ROOT_CAST_DEFAULT } from "@/app/(cast)/_context/CastEditContext";
 import { CastState } from "@/types/types";
 import { PreviewMode } from "@/types/types";
-import { Dispatch, ReactNode, createContext, useReducer } from "react";
+import {
+  Dispatch,
+  ReactNode,
+  createContext,
+  useEffect,
+  useReducer,
+} from "react";
+import { useFarcasterCtx } from "./FarcasterCtx";
 
 type ReplyUser = {
   username: string;
@@ -123,7 +130,28 @@ const initialState: EditState = {
 
 export const EditProvider = ({ children }: { children: ReactNode }) => {
   const [state, dispatch] = useReducer(reducer, initialState);
-
+  // grab fc ctx
+  const { state: fcState } = useFarcasterCtx();
+  useEffect(() => {
+    if (fcState.isSdkLoaded && fcState.farcasterContext) {
+      const { fid, pfpUrl, username } = fcState.farcasterContext.user;
+      if (fid && pfpUrl && username) {
+        dispatch({
+          type: "SET_USER",
+          payload: {
+            fid,
+            pfp: pfpUrl,
+            username,
+          },
+        });
+        console.log("dispatched SET_USER w/ farcasterContext");
+      } else {
+        console.debug("fid, pfpUrl or username null in frameContext");
+      }
+    } else {
+      console.log("sdk not loaded when initializing EditContext state");
+    }
+  }, [fcState]);
   return (
     <EditContext.Provider value={{ state, dispatch }}>
       {children}
