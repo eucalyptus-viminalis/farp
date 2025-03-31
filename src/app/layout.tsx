@@ -4,7 +4,7 @@ import "./globals.css";
 import "./wc.css";
 import "../css/custom.css";
 import { inter } from "@/fonts/fonts";
-import { Providers } from "./providers";
+import { FarcasterProvider } from "./providers";
 import { ColorSchemeProvider } from "./_context/ColorSchemeCtx";
 import MyQueryClientProvider from "./_context/QueryContext";
 import { GlobalContextProvider } from "./_context/GlobalContext";
@@ -13,6 +13,25 @@ import { DCEditProvider } from "./_context/DCEditContext";
 import { FarpletProvider } from "./_context/FarpletContext";
 import PageButtons from "./_ui/PageButtons";
 import ModeButtons from "./_ui/ModeButtons";
+import { FrameEmbedNext } from "@farcaster/frame-sdk";
+import { appConfig } from "./appConfig";
+
+const frame: FrameEmbedNext = {
+  version: "next", // version of the frame protocol this route is using
+  imageUrl: `${appConfig.hostUrl}/opengraph-image.png`, // the image to be displayed before user launches the frame
+  aspectRatio: "3:2", // aspect ratio for this image to be displayed in
+  button: {
+    // details about the button the user will press to launch the mini-app
+    title: "farp", // the text displayed on the button
+    action: {
+      type: "launch_frame", //
+      name: "farp", // name of the app
+      url: appConfig.hostUrl, // opens this url in the in-app browser
+      splashImageUrl: `${appConfig.hostUrl}/icon`,
+      splashBackgroundColor: "#ffffff",
+    },
+  },
+};
 
 export const metadata: Metadata = {
   title: "farp",
@@ -23,6 +42,9 @@ export const metadata: Metadata = {
     type: "website",
   },
   keywords: ["Farp", "Farcaster", "Fake Cast Generator", "Warpcast"],
+  other: {
+    "fc:frame": JSON.stringify(frame),
+  },
 };
 
 export default function RootLayout({
@@ -34,7 +56,7 @@ export default function RootLayout({
     <html lang="en">
       <ColorSchemeProvider>
         <body className={inter.className + " overflow bg-app w-screen"}>
-          <Providers>
+          <FarcasterProvider>
             <MyQueryClientProvider>
               <GlobalContextProvider>
                 <EditProvider>
@@ -81,7 +103,7 @@ export default function RootLayout({
                 </EditProvider>
               </GlobalContextProvider>
             </MyQueryClientProvider>
-          </Providers>
+          </FarcasterProvider>
           {/* <footer className="bg-app border-t py-4 border-faint flex flex-col justify-center items-center">
                     <span className="p-2 text-[var(--yellow-11)]">farp</span>
                 </footer> */}
