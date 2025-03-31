@@ -39,7 +39,13 @@ export default function Username() {
     const newUser = users[selectedIndex];
     dispatch({
       type: "SET_USER",
-      payload: { user: newUser },
+      payload: {
+        user: {
+          fid: newUser.fid,
+          pfp: newUser.pfp_url ?? "/dwr.png",
+          username: newUser.username,
+        },
+      },
     });
     dispatch({
       type: "OVERRIDE_PFP",
