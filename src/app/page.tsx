@@ -7,6 +7,7 @@ import KOLSection from "./(cast)/_ui/KOLS";
 import { EditContext } from "./_context/EditContext";
 import { GlobalContext } from "./_context/GlobalContext";
 import PreviewNode from "./(cast)/_ui/PreviewNode";
+import { Metadata } from "next";
 
 export default function EditPage() {
   // Context

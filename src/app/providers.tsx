@@ -4,11 +4,14 @@ import sdk, { Context } from "@farcaster/frame-sdk";
 import dynamic from "next/dynamic";
 import { useEffect, useState } from "react";
 
-const WagmiBaseProvider = dynamic(() => import("@/app/_context/WagmiProvider"), {
-  ssr: false,
-});
+const WagmiBaseProvider = dynamic(
+  () => import("@/app/_context/WagmiProvider"),
+  {
+    ssr: false,
+  },
+);
 
-export function Providers({ children }: { children: React.ReactNode }) {
+export function FarcasterProvider({ children }: { children: React.ReactNode }) {
   const [context, setContext] = useState<Context.FrameContext | undefined>();
   const [isSDKLoaded, setIsSDKLoaded] = useState(false);
 
