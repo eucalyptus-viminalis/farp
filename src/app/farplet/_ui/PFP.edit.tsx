@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useContext, useRef, useState } from "react";
 import { UploadIcon } from "@radix-ui/react-icons";
 import { FarpletContext } from "@/app/_context/FarpletContext";
@@ -72,25 +73,21 @@ export default function PFP(props: PFPProps) {
       onMouseLeave={handleMouseLeave}
       onClick={handleImageClick}
     >
-      <img
-        loading="lazy"
+      <Image
         src={pfpUrl}
+        alt={state.usernameOverride + " avatar"}
         className={`
-                    aspect-square
-                    shrink-0
-                    rounded-full
-                    border border-default
-                    object-cover
-                    bg-app
-                `}
-        alt="avatar"
-        style={{
-          width: `${pfpSize}px`,
-          height: `${pfpSize}px`,
-          minWidth: `${pfpSize}px`,
-          minHeight: `${pfpSize}px`,
-        }}
-      />
+          aspect-square
+          shrink-0
+          rounded-full
+          border border-default
+          object-cover
+          bg-app
+        `}
+        width={pfpSize}
+        height={pfpSize}
+        unoptimized={true}
+      />{" "}
       {showOverlay && (
         <div
           className={`
