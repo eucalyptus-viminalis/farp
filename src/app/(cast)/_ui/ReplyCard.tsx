@@ -1,4 +1,6 @@
 "use client";
+
+import Image from "next/image";
 import { EditContext } from "@/app/_context/EditContext";
 import React, { useContext } from "react";
 
@@ -13,7 +15,19 @@ const ReplyCard = () => {
           title={replyoor.username}
         >
           <div className="relative mr-2">
-            <img
+            <Image
+              // unoptimized
+              src={replyoor.pfp}
+              alt={replyoor.username + " avatar"}
+              className="aspect-square shrink-0 rounded-full border object-cover bg-app border-default"
+              width={48}
+              height={48}
+              style={{
+                minWidth: "48px",
+                minHeight: "48px",
+              }}
+            />
+            {/* <img
               loading="lazy"
               src={replyoor.pfp}
               className="aspect-square shrink-0 rounded-full border object-cover bg-app border-default"
@@ -24,7 +38,7 @@ const ReplyCard = () => {
                 minWidth: "48px",
                 minHeight: "48px",
               }}
-            />
+            /> */}
           </div>
         </button>
         <div className="text-base text-faint">Cast your reply</div>
