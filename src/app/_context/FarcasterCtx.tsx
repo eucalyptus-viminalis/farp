@@ -174,14 +174,14 @@ export const FarcasterProvider = ({ children }: { children: ReactNode }) => {
       console.log("Calling load");
       setIsSDKLoaded(true);
       load();
+      if (!added) {
+        addFrame();
+      }
       return () => {
         sdk.removeAllListeners();
       };
     }
-    if (!added) {
-      addFrame();
-    }
-  }, [isSDKLoaded, added, addFrame]);
+  });
 
   // useEffect(() => {
   //   if (sdk && state.isSdkLoaded && !state.farcasterContext?.client.added) {
