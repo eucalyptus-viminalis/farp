@@ -35,7 +35,6 @@ export const useTokens = (q: string) => {
           `https://api.dexscreener.com/latest/dex/search?q=${debouncedQ}`,
         );
         const data = await response.json();
-        console.log("dex search data", JSON.stringify(data, null, 2));
 
         // Filter tokens that have the `info` attribute, is base token, has liquidity
         const filteredTokens: DexSearchResponsePairWithInfo[] = (
@@ -49,8 +48,6 @@ export const useTokens = (q: string) => {
             token.priceUsd &&
             token.info.imageUrl,
         );
-
-        console.log("filteredTokens", JSON.stringify(filteredTokens, null, 2));
 
         const newTokens: TokenInfo[] = filteredTokens.map((token) => {
           return {

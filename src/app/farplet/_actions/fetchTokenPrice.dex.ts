@@ -4,7 +4,6 @@ export async function fetchTokenPrice(
   chainId: string,
   tokenAddress: string,
 ): Promise<number | null> {
-  console.log("@fetchTokenPrice.dex");
   try {
     const response = await fetch(
       `https://api.dexscreener.com/token-pairs/v1/${chainId}/${tokenAddress}`,
