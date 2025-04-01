@@ -1,3 +1,4 @@
+import { appConfig } from "@/app/appConfig";
 import { type ClassValue, clsx } from "clsx";
 import { twMerge } from "tailwind-merge";
 import { mnemonicToAccount } from "viem/accounts";
@@ -48,9 +49,9 @@ export async function getFarcasterMetadata(): Promise<FrameMetadata> {
     }
   }
 
-  const appUrl = process.env.NEXT_PUBLIC_URL;
+  const appUrl = appConfig.hostUrl;
   if (!appUrl) {
-    throw new Error("NEXT_PUBLIC_URL not configured");
+    throw new Error("appConfig.hotUrl missing");
   }
 
   // Get the domain from the URL (without https:// prefix)
