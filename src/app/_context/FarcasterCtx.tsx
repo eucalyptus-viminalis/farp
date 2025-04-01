@@ -51,11 +51,15 @@ export const FarcasterProvider = ({ children }: { children: ReactNode }) => {
   useEffect(() => {
     const initializeSdk = async () => {
       try {
+        await sdk.actions.ready();
         const frameContext = await sdk.context;
         if (frameContext) {
           dispatch({ type: "SET_CONTEXT", payload: frameContext });
           dispatch({ type: "SET_SDK_LOADED", payload: true });
           sdk.actions.ready(); // Notify that the app is ready
+          if (!frameContext.client.added) {
+            await sdk.actions.addFrame();
+          }
         } else {
           console.error("Failed to retrieve Farcaster context.");
         }
@@ -69,13 +73,13 @@ export const FarcasterProvider = ({ children }: { children: ReactNode }) => {
     // if (!state.isSdkLoaded) {
     initializeSdk();
     // }
-  }, []);
+  });
 
-  useEffect(() => {
-    if (sdk && state.isSdkLoaded && !state.farcasterContext?.client.added) {
-      sdk.actions.addFrame();
-    }
-  }, [state.isSdkLoaded, state.farcasterContext?.client.added]);
+  // useEffect(() => {
+  //   if (sdk && state.isSdkLoaded && !state.farcasterContext?.client.added) {
+  //     sdk.actions.addFrame();
+  //   }
+  // }, [state.isSdkLoaded, state.farcasterContext?.client.added]);
 
   return (
     <FrameContext.Provider value={{ state, dispatch }}>
