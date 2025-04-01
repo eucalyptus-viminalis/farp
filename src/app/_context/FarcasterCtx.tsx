@@ -80,7 +80,6 @@ export const FarcasterProvider = ({ children }: { children: ReactNode }) => {
   //     sdk.actions.addFrame();
   //   }
   // }, [state.isSdkLoaded, state.farcasterContext?.client.added]);
-
   return (
     <FrameContext.Provider value={{ state, dispatch }}>
       {children}
