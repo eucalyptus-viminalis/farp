@@ -51,7 +51,6 @@ export const FarcasterProvider = ({ children }: { children: ReactNode }) => {
   useEffect(() => {
     const initializeSdk = async () => {
       try {
-        await sdk.actions.ready(); // Ensure the SDK is fully loaded
         const frameContext = await sdk.context;
         if (frameContext) {
           dispatch({ type: "SET_CONTEXT", payload: frameContext });
@@ -70,10 +69,10 @@ export const FarcasterProvider = ({ children }: { children: ReactNode }) => {
     // if (!state.isSdkLoaded) {
     initializeSdk();
     // }
-  });
+  }, []);
 
   useEffect(() => {
-    if (state.isSdkLoaded && !state.farcasterContext?.client.added) {
+    if (sdk && state.isSdkLoaded && !state.farcasterContext?.client.added) {
       sdk.actions.addFrame();
     }
   }, [state.isSdkLoaded, state.farcasterContext?.client.added]);
