@@ -51,7 +51,6 @@ const kols: KOL[] = [
     username: "solana",
   },
 ];
-
 // DEBUG: Optional: Validate env vars on startup
 // if (!process.env.NEYNAR_API_KEY) {
 //   throw new Error("Missing NEYNAR_API_KEY environment variable");
