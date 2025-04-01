@@ -110,7 +110,6 @@ export default function CastDraftEditor(props: Props) {
   const customKeyBindingFn = (e: React.KeyboardEvent): string | null => {
     if (e.key === "Backspace") {
       alert("bkspc");
-      console.log("hjkhk");
       return "custom-backspace";
     }
     return null;

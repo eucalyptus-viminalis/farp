@@ -3,7 +3,6 @@
 import { appConfig } from "@/app/appConfig";
 
 export async function fetchTokenPrice(tokenId: string): Promise<number | null> {
-  console.log("@fetchTokenPrice internal api route");
   try {
     const response = await fetch(
       `${appConfig.hostUrl}/api/token-info?symbol=${tokenId.toUpperCase()}`,

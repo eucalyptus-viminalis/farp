@@ -36,7 +36,6 @@ export default function TokenBalanceEditable(props: Props) {
   };
 
   const handleBlur = async () => {
-    console.log("handleBlur triggered");
     setInputFocused(false);
     if (q) {
       const { chainId, address } = tokenBalance;
@@ -93,8 +92,6 @@ export default function TokenBalanceEditable(props: Props) {
   const handleOnChange = (e: ChangeEvent<HTMLInputElement>) => {
     e.preventDefault();
     const numValue = e.target.valueAsNumber;
-    console.log("e.target.value", e.target.value);
-    console.log("q === undefined", q === undefined);
     setQ(numValue);
     // if (!value) {
     //   console.log("!value");

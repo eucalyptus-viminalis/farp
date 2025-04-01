@@ -144,12 +144,11 @@ export const EditProvider = ({ children }: { children: ReactNode }) => {
             username,
           },
         });
-        console.log("dispatched SET_USER w/ farcasterContext");
       } else {
         console.debug("fid, pfpUrl or username null in frameContext");
       }
     } else {
-      console.log("sdk not loaded when initializing EditContext state");
+      console.debug("sdk not loaded when initializing EditContext state");
     }
   }, [fcState]);
   return (

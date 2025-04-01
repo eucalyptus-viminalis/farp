@@ -38,9 +38,6 @@ export default function TokenSearch() {
 
   // State mutations
   const addToken = async (newToken: TokenInfo) => {
-    console.log("addToken triggered");
-    console.log("newToken", JSON.stringify(newToken, null, 2));
-
     // Fetch price from the server action
     // const tokenPrice = await fetchTokenPrice(newToken.id);
     const tokenPrice = Number(newToken.price);
@@ -77,7 +74,6 @@ export default function TokenSearch() {
   const onTokenRowClick = (e: any) => {
     e.preventDefault();
     const newToken = tokens[selectedIndex];
-    console.log("selectedIndex", selectedIndex);
     addToken(newToken);
     setQ("");
     setShowInput(false);
@@ -119,7 +115,6 @@ export default function TokenSearch() {
       setQ("");
       setShowTokens(false);
     } else if (e.key === "Escape") {
-      console.log('e.key === "Secape"');
       inputRef.current?.blur(); // Explicitly remove focus
       // e.preventDefault();
     } else if (e.keyCode == 27) {
@@ -209,7 +204,6 @@ export default function TokenSearch() {
     };
     const handleKeyPress = (event: any) => {
       if (event.key === "Escape") {
-        console.log('handleKeyPress, event.key === "Escape"');
         handleBlur();
       }
     };

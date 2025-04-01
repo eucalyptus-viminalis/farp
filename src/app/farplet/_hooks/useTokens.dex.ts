@@ -62,7 +62,6 @@ export const useTokens = (q: string) => {
           `https://api.dexscreener.com/latest/dex/search?q=${debouncedQ}`,
         );
         const data = await response.json();
-        console.log("dex search data", JSON.stringify(data, null, 2));
 
         // Filter tokens that have the `info` attribute
         const filteredTokens: DexSearchResponsePairWithInfo[] = (
@@ -74,7 +73,6 @@ export const useTokens = (q: string) => {
             token.info &&
             token.info.imageUrl,
         );
-        console.log("filteredTokens", JSON.stringify(filteredTokens, null, 2));
         setTokens(filteredTokens || []);
       } catch (error) {
         console.error("Error fetching tokens useTokens.dex.ts:", error);
