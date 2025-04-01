@@ -1,5 +1,6 @@
 "use client";
 
+import { createStore } from "mipd";
 import {
   useEffect,
   useReducer,
@@ -7,8 +8,14 @@ import {
   useContext,
   ReactNode,
   Dispatch,
+  useCallback,
+  useState,
 } from "react";
-import sdk, { Context } from "@farcaster/frame-sdk";
+import sdk, {
+  AddFrame,
+  Context,
+  FrameNotificationDetails,
+} from "@farcaster/frame-sdk";
 
 // Define the shape of our state
 interface FrameState {
@@ -48,6 +55,40 @@ const FrameContext = createContext<
 export const FarcasterProvider = ({ children }: { children: ReactNode }) => {
   const [state, dispatch] = useReducer(reducer, initialState);
 
+  const [isSDKLoaded, setIsSDKLoaded] = useState(false);
+  const [added, setAdded] = useState(false);
+  const [notificationDetails, setNotificationDetails] =
+    useState<FrameNotificationDetails | null>(null);
+  const [lastEvent, setLastEvent] = useState("");
+  const [addFrameResult, setAddFrameResult] = useState("");
+
+  const addFrame = useCallback(async () => {
+    try {
+      setNotificationDetails(null);
+
+      const result = await sdk.actions.addFrame();
+
+      if (result.notificationDetails) {
+        setNotificationDetails(result.notificationDetails);
+      }
+      setAddFrameResult(
+        result.notificationDetails
+          ? `Added, got notificaton token ${result.notificationDetails.token} and url ${result.notificationDetails.url}`
+          : "Added, got no notification details",
+      );
+    } catch (error) {
+      if (error instanceof AddFrame.RejectedByUser) {
+        setAddFrameResult(`Not added: ${error.message}`);
+      }
+
+      if (error instanceof AddFrame.InvalidDomainManifest) {
+        setAddFrameResult(`Not added: ${error.message}`);
+      }
+
+      setAddFrameResult(`Error: ${error}`);
+    }
+  }, []);
+
   useEffect(() => {
     const initializeSdk = async () => {
       try {
@@ -74,6 +115,73 @@ export const FarcasterProvider = ({ children }: { children: ReactNode }) => {
     initializeSdk();
     // }
   });
+
+  useEffect(() => {
+    const load = async () => {
+      const context = await sdk.context;
+      dispatch({ type: "SET_CONTEXT", payload: context });
+      dispatch({ type: "SET_SDK_LOADED", payload: true });
+
+      // Set up event listeners
+      sdk.on("frameAdded", ({ notificationDetails }) => {
+        console.log("Frame added", notificationDetails);
+        setAdded(true);
+        setNotificationDetails(notificationDetails ?? null);
+        setLastEvent("Frame added");
+      });
+
+      sdk.on("frameAddRejected", ({ reason }) => {
+        console.log("Frame add rejected", reason);
+        setAdded(false);
+        setLastEvent(`Frame add rejected: ${reason}`);
+      });
+
+      sdk.on("frameRemoved", () => {
+        console.log("Frame removed");
+        setAdded(false);
+        setLastEvent("Frame removed");
+      });
+
+      sdk.on("notificationsEnabled", ({ notificationDetails }) => {
+        console.log("Notifications enabled", notificationDetails);
+        setNotificationDetails(notificationDetails ?? null);
+        setLastEvent("Notifications enabled");
+      });
+
+      sdk.on("notificationsDisabled", () => {
+        console.log("Notifications disabled");
+        setNotificationDetails(null);
+        setLastEvent("Notifications disabled");
+      });
+
+      sdk.on("primaryButtonClicked", () => {
+        console.log("Primary button clicked");
+        setLastEvent("Primary button clicked");
+      });
+
+      // Call ready action
+      console.log("Calling ready");
+      sdk.actions.ready({});
+
+      // Set up MIPD Store
+      const store = createStore();
+      store.subscribe((providerDetails) => {
+        console.log("PROVIDER DETAILS", providerDetails);
+      });
+    };
+
+    if (sdk && !isSDKLoaded) {
+      console.log("Calling load");
+      setIsSDKLoaded(true);
+      load();
+      return () => {
+        sdk.removeAllListeners();
+      };
+    }
+    if (!added) {
+      addFrame();
+    }
+  }, [isSDKLoaded, added, addFrame]);
 
   // useEffect(() => {
   //   if (sdk && state.isSdkLoaded && !state.farcasterContext?.client.added) {
