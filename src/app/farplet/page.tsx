@@ -16,7 +16,7 @@ export default function DCPage() {
     if (fcState.isSdkLoaded && !fcState.farcasterContext?.client.added) {
       sdk.actions.addFrame();
     }
-  });
+  }, [fcState]);
   return (
     <>
       {mode === "edit" && (
