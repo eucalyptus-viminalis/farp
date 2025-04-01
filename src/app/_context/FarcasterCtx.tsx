@@ -89,32 +89,32 @@ export const FarcasterProvider = ({ children }: { children: ReactNode }) => {
     }
   }, []);
 
-  useEffect(() => {
-    const initializeSdk = async () => {
-      try {
-        await sdk.actions.ready();
-        const frameContext = await sdk.context;
-        if (frameContext) {
-          dispatch({ type: "SET_CONTEXT", payload: frameContext });
-          dispatch({ type: "SET_SDK_LOADED", payload: true });
-          sdk.actions.ready(); // Notify that the app is ready
-          if (!frameContext.client.added) {
-            await sdk.actions.addFrame();
-          }
-        } else {
-          console.error("Failed to retrieve Farcaster context.");
-        }
-        // if (!frameContext.client.added) {
-        //   await sdk.actions.addFrame();
-        // }
-      } catch (error) {
-        console.error("Error initializing Farcaster SDK:", error);
-      }
-    };
-    // if (!state.isSdkLoaded) {
-    initializeSdk();
-    // }
-  });
+  // useEffect(() => {
+  //   const initializeSdk = async () => {
+  //     try {
+  //       await sdk.actions.ready();
+  //       const frameContext = await sdk.context;
+  //       if (frameContext) {
+  //         dispatch({ type: "SET_CONTEXT", payload: frameContext });
+  //         dispatch({ type: "SET_SDK_LOADED", payload: true });
+  //         sdk.actions.ready(); // Notify that the app is ready
+  //         if (!frameContext.client.added) {
+  //           await sdk.actions.addFrame();
+  //         }
+  //       } else {
+  //         console.error("Failed to retrieve Farcaster context.");
+  //       }
+  //       // if (!frameContext.client.added) {
+  //       //   await sdk.actions.addFrame();
+  //       // }
+  //     } catch (error) {
+  //       console.error("Error initializing Farcaster SDK:", error);
+  //     }
+  //   };
+  //   // if (!state.isSdkLoaded) {
+  //   initializeSdk();
+  //   // }
+  // });
 
   useEffect(() => {
     const load = async () => {
