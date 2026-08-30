@@ -17,10 +17,12 @@ export function WagmiBaseProviderProviderLOL({
 }) {
   const { state } = useFarcasterCtx();
 
-  // only add provider if context loaded?
+  // Only mount wagmi inside a Farcaster host. Outside one the SDK still
+  // "loads" but sdk.wallet.ethProvider is undefined, so frameConnector's
+  // autoconnect throws RpcResponse.InternalErrorError in a plain browser.
   return (
     <>
-      {state.isSdkLoaded ? (
+      {state.isSdkLoaded && state.farcasterContext ? (
         <WagmiBaseProvider>{children}</WagmiBaseProvider>
       ) : (
         children
