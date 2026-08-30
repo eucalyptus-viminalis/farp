@@ -1,8 +1,30 @@
 # farp
 
-- we do a lil ~~misinforming~~ virality manifesting
-- UFC; user-fabricated content
-- "chat, is this real?"
+A social feed interface built to match Warpcast's UI, then made editable. Load a real Farcaster
+feed, then rewrite any cast in place — author, avatar, handle, body text, timestamp, engagement
+counts — and flip to Preview to see the result rendered as the real client would.
+
+Three surfaces: **Cast** (feed and single-cast views), **DC** (direct message threads) and
+**Farplet** (a token-balance mini app). Each has an Edit and a Preview mode, and the feed renders
+in Timeline or Expanded layouts.
+
+Built as a Farcaster mini app, and works standalone in a normal browser.
+
+**Live:** https://farp.vercel.app
+
+![farp](screenshots/screenshot-2026_08_30.png)
+
+## Stack
+
+Next.js (App Router), React, TypeScript, Tailwind CSS, Lexical and Draft.js for the inline cast
+editor, Radix UI, Neynar SDK for Farcaster data, wagmi/viem and the Farcaster Frame SDK for
+wallet context, `@vercel/og` for share images. Deployed on Vercel.
+
+## references/
+
+Saved reference markup from the Warpcast client — `Cast.html`, `Convo.html`, `Nav.html`,
+`ComposeReply.html`. These are the comps the components were built against, kept in the repo so
+the layout work can be checked against its source.
 
 ## coin price APIs
 
@@ -22,6 +44,3 @@ https://www.coingecko.com/en/api
 The current limit for the Free Tier of our APIs is approximately 10 Requests Per Second (RPS).
 https://0x.org/docs/developer-resources/rate-limits#what-are-the-rate-limits-for-the-0x-apis
 https://0x.org/pricing
-
-## screenshots
-TODO: image here
