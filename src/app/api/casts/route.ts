@@ -1,20 +1,12 @@
-import { neynar_client } from "@/neynar/client";
-import { TrendingFeedTimeWindow } from "@neynar/nodejs-sdk/build/neynar-api/common/constants";
+import { getRecentCasts } from "@/neynar/feed";
 import { NextRequest } from "next/server";
 
-async function getData() {
-    const res = await neynar_client.fetchTrendingFeed({
-        // channelId,
-        // cursor,
-        // limit,
-        timeWindow: TrendingFeedTimeWindow.TWENTY_FOUR_HOUR,
-        // viewerFid,
-    })
-    return res.casts
-}
+// Fetched per-request: prerendering this at build time made a Neynar outage
+// fail the whole production build.
+export const dynamic = "force-dynamic";
 
-export async function GET(req:NextRequest) {
-    const data = await getData()
+export async function GET(req: NextRequest) {
+    const data = await getRecentCasts(25)
 
     return new Response(JSON.stringify(data), {status: 200, headers:{'content-type':'application/json'}})
 }
